@@ -63,6 +63,7 @@ class AssistantRepository @Inject constructor(
             append(snapshot)
         }
         val text = claude.complete(systemPrompt(), listOf(AssistantTurn(fromUser = true, text = prompt)))
+            .asPlainText()
         val report = AssistantReport(Instant.now(), slot, text)
         mutex.withLock {
             _reports.value = (listOf(report) + _reports.value).take(MaxReports)
@@ -87,7 +88,7 @@ class AssistantRepository @Inject constructor(
         val history = _conversation.value
         val turns = listOf(AssistantTurn(true, context), AssistantTurn(false, ContextAcknowledgement)) +
             history + AssistantTurn(true, question)
-        val answer = claude.complete(systemPrompt(), turns)
+        val answer = claude.complete(systemPrompt(), turns).asPlainText()
         mutex.withLock {
             _conversation.value = (history + AssistantTurn(true, question) + AssistantTurn(false, answer))
                 .takeLast(MaxTurns)
@@ -118,14 +119,18 @@ class AssistantRepository @Inject constructor(
     }
 
     private fun systemPrompt(): String = """
-        You are the health coach inside NCHealth, a personal app that reads one person's wearable
-        data (a Google Fitbit and Google Health). Write in ${languageName()}, warm and direct, like a
-        good coach: the numbers first, then what to do. Judge each metric against the person's own
-        baseline when one is given, not a population average. Base every claim on the data provided;
-        if something is missing, say so briefly instead of guessing. You are not a doctor: do not
-        diagnose, and suggest seeing a clinician only when a value is clearly out of range or keeps
-        worsening. Keep it short enough to read on a phone in under a minute. Plain text with short
-        headings and bullet points; no tables, no markdown links.
+        You are the person's health coach inside NCHealth, a personal app that reads their wearable
+        data (a Google Fitbit and Google Health). Write in ${languageName()}. Sound like a close friend
+        who also happens to be a sports-medicine and sleep expert: warm, relaxed and honest, talking to
+        them directly in everyday words, never stiff, never like a report. In Vietnamese, call yourself
+        "mình" and the person "bạn". Judge each metric against the person's own baseline when one is
+        given, not a population average, and explain briefly why it matters in plain words. Base every
+        claim on the data provided; if something is missing, say so lightly instead of guessing. You
+        are not a doctor: do not diagnose, and suggest seeing a clinician only when a value is clearly
+        out of range or keeps worsening. Keep it short enough to read on a phone in under a minute.
+        Write plain conversational text in short paragraphs. Never use markdown: no asterisks, no bold,
+        no headings, no hash signs, no tables, no links. If you list a few steps, start each line with
+        "• ".
     """.trimIndent()
 
     private fun slotInstruction(slot: AssistantSlot?): String {
@@ -142,11 +147,11 @@ class AssistantRepository @Inject constructor(
         }
         return """
             $focus
-            Open with one short, warm greeting to the person that suits the time of day, then give the
-            single most useful piece of health advice for right now in one or two sentences. After
-            that, two scored lines: overall health right now out of 10, and readiness right now out of
-            100, each with a one-line reason. End with 2 to 4 concrete recommendations for the next
-            few hours.
+            Open with one short, warm greeting that suits the time of day, the way a friend would, then
+            give the single most useful piece of health advice for right now in one or two sentences.
+            After that, in a natural sentence or two, tell them their overall health right now out of
+            10 and their readiness right now out of 100, with the reason. End with 2 to 4 concrete
+            things to do in the next few hours.
         """.trimIndent()
     }
 
@@ -180,7 +185,7 @@ class AssistantRepository @Inject constructor(
                 createdAt = Instant.ofEpochMilli(obj.getValue("at").jsonPrimitive.long),
                 slot = obj["slot"]?.jsonPrimitive?.content
                     ?.let { name -> AssistantSlot.entries.firstOrNull { it.name == name } },
-                text = obj.getValue("text").jsonPrimitive.content,
+                text = obj.getValue("text").jsonPrimitive.content.asPlainText(),
             )
         }.getOrNull()
     }
@@ -188,7 +193,7 @@ class AssistantRepository @Inject constructor(
     private fun readConversation(): List<AssistantTurn> = parseArray(KeyConversation).mapNotNull { element ->
         runCatching {
             val obj = element.jsonObject
-            AssistantTurn(obj.getValue("user").jsonPrimitive.boolean, obj.getValue("text").jsonPrimitive.content)
+            AssistantTurn(obj.getValue("user").jsonPrimitive.boolean, obj.getValue("text").jsonPrimitive.content.asPlainText())
         }.getOrNull()
     }
 
@@ -206,3 +211,20 @@ class AssistantRepository @Inject constructor(
         const val ContextAcknowledgement = "Understood. I have today's data and my latest evaluation."
     }
 }
+
+/**
+ * Claude is asked for plain text, but a stray bold marker or heading still slips through now and
+ * then; the card shows raw text, so strip the markup rather than print the symbols.
+ */
+internal fun String.asPlainText(): String = lineSequence()
+    .map { line ->
+        line.replace(MarkdownHeading, "")
+            .replace(MarkdownBullet, "$1• ")
+            .replace(MarkdownEmphasis, "")
+    }
+    .joinToString("\n")
+    .trim()
+
+private val MarkdownEmphasis = Regex("""\*\*|__""")
+private val MarkdownHeading = Regex("""^\s{0,3}#{1,6}\s+""")
+private val MarkdownBullet = Regex("""^(\s*)[-*]\s+""")

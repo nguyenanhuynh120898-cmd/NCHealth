@@ -21,34 +21,8 @@ import tech.mmarca.openvitals.domain.insights.bloodPressureCategoryBounds
 import tech.mmarca.openvitals.domain.preferences.BloodPressureGuideline
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
 import tech.mmarca.openvitals.ui.components.OpenVitalsOutlinedButton
-import tech.mmarca.openvitals.ui.components.ReferenceLinkButton
 import tech.mmarca.openvitals.ui.components.SectionHeader
 import tech.mmarca.openvitals.ui.theme.Spacing
-
-private const val AhaReadingsUrl =
-    "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings"
-private const val AccAha2017Url = "https://doi.org/10.1161/HYP.0000000000000065"
-private const val Esh2023Url = "https://doi.org/10.1097/HJH.0000000000003480"
-private const val Esc2024Url = "https://doi.org/10.1093/eurheartj/ehae178"
-private const val Ish2020Url = "https://doi.org/10.1161/HYPERTENSIONAHA.120.15026"
-
-private class BloodPressureReference(@StringRes val titleRes: Int, val url: String)
-
-private fun BloodPressureGuideline.references(): List<BloodPressureReference> = when (this) {
-    BloodPressureGuideline.ACC_AHA_2017 -> listOf(
-        BloodPressureReference(R.string.interpretation_bp_reference_aha_readings, AhaReadingsUrl),
-        BloodPressureReference(R.string.interpretation_bp_reference_acc_aha, AccAha2017Url),
-    )
-    BloodPressureGuideline.ESH_2023 -> listOf(
-        BloodPressureReference(R.string.interpretation_bp_reference_esh, Esh2023Url),
-    )
-    BloodPressureGuideline.ESC_2024 -> listOf(
-        BloodPressureReference(R.string.interpretation_bp_reference_esc, Esc2024Url),
-    )
-    BloodPressureGuideline.ISH_2020 -> listOf(
-        BloodPressureReference(R.string.interpretation_bp_reference_ish, Ish2020Url),
-    )
-}
 
 @StringRes
 internal fun bloodPressureGuidelineLabelRes(guideline: BloodPressureGuideline): Int = when (guideline) {
@@ -103,18 +77,6 @@ internal fun BloodPressureGuidelineExplanation(guideline: BloodPressureGuideline
                             R.string.interpretation_bp_show_categories
                         },
                     ),
-                )
-            }
-        }
-    }
-    SectionHeader(stringResource(R.string.references_backed_links))
-    OpenVitalsCard(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(Spacing.lg)) {
-            guideline.references().forEach { reference ->
-                ReferenceLinkButton(
-                    title = stringResource(reference.titleRes),
-                    url = reference.url,
-                    modifier = Modifier.padding(vertical = Spacing.xs),
                 )
             }
         }

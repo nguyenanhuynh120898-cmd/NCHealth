@@ -1,7 +1,5 @@
 package tech.mmarca.openvitals.features.settings
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import tech.mmarca.openvitals.R
@@ -53,8 +50,6 @@ internal fun ElevationCorrectionCard(
     onDeleteTile: (HgtTileKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val context = LocalContext.current
-    val helpUrl = stringResource(R.string.settings_elevation_help_url)
     OpenVitalsCard(
         modifier = modifier.fillMaxWidth(),
     ) {
@@ -112,20 +107,6 @@ internal fun ElevationCorrectionCard(
                 )
             }
 
-            Text(
-                text = stringResource(R.string.settings_elevation_help_prompt),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            OpenVitalsTextButton(
-                onClick = {
-                    runCatching {
-                        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(helpUrl)))
-                    }
-                },
-            ) {
-                Text(stringResource(R.string.settings_elevation_help_link))
-            }
 
             if (tiles.isEmpty()) {
                 Text(

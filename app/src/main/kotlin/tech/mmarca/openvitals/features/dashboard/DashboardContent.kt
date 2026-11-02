@@ -54,8 +54,9 @@ internal fun dashboardVisibleWidgetIds(
 ): List<DashboardWidgetId> {
     val ordered = dashboardWidgets
         .filter { it in specIds }
-        // Only what the wearable records through Google Health; the rest wait in the add tray.
-        .filter { it.isRecordedBy(presentMetrics, display) }
+        // Only what the wearable records through Google Health; editing shows every placed tile
+        // so it can be dragged or removed.
+        .filter { isEditingDashboard || it.isRecordedBy(presentMetrics, display) }
         // While editing, an unsupported metric the user never placed goes to the tray.
         .filterNot { isEditingDashboard && it in display.unsupportedIds && it !in placedWidgetIds }
     if (isEditingDashboard || !sortEmptyTilesLast) return ordered

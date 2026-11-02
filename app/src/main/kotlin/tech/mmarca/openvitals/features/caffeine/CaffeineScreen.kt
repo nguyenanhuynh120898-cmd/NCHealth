@@ -45,7 +45,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -1012,67 +1011,7 @@ internal fun CaffeineScienceCard(modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-internal fun CaffeineReferencesCard(modifier: Modifier = Modifier) {
-    OpenVitalsCard(modifier = modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = stringResource(R.string.caffeine_references_title),
-                style = MaterialTheme.typography.titleSmall,
-            )
-            ReferenceLinkButton(
-                label = stringResource(R.string.caffeine_reference_drake),
-                url = DrakeSleepStudyUrl,
-                modifier = Modifier.padding(top = 10.dp),
-            )
-            ReferenceLinkButton(
-                label = stringResource(R.string.caffeine_reference_nehlig),
-                url = NehligMetabolismReviewUrl,
-                modifier = Modifier.padding(top = 8.dp),
-            )
-            ReferenceLinkButton(
-                label = stringResource(R.string.caffeine_reference_efsa),
-                url = EfsaCaffeineTopicUrl,
-                modifier = Modifier.padding(top = 8.dp),
-            )
-            ReferenceLinkButton(
-                label = stringResource(R.string.caffeine_reference_health_connect),
-                url = HealthConnectNutritionUrl,
-                modifier = Modifier.padding(top = 8.dp),
-            )
-        }
-    }
-}
 
-@Composable
-private fun ReferenceLinkButton(
-    label: String,
-    url: String,
-    modifier: Modifier = Modifier,
-) {
-    val uriHandler = LocalUriHandler.current
-    OutlinedButton(
-        onClick = { uriHandler.openUri(url) },
-        modifier = modifier.fillMaxWidth(),
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.labelLarge,
-                modifier = Modifier.weight(1f),
-            )
-            Spacer(Modifier.width(8.dp))
-            Icon(
-                imageVector = Icons.AutoMirrored.Outlined.OpenInNew,
-                contentDescription = null,
-                modifier = Modifier.size(16.dp),
-            )
-        }
-    }
-}
 
 @Composable
 private fun DistributionRow(
@@ -1405,8 +1344,3 @@ private fun CaffeineCatalogMatchConfidence.displayLabel(): String = when (this) 
     CaffeineCatalogMatchConfidence.CONTAINS -> "contains"
 }
 
-private const val DrakeSleepStudyUrl = "https://jcsm.aasm.org/doi/10.5664/jcsm.3170"
-private const val NehligMetabolismReviewUrl = "https://pubmed.ncbi.nlm.nih.gov/29514871/"
-private const val EfsaCaffeineTopicUrl = "https://www.efsa.europa.eu/en/topics/topic/caffeine"
-private const val HealthConnectNutritionUrl =
-    "https://developer.android.com/reference/kotlin/androidx/health/connect/client/records/NutritionRecord"

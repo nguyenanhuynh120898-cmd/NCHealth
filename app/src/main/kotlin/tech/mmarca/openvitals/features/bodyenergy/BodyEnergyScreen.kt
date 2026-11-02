@@ -32,15 +32,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import java.time.LocalDate
 import tech.mmarca.openvitals.R
 import tech.mmarca.openvitals.core.presentation.resolve
-import tech.mmarca.openvitals.domain.insights.BanisterTrimpUrl
 import tech.mmarca.openvitals.domain.insights.BodyEnergyCalibrationMode
 import tech.mmarca.openvitals.domain.insights.BodyEnergyConfidence
 import tech.mmarca.openvitals.domain.insights.BodyEnergyPrimaryInfluence
 import tech.mmarca.openvitals.domain.insights.BodyEnergyReasonCode
 import tech.mmarca.openvitals.domain.insights.BodyEnergyTimeline
-import tech.mmarca.openvitals.domain.insights.GulatiMaxHeartRateUrl
-import tech.mmarca.openvitals.domain.insights.TanakaMaxHeartRateUrl
-import tech.mmarca.openvitals.domain.insights.TrainingLoadReviewUrl
 import tech.mmarca.openvitals.features.readiness.DailyReadinessCard
 import tech.mmarca.openvitals.features.readiness.DailyReadinessViewModel
 import tech.mmarca.openvitals.healthconnect.HealthConnectFeature
@@ -48,7 +44,6 @@ import tech.mmarca.openvitals.ui.components.ErrorMessage
 import tech.mmarca.openvitals.ui.components.MetricDetailScaffold
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
 import tech.mmarca.openvitals.ui.components.OpenVitalsCardStyle
-import tech.mmarca.openvitals.ui.components.ReferenceLinkButton
 import tech.mmarca.openvitals.ui.components.WithHealthConnectFeatureScreen
 
 /** The Body Energy day view, and the home of the day's readiness verdict. */
@@ -158,11 +153,6 @@ private fun LazyListScope.bodyEnergyContent(
     }
     item {
         BodyEnergyCalculationCard(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-        )
-    }
-    item {
-        BodyEnergySourcesCard(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
         )
     }
@@ -499,40 +489,6 @@ internal fun BodyEnergyCalculationCard(
     }
 }
 
-/** The science behind the calculation, as links. */
-@Composable
-private fun BodyEnergySourcesCard(
-    modifier: Modifier = Modifier,
-) {
-    OpenVitalsCard(modifier = modifier.fillMaxWidth()) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            Text(
-                text = stringResource(R.string.cardio_load_references_title),
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold,
-            )
-            ReferenceLinkButton(
-                title = stringResource(R.string.cardio_load_reference_banister),
-                url = BanisterTrimpUrl,
-            )
-            ReferenceLinkButton(
-                title = stringResource(R.string.cardio_load_reference_training_load),
-                url = TrainingLoadReviewUrl,
-            )
-            ReferenceLinkButton(
-                title = stringResource(R.string.cardio_load_reference_tanaka),
-                url = TanakaMaxHeartRateUrl,
-            )
-            ReferenceLinkButton(
-                title = stringResource(R.string.cardio_load_reference_gulati),
-                url = GulatiMaxHeartRateUrl,
-            )
-        }
-    }
-}
 
 @Composable
 private fun BodyEnergyStat(

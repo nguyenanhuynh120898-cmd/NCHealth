@@ -45,7 +45,6 @@ import tech.mmarca.openvitals.domain.model.DayBleedingChoice
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
 import tech.mmarca.openvitals.ui.components.OpenVitalsOutlinedButton
 import tech.mmarca.openvitals.ui.components.OpenVitalsSurface
-import tech.mmarca.openvitals.ui.components.ReferenceLinkButton
 import tech.mmarca.openvitals.ui.theme.CycleColor
 import tech.mmarca.openvitals.ui.theme.Emphasis
 import tech.mmarca.openvitals.ui.theme.LayoutMetrics
@@ -396,7 +395,6 @@ internal fun CycleDailyCard(today: CycleTodayDisplay, modifier: Modifier = Modif
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            ReferenceLinkButton(title = stringResource(R.string.cycle_view_source), url = source.url)
         }
     }
 }

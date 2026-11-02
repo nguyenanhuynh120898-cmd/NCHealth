@@ -259,11 +259,10 @@ internal fun LazyListScope.caffeinePeriodContent(
     caffeineScienceContent()
 }
 
-/** How the estimate works, and its sources. Always last: it explains every section above. */
+/** How the estimate works. Always last: it explains every section above. */
 private fun LazyListScope.caffeineScienceContent() {
     item { SectionHeader(stringResource(R.string.caffeine_section_science)) }
     item { CaffeineScienceCard(modifier = CardModifier) }
-    item { CaffeineReferencesCard(modifier = CardModifier) }
 }
 
 /** The measured card rhythm: 16 at the sides, 8 between cards. */

@@ -43,7 +43,6 @@ import tech.mmarca.openvitals.core.presentation.DisplayValue
 import tech.mmarca.openvitals.core.presentation.UnitFormatter
 import tech.mmarca.openvitals.ui.components.FullScreenLoading
 import tech.mmarca.openvitals.ui.components.PullToRefreshBox
-import tech.mmarca.openvitals.ui.components.ReferenceLinkButton
 import tech.mmarca.openvitals.ui.components.ScreenErrorContent
 import tech.mmarca.openvitals.ui.components.SectionHeader
 import tech.mmarca.openvitals.ui.components.OpenVitalsCardHorizontalPadding
@@ -52,9 +51,6 @@ import tech.mmarca.openvitals.ui.components.SharedMetricTile
 import tech.mmarca.openvitals.ui.components.localizedDayTitle
 import tech.mmarca.openvitals.ui.theme.SleepColor
 
-private const val NcbiSleepEfficiencyUrl = "https://www.ncbi.nlm.nih.gov/medgen/1669302"
-private const val SleepEfficiencyDenominatorUrl = "https://pmc.ncbi.nlm.nih.gov/articles/PMC4751425/"
-private const val SleepAssessmentMethodsUrl = "https://pmc.ncbi.nlm.nih.gov/articles/PMC5971842/"
 
 @Composable
 fun SleepEfficiencyDetailScreen(
@@ -126,8 +122,6 @@ internal fun SleepEfficiencyDetailContent(
                     modifier = efficiencyDetailCardModifier(),
                 )
             }
-            item { SectionHeader(stringResource(R.string.references_backed_links)) }
-            item { SleepEfficiencyReferencesCard(modifier = efficiencyDetailCardModifier()) }
             item { Spacer(Modifier.height(16.dp)) }
         }
     }
@@ -275,28 +269,6 @@ private fun SleepEfficiencyNumbersCard(
     }
 }
 
-@Composable
-private fun SleepEfficiencyReferencesCard(
-    modifier: Modifier = Modifier,
-) {
-    EfficiencyDetailCard(modifier = modifier) {
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_sleep_efficiency_definition),
-            url = NcbiSleepEfficiencyUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_sleep_efficiency_denominator),
-            url = SleepEfficiencyDenominatorUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_sleep_assessment_methods),
-            url = SleepAssessmentMethodsUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-    }
-}
 
 @Composable
 private fun EfficiencyDetailMetricGrid(

@@ -43,7 +43,6 @@ import tech.mmarca.openvitals.core.presentation.DisplayValue
 import tech.mmarca.openvitals.core.presentation.UnitFormatter
 import tech.mmarca.openvitals.ui.components.FullScreenLoading
 import tech.mmarca.openvitals.ui.components.PullToRefreshBox
-import tech.mmarca.openvitals.ui.components.ReferenceLinkButton
 import tech.mmarca.openvitals.ui.components.ScreenErrorContent
 import tech.mmarca.openvitals.ui.components.SectionHeader
 import tech.mmarca.openvitals.ui.components.OpenVitalsCardHorizontalPadding
@@ -52,16 +51,6 @@ import tech.mmarca.openvitals.ui.components.SharedMetricTile
 import tech.mmarca.openvitals.ui.components.localizedDayTitle
 import tech.mmarca.openvitals.ui.theme.SleepColor
 
-private const val AasmSleepDurationUrl =
-    "https://aasm.org/advocacy/position-statements/adult-sleep-duration-health-advisory/"
-private const val NsfSleepDurationUrl =
-    "https://doi.org/10.1016/j.sleh.2015.10.004"
-private const val NsfSleepQualityUrl =
-    "https://doi.org/10.1016/j.sleh.2016.11.006"
-private const val GarminSleepScoreUrl =
-    "https://www.garmin.com/en-US/blog/health/garmin-sleep-score-and-sleep-insights/"
-private const val SleepHealthFrameworkUrl = "https://pubmed.ncbi.nlm.nih.gov/24470692/"
-private const val SleepEfficiencyUrl = "https://www.ncbi.nlm.nih.gov/medgen/1669302"
 
 @Composable
 fun SleepScoreDetailScreen(
@@ -133,8 +122,6 @@ internal fun SleepScoreDetailContent(
                     modifier = detailCardModifier(),
                 )
             }
-            item { SectionHeader(stringResource(R.string.references_backed_links)) }
-            item { SleepScoreReferencesCard(modifier = detailCardModifier()) }
             item { Spacer(Modifier.height(16.dp)) }
         }
     }
@@ -387,43 +374,6 @@ private fun SleepScoreNumbersCard(
     }
 }
 
-@Composable
-private fun SleepScoreReferencesCard(
-    modifier: Modifier = Modifier,
-) {
-    DetailCard(modifier = modifier) {
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_garmin_sleep_score),
-            url = GarminSleepScoreUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_nsf_sleep_duration),
-            url = NsfSleepDurationUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_aasm_sleep_duration),
-            url = AasmSleepDurationUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_nsf_sleep_quality),
-            url = NsfSleepQualityUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_multidimensional_sleep_health),
-            url = SleepHealthFrameworkUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-        ReferenceLinkButton(
-            title = stringResource(R.string.reference_sleep_efficiency_definition),
-            url = SleepEfficiencyUrl,
-            modifier = Modifier.padding(vertical = 4.dp),
-        )
-    }
-}
 
 @Composable
 private fun DetailMetricGrid(

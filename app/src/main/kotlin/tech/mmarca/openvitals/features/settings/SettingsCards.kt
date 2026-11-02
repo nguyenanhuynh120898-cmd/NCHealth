@@ -3,8 +3,6 @@ package tech.mmarca.openvitals.features.settings
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
 import tech.mmarca.openvitals.ui.components.AutoResizeText
 
-import android.content.Intent
-import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -87,7 +85,6 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -1020,8 +1017,6 @@ internal fun OfflineMapsCard(
     onDeleteMap: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val context = LocalContext.current
-    val offlineMapsHelpUrl = stringResource(R.string.settings_offline_maps_help_url)
     OpenVitalsCard(
         modifier = modifier.fillMaxWidth(),
     ) {
@@ -1056,22 +1051,6 @@ internal fun OfflineMapsCard(
                 }
             }
 
-            Text(
-                text = stringResource(R.string.settings_offline_maps_help_prompt),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            OpenVitalsTextButton(
-                onClick = {
-                    runCatching {
-                        context.startActivity(
-                            Intent(Intent.ACTION_VIEW, Uri.parse(offlineMapsHelpUrl)),
-                        )
-                    }
-                },
-            ) {
-                Text(stringResource(R.string.settings_offline_maps_help_link))
-            }
 
             if (mapPacks.isEmpty()) {
                 Text(
