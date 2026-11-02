@@ -9,6 +9,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -33,17 +35,18 @@ fun AuroraBackground(modifier: Modifier = Modifier) {
     val mint = glows[0].copy(alpha = glowAlpha)
     val teal = glows[1].copy(alpha = glowAlpha * 0.8f)
     val coral = glows[2].copy(alpha = glowAlpha * 0.55f)
-    val phase = if (loopingMotionAllowed()) {
+    val phaseState: State<Float> = if (loopingMotionAllowed()) {
         rememberInfiniteTransition(label = "Aurora").animateFloat(
             initialValue = 0f,
             targetValue = (2 * Math.PI).toFloat(),
             animationSpec = infiniteRepeatable(tween(AuroraCycleMillis, easing = LinearEasing), RepeatMode.Restart),
             label = "AuroraPhase",
-        ).value
+        )
     } else {
-        0f
+        StillPhase
     }
     Canvas(modifier = modifier) {
+        val phase = phaseState.value
         drawRect(scheme.background)
         val w = size.width
         val h = size.height
@@ -59,3 +62,4 @@ fun AuroraBackground(modifier: Modifier = Modifier) {
 }
 
 private const val AuroraCycleMillis = 24_000
+private val StillPhase: State<Float> = mutableFloatStateOf(0f)

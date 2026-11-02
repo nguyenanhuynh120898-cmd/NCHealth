@@ -5,7 +5,11 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.graphicsLayer
@@ -22,10 +26,13 @@ import tech.mmarca.openvitals.ui.theme.Motion
  */
 fun Modifier.staggeredEntrance(index: Int): Modifier = composed {
     val reduced = LocalReducedMotion.current
-    val progress = remember { Animatable(if (reduced) 1f else 0f) }
+    // Saved with the list item: a fast scroll back up finds it in place, not fading in again.
+    var entered by rememberSaveable { mutableStateOf(reduced) }
+    val progress = remember { Animatable(if (entered) 1f else 0f) }
     val rise = with(androidx.compose.ui.platform.LocalDensity.current) { EntranceRise.toPx() }
     LaunchedEffect(Unit) {
-        if (reduced) return@LaunchedEffect
+        if (entered) return@LaunchedEffect
+        entered = true
         delay(index.coerceIn(0, MaxSteps) * StepMillis)
         launch {
             progress.animateTo(1f, spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessLow))

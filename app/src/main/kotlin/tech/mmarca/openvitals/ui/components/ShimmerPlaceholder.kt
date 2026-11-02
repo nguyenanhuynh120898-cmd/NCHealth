@@ -17,6 +17,8 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -30,7 +32,7 @@ import tech.mmarca.openvitals.ui.theme.loopingMotionAllowed
 fun Modifier.shimmer(): Modifier = composed {
     val base = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
     val highlight = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.16f)
-    val progress = if (loopingMotionAllowed()) {
+    val progress: State<Float> = if (loopingMotionAllowed()) {
         rememberInfiniteTransition(label = "Shimmer").animateFloat(
             initialValue = -1f,
             targetValue = 2f,
@@ -39,13 +41,13 @@ fun Modifier.shimmer(): Modifier = composed {
                 repeatMode = RepeatMode.Restart,
             ),
             label = "ShimmerProgress",
-        ).value
+        )
     } else {
-        0.5f
+        StillShimmer
     }
     drawWithContent {
         val width = size.width
-        val start = width * progress
+        val start = width * progress.value
         drawRect(
             brush = Brush.linearGradient(
                 colors = listOf(base, highlight, base),
@@ -71,3 +73,5 @@ fun ShimmerLine(
             .shimmer(),
     )
 }
+
+private val StillShimmer: State<Float> = mutableFloatStateOf(0.5f)

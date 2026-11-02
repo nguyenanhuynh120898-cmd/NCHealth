@@ -15,7 +15,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,8 +50,11 @@ fun AnimatedMetricIcon(
     val motionAllowed = loopingMotionAllowed()
     val scale = remember { Animatable(1f) }
     val tilt = remember { Animatable(0f) }
+    // Saved with the list item, so scrolling a tile back into view does not pop it again.
+    var popped by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(settled, motionAllowed) {
-        if (settled && motionAllowed) {
+        if (settled && motionAllowed && !popped) {
+            popped = true
             scale.snapTo(0.6f)
             tilt.snapTo(-14f)
             launch {
@@ -54,7 +63,7 @@ fun AnimatedMetricIcon(
             tilt.animateTo(0f, spring(dampingRatio = 0.4f, stiffness = Spring.StiffnessLow))
         }
     }
-    val breath = if (!settled && motionAllowed) {
+    val breath: State<Float> = if (!settled && motionAllowed) {
         rememberInfiniteTransition(label = "MetricIconBreath").animateFloat(
             initialValue = 0.45f,
             targetValue = 1f,
@@ -63,9 +72,9 @@ fun AnimatedMetricIcon(
                 repeatMode = RepeatMode.Reverse,
             ),
             label = "MetricIconBreathAlpha",
-        ).value
+        )
     } else {
-        1f
+        SteadyGlyph
     }
     Box(
         modifier = modifier
@@ -84,7 +93,9 @@ fun AnimatedMetricIcon(
             tint = accentColor,
             modifier = Modifier
                 .size(glyphSize)
-                .graphicsLayer { alpha = breath },
+                .graphicsLayer { alpha = breath.value },
         )
     }
 }
+
+private val SteadyGlyph: State<Float> = mutableFloatStateOf(1f)
