@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenVitals</string>
+    <string name="app_name">NCHealth</string>
     <string name="cd_back">Zpět</string>
     <string name="cd_settings">Nastavení</string>
     <string name="cd_achievements">Úspěchy</string>

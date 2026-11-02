@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenVitals</string>
+    <string name="app_name">NCHealth</string>
     <string name="cd_settings">Ustawienia</string>
     <string name="cd_achievements">Osiągnięcia</string>
     <string name="cd_sensor_battery_status">Stan baterii czujnika</string>

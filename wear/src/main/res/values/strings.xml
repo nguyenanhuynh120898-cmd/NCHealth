@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OpenVitals Wear</string>
+    <string name="app_name">NCHealth Wear</string>
     <string name="link_channel_name">Phone link</string>
     <string name="link_notification_text">Recording heart rate and sleep · reachable by OpenVitals on your phone</string>
     <string name="status_heart_rate_not_granted">Heart rate access is off</string>

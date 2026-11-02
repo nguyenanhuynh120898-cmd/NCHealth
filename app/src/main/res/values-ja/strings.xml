@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenVitals</string>
+    <string name="app_name">NCHealth</string>
     <string name="cd_back">戻る</string>
     <string name="cd_settings">設定</string>
     <string name="cd_achievements">実績</string>
