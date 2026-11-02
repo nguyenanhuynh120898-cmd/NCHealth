@@ -547,7 +547,7 @@ class DeviceSyncViewModel @Inject constructor(
     private fun deviceName(): String =
         listOfNotNull(Build.MANUFACTURER, Build.MODEL)
             .joinToString(" ")
-            .ifBlank { "OpenVitals phone" }
+            .ifBlank { "NCHealth phone" }
 
     private companion object {
         const val TAG = "DeviceSync"

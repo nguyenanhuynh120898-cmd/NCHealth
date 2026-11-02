@@ -75,7 +75,7 @@ object PrivacySafeDebugLogExporter {
         exported: ExportedLogcat,
         healthConnectCalls: List<String> = HealthConnectCallCounters.summaryLines(),
     ): String = buildString {
-        appendLine("OpenVitals diagnostics log export")
+        appendLine("NCHealth diagnostics log export")
         appendLine("package=$packageName")
         appendLine("version=${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
         appendLine(PrivacyHeader)

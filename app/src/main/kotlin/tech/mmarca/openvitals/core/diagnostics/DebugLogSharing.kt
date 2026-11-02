@@ -39,5 +39,5 @@ suspend fun Context.shareDebugDiagnosticsLog() {
 }
 
 internal const val DiagnosticsExportCacheDirectory = "diagnostics_exports"
-internal const val DiagnosticsExportFileName = "openvitals-diagnostics-logs.txt"
+internal const val DiagnosticsExportFileName = "nchealth-diagnostics-logs.txt"
 private const val DiagnosticsMimeType = "text/plain"

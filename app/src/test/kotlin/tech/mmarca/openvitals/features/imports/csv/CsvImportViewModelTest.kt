@@ -214,7 +214,7 @@ class CsvImportViewModelTest {
         assertEquals("2026-05-26T08:30:00Z", writtenWorkouts.first().startTime.toString())
         assertEquals("Morning run", writtenWorkouts.first().title)
         assertEquals("easy", writtenWorkouts.last().notes)
-        assertTrue(vm.reportText()!!.contains("OpenVitals workout export"))
+        assertTrue(vm.reportText()!!.contains("NCHealth workout export"))
     }
 
     private suspend fun CsvImportViewModel.awaitLoaded(): CsvImportState =

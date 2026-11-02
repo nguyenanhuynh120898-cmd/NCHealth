@@ -127,7 +127,7 @@ class SyncReportBuilder {
  * other phone's own words.
  */
 fun buildSyncReportText(report: SyncReport, generatedAt: Instant): String = buildString {
-    appendLine("OpenVitals — Sync With Another Phone report")
+    appendLine("NCHealth — Sync With Another Phone report")
     appendLine("Generated: $generatedAt")
     appendLine("Peer: ${PrivacyRedactor.maskIdentifiers(report.peerDeviceName)}")
     appendLine("Status: ${if (report.completed) "completed" else "aborted"}")

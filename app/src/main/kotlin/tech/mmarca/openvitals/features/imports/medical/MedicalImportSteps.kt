@@ -358,7 +358,7 @@ internal fun MedicalImportReportActions(note: String, report: () -> String?, mod
                 onClick = {
                     val text = report() ?: return@OpenVitalsOutlinedButton
                     scope.launch {
-                        clipboard.setSensitiveText("OpenVitals", text)
+                        clipboard.setSensitiveText("NCHealth", text)
                         Toast.makeText(context, copied, Toast.LENGTH_SHORT).show()
                     }
                 },

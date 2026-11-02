@@ -127,7 +127,7 @@ class CrashReportEmailActivity : AppCompatActivity() {
     private fun saveReport(draft: CrashReportEmailDraft) {
         fallbackDraft = draft
         runCatching {
-            saveReportLauncher.launch("openvitals-report.txt")
+            saveReportLauncher.launch("nchealth-report.txt")
         }.onFailure { throwable ->
             if (throwable is ActivityNotFoundException) {
                 copyReportToClipboard(draft)

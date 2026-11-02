@@ -15,6 +15,7 @@ import tech.mmarca.openvitals.core.performance.AppForegroundGate
 import tech.mmarca.openvitals.data.migration.FlutterDataMigrator
 import tech.mmarca.openvitals.data.migration.FlutterMigrationEntryPoint
 import tech.mmarca.openvitals.data.repository.PreferencesRepository
+import tech.mmarca.openvitals.domain.insights.InsightLanguage
 import javax.inject.Inject
 import kotlin.concurrent.thread
 
@@ -36,6 +37,9 @@ class OpenVitalsApp : Application() {
         val flutterMigrator = FlutterDataMigrator(this)
         val flutterMigrationPending = flutterMigrator.migrateIfNeeded()
         super.onCreate()
+        // Readiness and stress sentences come from :domain, which has no string resources.
+        InsightLanguage.vietnamese =
+            (AppCompatDelegate.getApplicationLocales()[0] ?: resources.configuration.locales[0]).language == "vi"
         if (flutterMigrationPending) {
             flutterMigrator.importDatabaseAndFinish(
                 EntryPointAccessors

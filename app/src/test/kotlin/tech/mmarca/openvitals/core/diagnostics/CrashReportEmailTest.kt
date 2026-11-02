@@ -13,10 +13,10 @@ class CrashReportEmailTest {
             diagnosticsLog = "masked log lines",
         )
 
-        assertThat(draft.subject).isEqualTo("OpenVitals crash report")
+        assertThat(draft.subject).isEqualTo("NCHealth crash report")
         assertThat(draft.body).contains("Steps to reproduce:")
         assertThat(draft.body).contains("What happened:")
-        assertThat(draft.body).contains("Last saved OpenVitals crash report:\nsaved crash stack")
+        assertThat(draft.body).contains("Last saved NCHealth crash report:\nsaved crash stack")
         assertThat(draft.body).contains("Please don't add health data")
         assertThat(draft.body).contains("Current diagnostics log (masked):\nmasked log lines")
     }
@@ -29,7 +29,7 @@ class CrashReportEmailTest {
             diagnosticsLog = "",
         )
 
-        assertThat(draft.subject).isEqualTo("OpenVitals issue report")
+        assertThat(draft.subject).isEqualTo("NCHealth issue report")
         assertThat(draft.body).contains("No crash in the last seven days.")
         assertThat(draft.body).contains("No diagnostics log available.")
         assertThat(draft.body).contains("Steps to reproduce:")
@@ -153,7 +153,7 @@ class CrashReportEmailTest {
 
         val shareText = CrashReportEmail.buildShareText(draft)
 
-        assertThat(shareText).startsWith("To: manuel@mmarca.tech\nSubject: OpenVitals issue report")
+        assertThat(shareText).startsWith("To: manuel@mmarca.tech\nSubject: NCHealth issue report")
         assertThat(shareText).contains("Steps to reproduce:")
     }
 

@@ -321,7 +321,7 @@ class CsvImportReportTest {
     fun `a workout export is reported by format, column indexes and sessions written, never by its header text`() {
         val report = report(mapping = null, workouts = workoutPlan())
 
-        assertThat(report).contains("Format:     OpenVitals workout export")
+        assertThat(report).contains("Format:     NCHealth workout export")
         assertThat(report).contains("Date format: auto")
         assertThat(report).contains("Time zone:   UTC")
         assertThat(report).contains("Workouts written:    118, of which 4 replaced an earlier import")

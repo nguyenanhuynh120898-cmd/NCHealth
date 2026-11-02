@@ -50,7 +50,7 @@ fun ManualEntryScreen(
         onOpenCycleEntry = viewModel::onCycleWidgetTapped,
         // The plans screen carries its own gate, so the tile navigates directly.
         onOpenWorkoutPlans = onOpenWorkoutPlans,
-    )
+    ).filterNot { it.id in UntrackedIntakeEntries }
     val specsById = specs.associateBy { it.id }
     val visibleIds = state.widgets.filter { it in specsById }
     val hiddenSpecs = specs.filter { it.id !in visibleIds }
@@ -150,3 +150,15 @@ fun ManualEntryScreen(
         item { Spacer(Modifier.height(16.dp)) }
     }
 }
+
+/**
+ * Entries for what a smartwatch cannot measure (food, nutrients, cuff, meter and thermometer
+ * readings) are left out. Water stays, for its reminders.
+ */
+private val UntrackedIntakeEntries = setOf(
+    ManualEntryWidgetId.FOOD,
+    ManualEntryWidgetId.NUTRITION,
+    ManualEntryWidgetId.BLOOD_PRESSURE,
+    ManualEntryWidgetId.BLOOD_GLUCOSE,
+    ManualEntryWidgetId.BODY_TEMPERATURE,
+)

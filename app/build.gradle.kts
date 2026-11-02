@@ -76,7 +76,8 @@ val localAppleHealthExportPath = providers.gradleProperty("appleHealthExport")
 // x10, last digit free for a per-ABI split if one is ever needed again. The
 // first nightly on this floor ships versionCode 1070304441.
 val baseVersionCode = 1070304540
-val baseVersionName = "2.15.2"
+// NCHealth numbers its own releases; the version code stays above the fork's so updates install over it.
+val baseVersionName = "1.0"
 val translationCoverageResDir = layout.buildDirectory.dir("generated/res/translationCoverage").get().asFile
 val generateTranslationCoverage by tasks.registering(Exec::class) {
     inputs.files(
@@ -128,7 +129,10 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
+            // A published build reads as the plain release number, "1.0".
+            if (!publishedDebugApk) {
+                versionNameSuffix = "-debug"
+            }
             buildConfigField("boolean", "OPENVITALS_DIAGNOSTICS", "true")
             if (signDebugWithReleaseKey && hasReleaseSigning) {
                 signingConfig = signingConfigs.getByName("release")

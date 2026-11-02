@@ -120,7 +120,7 @@ fun SettingsScreen(
             openExternalUrl(supportUrl)
         },
         onSaveDebugLogs = {
-            debugLogSaver.launch("openvitals-diagnostics-logs.txt")
+            debugLogSaver.launch("nchealth-diagnostics-logs.txt")
         },
         onShareDebugLogs = {
             coroutineScope.launch {

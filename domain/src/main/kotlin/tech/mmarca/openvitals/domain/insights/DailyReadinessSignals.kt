@@ -89,9 +89,9 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
         val sleepScore = data.sleepScore.score
         val sleepHours = data.sleepScore.sleepDurationMinutes / 60.0
         val sleepDetail = if (sleepHours > 0.0) {
-            "Sleep scored $sleepScore/100 after ${formatHours(sleepHours)}."
+            tr("Sleep scored $sleepScore/100 after ${formatHours(sleepHours)}.", "Điểm giấc ngủ $sleepScore/100 sau ${formatHours(sleepHours)} ngủ.")
         } else {
-            "Sleep scored $sleepScore/100."
+            tr("Sleep scored $sleepScore/100.", "Điểm giấc ngủ $sleepScore/100.")
         }
         when {
             sleepScore >= 82 -> {
@@ -100,7 +100,7 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
                 trainingReadinessScore += 8
                 addFactor(
                     kind = ReadinessFactorKind.SLEEP_ABOVE_BASELINE,
-                    label = "Sleep helped recovery",
+                    label = tr("Sleep helped recovery", "Giấc ngủ giúp hồi phục"),
                     detail = sleepDetail,
                     impact = ReadinessFactorImpact.POSITIVE,
                 )
@@ -111,7 +111,7 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
                 trainingReadinessScore += 3
                 addFactor(
                     kind = ReadinessFactorKind.SLEEP_ABOVE_BASELINE,
-                    label = "Sleep was usable",
+                    label = tr("Sleep was usable", "Giấc ngủ tạm ổn"),
                     detail = sleepDetail,
                     impact = ReadinessFactorImpact.NEUTRAL,
                 )
@@ -122,7 +122,7 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
                 trainingReadinessScore -= 6
                 addFactor(
                     kind = ReadinessFactorKind.SLEEP_BELOW_BASELINE,
-                    label = "Sleep may limit recovery",
+                    label = tr("Sleep may limit recovery", "Giấc ngủ có thể làm chậm hồi phục"),
                     detail = sleepDetail,
                     impact = ReadinessFactorImpact.NEGATIVE,
                 )
@@ -134,7 +134,7 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
                 elevatedBodySignals += 1
                 addFactor(
                     kind = ReadinessFactorKind.SLEEP_BELOW_BASELINE,
-                    label = "Sleep was low",
+                    label = tr("Sleep was low", "Ngủ chưa đủ"),
                     detail = sleepDetail,
                     impact = ReadinessFactorImpact.WARNING,
                 )
@@ -145,8 +145,8 @@ internal fun sleepContribution(data: DashboardData): ReadinessContribution = rea
         missingReasons += "missing_sleep_data"
         addFactor(
             kind = ReadinessFactorKind.MISSING_SLEEP_DATA,
-            label = "Sleep data missing",
-            detail = "Sleep data was not available, so today's recommendation is a rough guide.",
+            label = tr("Sleep data missing", "Thiếu dữ liệu giấc ngủ"),
+            detail = tr("Sleep data was not available, so today's recommendation is a rough guide.", "Không có dữ liệu giấc ngủ nên gợi ý hôm nay chỉ mang tính tham khảo."),
             impact = ReadinessFactorImpact.NEUTRAL,
         )
     }
@@ -170,7 +170,7 @@ internal fun hrvContribution(
                     elevatedBodySignals += 1
                     addFactor(
                         kind = ReadinessFactorKind.HRV_BELOW_BASELINE,
-                        label = "HRV Status: ${hrvStatus.label}",
+                        label = tr("HRV Status: ${hrvStatus.label}", "Trạng thái HRV: ${hrvStatus.label}"),
                         detail = hrvStatus.detail,
                         impact = ReadinessFactorImpact.WARNING,
                     )
@@ -181,7 +181,7 @@ internal fun hrvContribution(
                     trainingReadinessScore -= 10
                     addFactor(
                         kind = ReadinessFactorKind.HRV_BELOW_BASELINE,
-                        label = "HRV Status: ${hrvStatus.label}",
+                        label = tr("HRV Status: ${hrvStatus.label}", "Trạng thái HRV: ${hrvStatus.label}"),
                         detail = hrvStatus.detail,
                         impact = ReadinessFactorImpact.NEGATIVE,
                     )
@@ -192,7 +192,7 @@ internal fun hrvContribution(
                     trainingReadinessScore -= 3
                     addFactor(
                         kind = ReadinessFactorKind.HRV_ABOVE_BASELINE,
-                        label = "HRV Status: ${hrvStatus.label}",
+                        label = tr("HRV Status: ${hrvStatus.label}", "Trạng thái HRV: ${hrvStatus.label}"),
                         detail = hrvStatus.detail,
                         impact = ReadinessFactorImpact.NEGATIVE,
                     )
@@ -203,7 +203,7 @@ internal fun hrvContribution(
                     trainingReadinessScore += 3
                     addFactor(
                         kind = ReadinessFactorKind.HRV_ABOVE_BASELINE,
-                        label = "HRV Status: ${hrvStatus.label}",
+                        label = tr("HRV Status: ${hrvStatus.label}", "Trạng thái HRV: ${hrvStatus.label}"),
                         detail = hrvStatus.detail,
                         impact = ReadinessFactorImpact.POSITIVE,
                     )
@@ -214,7 +214,7 @@ internal fun hrvContribution(
                     trainingReadinessScore += 6
                     addFactor(
                         kind = ReadinessFactorKind.HRV_NORMAL,
-                        label = "HRV Status: ${hrvStatus.label}",
+                        label = tr("HRV Status: ${hrvStatus.label}", "Trạng thái HRV: ${hrvStatus.label}"),
                         detail = hrvStatus.detail,
                         impact = ReadinessFactorImpact.POSITIVE,
                     )
@@ -225,8 +225,8 @@ internal fun hrvContribution(
             missingReasons += "new_user_not_enough_baseline"
             addFactor(
                 kind = ReadinessFactorKind.NEW_USER_NOT_ENOUGH_BASELINE,
-                label = "HRV baseline building",
-                detail = "HRV is recorded, but there is not enough history yet for a personal baseline.",
+                label = tr("HRV baseline building", "Đang lập mức nền HRV"),
+                detail = tr("HRV is recorded, but there is not enough history yet for a personal baseline.", "Đã có HRV nhưng chưa đủ lịch sử để lập mức nền riêng của bạn."),
                 impact = ReadinessFactorImpact.NEUTRAL,
             )
         }
@@ -234,8 +234,8 @@ internal fun hrvContribution(
         missingReasons += "missing_hrv_data"
         addFactor(
             kind = ReadinessFactorKind.MISSING_HRV_DATA,
-            label = "HRV data missing",
-            detail = "HRV was not available, which lowers recommendation confidence.",
+            label = tr("HRV data missing", "Thiếu dữ liệu HRV"),
+            detail = tr("HRV was not available, which lowers recommendation confidence.", "Không có HRV nên gợi ý kém chắc chắn hơn."),
             impact = ReadinessFactorImpact.NEUTRAL,
         )
     }
@@ -249,9 +249,9 @@ internal fun restingHeartRateContribution(data: DashboardData): ReadinessContrib
             baselineSignals += 1
             val delta = data.restingHeartRateBpm - baseline
             val detail = when {
-                delta > 0 -> "Resting heart rate is +$delta bpm compared with your usual baseline."
-                delta < 0 -> "Resting heart rate is ${abs(delta)} bpm below your usual baseline."
-                else -> "Resting heart rate is near your usual baseline."
+                delta > 0 -> tr("Resting heart rate is +$delta bpm compared with your usual baseline.", "Nhịp tim lúc nghỉ cao hơn mức nền thường ngày $delta bpm.")
+                delta < 0 -> tr("Resting heart rate is ${abs(delta)} bpm below your usual baseline.", "Nhịp tim lúc nghỉ thấp hơn mức nền thường ngày ${abs(delta)} bpm.")
+                else -> tr("Resting heart rate is near your usual baseline.", "Nhịp tim lúc nghỉ gần mức nền thường ngày.")
             }
             when {
                 delta >= 8 -> {
@@ -261,7 +261,7 @@ internal fun restingHeartRateContribution(data: DashboardData): ReadinessContrib
                     elevatedBodySignals += 1
                     addFactor(
                         kind = ReadinessFactorKind.RESTING_HR_ELEVATED,
-                        label = "Resting HR is elevated",
+                        label = tr("Resting HR is elevated", "Nhịp tim nghỉ đang cao"),
                         detail = detail,
                         impact = ReadinessFactorImpact.WARNING,
                     )
@@ -272,7 +272,7 @@ internal fun restingHeartRateContribution(data: DashboardData): ReadinessContrib
                     trainingReadinessScore -= 6
                     addFactor(
                         kind = ReadinessFactorKind.RESTING_HR_ELEVATED,
-                        label = "Resting HR is slightly elevated",
+                        label = tr("Resting HR is slightly elevated", "Nhịp tim nghỉ hơi cao"),
                         detail = detail,
                         impact = ReadinessFactorImpact.NEGATIVE,
                     )
@@ -283,7 +283,7 @@ internal fun restingHeartRateContribution(data: DashboardData): ReadinessContrib
                     trainingReadinessScore += 3
                     addFactor(
                         kind = ReadinessFactorKind.RESTING_HR_NORMAL,
-                        label = "Resting HR looks normal",
+                        label = tr("Resting HR looks normal", "Nhịp tim nghỉ bình thường"),
                         detail = detail,
                         impact = ReadinessFactorImpact.POSITIVE,
                     )
@@ -293,8 +293,8 @@ internal fun restingHeartRateContribution(data: DashboardData): ReadinessContrib
             missingReasons += "new_user_not_enough_baseline"
             addFactor(
                 kind = ReadinessFactorKind.NEW_USER_NOT_ENOUGH_BASELINE,
-                label = "Resting HR baseline building",
-                detail = "Resting heart rate is available, but there is not enough history yet for a personal baseline.",
+                label = tr("Resting HR baseline building", "Đang lập mức nền nhịp tim nghỉ"),
+                detail = tr("Resting heart rate is available, but there is not enough history yet for a personal baseline.", "Đã có nhịp tim lúc nghỉ nhưng chưa đủ lịch sử để lập mức nền riêng."),
                 impact = ReadinessFactorImpact.NEUTRAL,
             )
         }
@@ -318,8 +318,8 @@ internal fun trainingLoadContribution(data: DashboardData): ReadinessContributio
                 elevatedBodySignals += 1
                 addFactor(
                     kind = ReadinessFactorKind.TRAINING_LOAD_HIGH,
-                    label = "Training load is high",
-                    detail = "This week is ${(ratio * 100.0).roundToInt()}% of your current load target.",
+                    label = tr("Training load is high", "Tải tập đang cao"),
+                    detail = tr("This week is ${(ratio * 100.0).roundToInt()}% of your current load target.", "Tuần này đạt ${(ratio * 100.0).roundToInt()}% mục tiêu tải tập hiện tại."),
                     impact = ReadinessFactorImpact.WARNING,
                 )
             }
@@ -328,16 +328,16 @@ internal fun trainingLoadContribution(data: DashboardData): ReadinessContributio
                 trainingReadinessScore += 5
                 addFactor(
                     kind = ReadinessFactorKind.TRAINING_LOAD_NORMAL,
-                    label = "Training load is stable",
-                    detail = "This week is ${(ratio * 100.0).roundToInt()}% of your current load target.",
+                    label = tr("Training load is stable", "Tải tập ổn định"),
+                    detail = tr("This week is ${(ratio * 100.0).roundToInt()}% of your current load target.", "Tuần này đạt ${(ratio * 100.0).roundToInt()}% mục tiêu tải tập hiện tại."),
                     impact = ReadinessFactorImpact.POSITIVE,
                 )
             }
             else -> {
                 addFactor(
                     kind = ReadinessFactorKind.TRAINING_LOAD_NORMAL,
-                    label = "Training load is light",
-                    detail = "This week is ${(ratio * 100.0).roundToInt()}% of your current load target.",
+                    label = tr("Training load is light", "Tải tập đang nhẹ"),
+                    detail = tr("This week is ${(ratio * 100.0).roundToInt()}% of your current load target.", "Tuần này đạt ${(ratio * 100.0).roundToInt()}% mục tiêu tải tập hiện tại."),
                     impact = ReadinessFactorImpact.NEUTRAL,
                 )
             }
@@ -360,7 +360,7 @@ internal fun intensityMinutesContribution(
                     trainingReadinessScore += 6
                     addFactor(
                         kind = ReadinessFactorKind.INTENSITY_MINUTES_ON_TARGET,
-                        label = "Intensity minutes goal met",
+                        label = tr("Intensity minutes goal met", "Đã đạt mục tiêu phút cường độ"),
                         detail = intensityMinutes.detail,
                         impact = ReadinessFactorImpact.POSITIVE,
                     )
@@ -370,7 +370,7 @@ internal fun intensityMinutesContribution(
                     trainingReadinessScore += 4
                     addFactor(
                         kind = ReadinessFactorKind.INTENSITY_MINUTES_ON_TARGET,
-                        label = "Intensity minutes on track",
+                        label = tr("Intensity minutes on track", "Phút cường độ đúng tiến độ"),
                         detail = intensityMinutes.detail,
                         impact = ReadinessFactorImpact.POSITIVE,
                     )
@@ -378,7 +378,7 @@ internal fun intensityMinutesContribution(
                 IntensityMinutesStatus.BEHIND -> {
                     addFactor(
                         kind = ReadinessFactorKind.INTENSITY_MINUTES_BEHIND,
-                        label = "Intensity minutes behind pace",
+                        label = tr("Intensity minutes behind pace", "Phút cường độ chậm tiến độ"),
                         detail = intensityMinutes.detail,
                         impact = ReadinessFactorImpact.NEUTRAL,
                     )
@@ -387,7 +387,7 @@ internal fun intensityMinutesContribution(
                     trainingReadinessScore -= 2
                     addFactor(
                         kind = ReadinessFactorKind.INTENSITY_MINUTES_BEHIND,
-                        label = "Intensity minutes are low",
+                        label = tr("Intensity minutes are low", "Phút cường độ còn thấp"),
                         detail = intensityMinutes.detail,
                         impact = ReadinessFactorImpact.NEUTRAL,
                     )
@@ -397,7 +397,7 @@ internal fun intensityMinutesContribution(
         } else {
             addFactor(
                 kind = ReadinessFactorKind.MISSING_INTENSITY_MINUTES,
-                label = "Intensity minutes need more data",
+                label = tr("Intensity minutes need more data", "Phút cường độ cần thêm dữ liệu"),
                 detail = intensityMinutes.detail,
                 impact = ReadinessFactorImpact.NEUTRAL,
             )
@@ -413,7 +413,7 @@ internal fun physiologicalStressContribution(
         PhysiologicalStressLevel.HIGH -> {
             addFactor(
                 kind = ReadinessFactorKind.PHYSIOLOGICAL_STRESS_HIGH,
-                label = "Physiological stress: ${physiologicalStress.label}",
+                label = tr("Physiological stress: ${physiologicalStress.label}", "Căng thẳng sinh lý: ${physiologicalStress.label}"),
                 detail = physiologicalStress.summary,
                 impact = ReadinessFactorImpact.WARNING,
             )
@@ -421,7 +421,7 @@ internal fun physiologicalStressContribution(
         PhysiologicalStressLevel.MEDIUM -> {
             addFactor(
                 kind = ReadinessFactorKind.PHYSIOLOGICAL_STRESS_HIGH,
-                label = "Physiological stress: ${physiologicalStress.label}",
+                label = tr("Physiological stress: ${physiologicalStress.label}", "Căng thẳng sinh lý: ${physiologicalStress.label}"),
                 detail = physiologicalStress.summary,
                 impact = ReadinessFactorImpact.NEGATIVE,
             )
@@ -430,7 +430,7 @@ internal fun physiologicalStressContribution(
         PhysiologicalStressLevel.LOW -> {
             addFactor(
                 kind = ReadinessFactorKind.PHYSIOLOGICAL_STRESS_LOW,
-                label = "Physiological stress: ${physiologicalStress.label}",
+                label = tr("Physiological stress: ${physiologicalStress.label}", "Căng thẳng sinh lý: ${physiologicalStress.label}"),
                 detail = physiologicalStress.summary,
                 impact = ReadinessFactorImpact.POSITIVE,
             )
@@ -438,7 +438,7 @@ internal fun physiologicalStressContribution(
         PhysiologicalStressLevel.NEEDS_MORE_DATA -> {
             addFactor(
                 kind = ReadinessFactorKind.MISSING_STRESS_DATA,
-                label = "Physiological stress needs more data",
+                label = tr("Physiological stress needs more data", "Căng thẳng sinh lý cần thêm dữ liệu"),
                 detail = physiologicalStress.summary,
                 impact = ReadinessFactorImpact.NEUTRAL,
             )
@@ -461,8 +461,8 @@ internal fun temperatureContribution(data: DashboardData): ReadinessContribution
             (skinDelta != null && skinDelta >= 0.5)
         if (tempElevated) {
             val detail = buildList {
-                bodyTemperature?.let { add("body temperature ${formatOneDecimal(it)} C") }
-                skinDelta?.let { add("skin temperature ${formatSignedOneDecimal(it)} C") }
+                bodyTemperature?.let { add(tr("body temperature ${formatOneDecimal(it)} C", "thân nhiệt ${formatOneDecimal(it)} °C")) }
+                skinDelta?.let { add(tr("skin temperature ${formatSignedOneDecimal(it)} C", "nhiệt độ da ${formatSignedOneDecimal(it)} °C")) }
             }.joinToString(separator = ", ")
             score -= if (tempWarning) 20 else 10
             bodyEnergyScore -= if (tempWarning) 18 else 8
@@ -471,8 +471,8 @@ internal fun temperatureContribution(data: DashboardData): ReadinessContribution
             unusualVitals = tempWarning
             addFactor(
                 kind = ReadinessFactorKind.TEMPERATURE_ELEVATED,
-                label = "Temperature signal elevated",
-                detail = "Some temperature signals look elevated ($detail). If you feel unwell, consider resting.",
+                label = tr("Temperature signal elevated", "Nhiệt độ cơ thể tăng"),
+                detail = tr("Some temperature signals look elevated ($detail). If you feel unwell, consider resting.", "Một số chỉ số nhiệt độ đang tăng ($detail). Nếu thấy không khỏe, hãy nghỉ ngơi."),
                 impact = if (tempWarning) ReadinessFactorImpact.WARNING else ReadinessFactorImpact.NEGATIVE,
             )
         }
@@ -491,8 +491,8 @@ internal fun hydrationContribution(
             bodyEnergyScore -= 4
             addFactor(
                 kind = ReadinessFactorKind.HYDRATION_LOW,
-                label = "Hydration is behind",
-                detail = "Hydration is ${(hydrationRatio * 100.0).roundToInt()}% of today's goal.",
+                label = tr("Hydration is behind", "Uống nước chưa đủ"),
+                detail = tr("Hydration is ${(hydrationRatio * 100.0).roundToInt()}% of today's goal.", "Mới uống ${(hydrationRatio * 100.0).roundToInt()}% mục tiêu nước hôm nay."),
                 impact = ReadinessFactorImpact.NEGATIVE,
             )
         }
@@ -505,8 +505,8 @@ internal fun nutritionContribution(data: DashboardData): ReadinessContribution =
         bodyEnergyScore += 2
         addFactor(
             kind = ReadinessFactorKind.NUTRITION_LOGGED,
-            label = "Nutrition is logged",
-            detail = "Meal data is available for today's energy context.",
+            label = tr("Nutrition is logged", "Đã ghi dinh dưỡng"),
+            detail = tr("Meal data is available for today's energy context.", "Có dữ liệu bữa ăn để đánh giá năng lượng hôm nay."),
             impact = ReadinessFactorImpact.POSITIVE,
         )
     }
@@ -519,8 +519,8 @@ internal fun mindfulnessContribution(data: DashboardData): ReadinessContribution
         bodyEnergyScore += 3
         addFactor(
             kind = ReadinessFactorKind.STRESS_LOW,
-            label = "Recovery moment recorded",
-            detail = "${data.mindfulnessMinutes} min of mindfulness is logged today.",
+            label = tr("Recovery moment recorded", "Đã ghi thời gian thư giãn"),
+            detail = tr("${data.mindfulnessMinutes} min of mindfulness is logged today.", "Hôm nay đã ghi ${data.mindfulnessMinutes} phút chánh niệm."),
             impact = ReadinessFactorImpact.POSITIVE,
         )
     }
@@ -531,8 +531,8 @@ internal fun bodyEnergyContribution(data: DashboardData): ReadinessContribution 
     if (bodyEnergy != null) {
         availableSignals += 1
         measuredBodyEnergy = bodyEnergy.currentScore
-        val detail = "Body energy is at ${bodyEnergy.currentScore} after starting the day " +
-            "at ${bodyEnergy.startScore}."
+        val detail = tr("Body energy is at ${bodyEnergy.currentScore} after starting the day ", "Năng lượng cơ thể còn ${bodyEnergy.currentScore}, đầu ngày ") +
+            tr("at ${bodyEnergy.startScore}.", "ở mức ${bodyEnergy.startScore}.")
         if (bodyEnergy.currentScore <= 25) {
             // Strong enough to pull a perfect day out of "ready".
             score -= 20
@@ -540,7 +540,7 @@ internal fun bodyEnergyContribution(data: DashboardData): ReadinessContribution 
             elevatedBodySignals += 1
             addFactor(
                 kind = ReadinessFactorKind.BODY_ENERGY_DRAINED,
-                label = "Body energy is drained",
+                label = tr("Body energy is drained", "Năng lượng cơ thể cạn kiệt"),
                 detail = detail,
                 impact = ReadinessFactorImpact.WARNING,
                 args = listOf(bodyEnergy.currentScore, bodyEnergy.startScore),
@@ -550,7 +550,7 @@ internal fun bodyEnergyContribution(data: DashboardData): ReadinessContribution 
             trainingReadinessScore -= 9
             addFactor(
                 kind = ReadinessFactorKind.BODY_ENERGY_LOW,
-                label = "Body energy is low",
+                label = tr("Body energy is low", "Năng lượng cơ thể thấp"),
                 detail = detail,
                 impact = ReadinessFactorImpact.NEGATIVE,
                 args = listOf(bodyEnergy.currentScore, bodyEnergy.startScore),
@@ -560,7 +560,7 @@ internal fun bodyEnergyContribution(data: DashboardData): ReadinessContribution 
             trainingReadinessScore += 5
             addFactor(
                 kind = ReadinessFactorKind.BODY_ENERGY_CHARGED,
-                label = "Body energy is charged",
+                label = tr("Body energy is charged", "Năng lượng cơ thể dồi dào"),
                 detail = detail,
                 impact = ReadinessFactorImpact.POSITIVE,
                 args = listOf(bodyEnergy.currentScore, bodyEnergy.startScore),

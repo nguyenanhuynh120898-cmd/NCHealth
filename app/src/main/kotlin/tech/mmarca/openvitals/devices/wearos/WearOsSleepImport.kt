@@ -79,5 +79,5 @@ object WearOsSleepImport {
         night(minutes, date, offset)?.let { record(it, date, offset, version) }
 
     private const val NOTES =
-        "Sleep stages estimated by OpenVitals from the heart rate and movement the OpenVitals watch app recorded."
+        "Sleep stages estimated by NCHealth from the heart rate and movement the NCHealth watch app recorded."
 }

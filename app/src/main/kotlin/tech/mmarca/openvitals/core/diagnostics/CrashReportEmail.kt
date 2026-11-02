@@ -85,14 +85,14 @@ internal object CrashReportEmail {
     ): CrashReportEmailDraft {
         val hasCrash = savedCrashReport.isNotBlank()
         val subject = if (hasCrash) {
-            "OpenVitals crash report"
+            "NCHealth crash report"
         } else {
-            "OpenVitals issue report"
+            "NCHealth issue report"
         }
         return CrashReportEmailDraft(
             subject = subject,
             body = buildString {
-                appendLine("OpenVitals report")
+                appendLine("NCHealth report")
                 appendLine()
                 appendLine("Steps to reproduce:")
                 appendLine("1. ")
@@ -114,7 +114,7 @@ internal object CrashReportEmail {
                 appendLine("Health Connect calls this process (counts only):")
                 appendLine(healthConnectCalls.ifBlank { "none" }.emailSection())
                 appendLine()
-                appendLine("Last saved OpenVitals crash report:")
+                appendLine("Last saved NCHealth crash report:")
                 appendLine(savedCrashReport.ifBlank { "No crash in the last seven days." }.emailSection())
                 appendLine()
                 appendLine("Recent \"not responding\" records (stack traces only):")
@@ -133,7 +133,7 @@ internal object CrashReportEmail {
         diagnosticsLog: String,
         capturedAt: String,
     ): String = buildString {
-        appendLine("OpenVitals saved crash report")
+        appendLine("NCHealth saved crash report")
         appendLine("capturedAt=$capturedAt")
         appendLine("thread=$threadName")
         appendLine()

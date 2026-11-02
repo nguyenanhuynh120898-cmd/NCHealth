@@ -13,7 +13,7 @@ import tech.mmarca.openvitals.ui.components.SectionHeader
 import tech.mmarca.openvitals.ui.components.rememberHealthConnectPermissionLauncher
 import tech.mmarca.openvitals.ui.theme.LayoutMetrics
 
-/** Body profile: the declared body, the BMR estimate and the caffeine clearance factors. Shares [BodySettingsViewModel] with Recovery. */
+/** Body profile: the declared body and the BMR estimate. Shares [BodySettingsViewModel] with Recovery. */
 @Composable
 fun BodyProfileSettingsScreen(viewModel: BodySettingsViewModel) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -44,14 +44,6 @@ fun BodyProfileSettingsScreen(viewModel: BodySettingsViewModel) {
                 writePermissionMissing = state.bmrEstimateWritePermissionMissing,
                 onEnabledChange = viewModel::setBmrEstimateEnabled,
                 onGrantPermission = { permissionLauncher.launch(BmrEstimateService.RequiredPermissions) },
-                modifier = Modifier.padding(horizontal = LayoutMetrics.screenGutter),
-            )
-        }
-        item { SettingsCardSpacer() }
-        item {
-            MetabolismCard(
-                preferences = state.caffeinePreferences,
-                onSave = viewModel::updateCaffeinePreferences,
                 modifier = Modifier.padding(horizontal = LayoutMetrics.screenGutter),
             )
         }

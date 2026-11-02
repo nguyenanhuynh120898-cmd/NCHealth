@@ -298,7 +298,7 @@ class GarminWatchSyncService @Inject constructor(
 
     private fun notImportedMessage(activities: GarminActivityImportResult): String? = when {
         activities.missingPermission.isNotEmpty() ->
-            "${activities.missingPermission.size} workout(s) were not imported. Allow OpenVitals to " +
+            "${activities.missingPermission.size} workout(s) were not imported. Allow NCHealths to " +
                 "write exercise data in Health Connect, then sync again."
         activities.failedWrites.isNotEmpty() ->
             "${activities.failedWrites.size} workout(s) could not be saved to Health Connect. " +

@@ -61,7 +61,7 @@ sealed interface MedicalRejectionReason {
  */
 object MedicalImportReport {
     fun text(result: MedicalImportResult, finishedAt: Instant): String = buildString {
-        appendLine("OpenVitals medical records import")
+        appendLine("NCHealth medical records import")
         appendLine("Finished: $finishedAt")
         appendLine("Written ${result.written}, updated ${result.updated}, skipped ${result.skipped}, rejected ${result.rejected}")
         result.stoppedBy?.let { appendLine("Stopped early: $it") }
@@ -95,7 +95,7 @@ object MedicalImportReport {
         plans: List<MedicalImportGroupPlan> = emptyList(),
         sourceSkips: List<MedicalSourceSkip> = emptyList(),
     ): String = buildString {
-        appendLine("OpenVitals medical records import")
+        appendLine("NCHealth medical records import")
         appendLine("Read: $readAt")
         appendLine("Not imported: $problem")
         cause?.let { appendLine("Error: ${it::class.qualifiedName}") }

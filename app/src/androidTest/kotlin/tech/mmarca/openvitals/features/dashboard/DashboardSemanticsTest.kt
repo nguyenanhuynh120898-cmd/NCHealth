@@ -15,7 +15,7 @@ import tech.mmarca.openvitals.testing.dashboardFixtureData
 import tech.mmarca.openvitals.testing.dashboardFlowWidgetIds
 import tech.mmarca.openvitals.testing.string
 import tech.mmarca.openvitals.testing.testUnitFormatter
-import tech.mmarca.openvitals.ui.components.localizedDaySubtitle
+import tech.mmarca.openvitals.ui.components.readableDate
 import tech.mmarca.openvitals.ui.theme.OpenVitalsTheme
 
 /**
@@ -71,7 +71,12 @@ class DashboardSemanticsTest {
         composeRule.onAllNodesWithText(string(R.string.metric_steps)).onFirst().assertIsDisplayed()
 
         // The day is announced, so a reader landing mid-screen knows which day these numbers belong to.
-        composeRule.onNodeWithText(localizedDaySubtitle(data.date)).assertIsDisplayed()
+        val dayTitle = when (data.date) {
+            java.time.LocalDate.now() -> string(R.string.period_today)
+            java.time.LocalDate.now().minusDays(1) -> string(R.string.period_yesterday)
+            else -> readableDate(data.date, java.util.Locale.getDefault(), withWeekday = false)
+        }
+        composeRule.onNodeWithText(dayTitle).assertIsDisplayed()
 
         // Labelled and tappable through the tree.
         composeRule.onNodeWithText(string(R.string.dashboard_action_log))

@@ -435,7 +435,7 @@ internal fun DeviceSyncReportActions(reportText: String) {
         OpenVitalsOutlinedButton(
             onClick = {
                 scope.launch {
-                    clipboard.setSensitiveText("OpenVitals", reportText)
+                    clipboard.setSensitiveText("NCHealth", reportText)
                 }
             },
             modifier = Modifier.weight(1f),

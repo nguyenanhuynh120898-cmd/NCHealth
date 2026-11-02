@@ -6,7 +6,7 @@ import java.time.Instant
 import tech.mmarca.openvitals.BuildConfig
 
 internal fun StringBuilder.appendAppleHealthReportHeader() {
-    appendLine("OpenVitals Apple Health Import Report")
+    appendLine("NCHealth Apple Health Import Report")
     appendLine("Generated: ${Instant.now()}")
     appendLine("App version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
     appendLine("Health Connect client: androidx.health.connect:connect-client (runtime version unavailable)")

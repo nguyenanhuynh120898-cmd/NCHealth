@@ -99,6 +99,8 @@ private fun LazyListScope.settingsRootCards(actions: SettingsScreenActions) {
 
 private val HiddenRootSections = setOf(
     SettingsSection.SENSORS,
+    // Its only setting is the blood-pressure guideline, and a wearable takes no cuff readings.
+    SettingsSection.VITALS,
     SettingsSection.WATCHES,
     SettingsSection.SCALES,
     SettingsSection.DEVICE_SYNC,

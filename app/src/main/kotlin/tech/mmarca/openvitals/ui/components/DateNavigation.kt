@@ -22,10 +22,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import tech.mmarca.openvitals.R
+import tech.mmarca.openvitals.ui.theme.Spacing
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
@@ -40,9 +43,12 @@ fun DayNavigator(
     modifier: Modifier = Modifier,
     /** The summary keeps its settings button here, beside the calendar, instead of in a top bar. */
     onOpenSettings: (() -> Unit)? = null,
+    /** Given, a week strip under the title picks the day; the arrows give way to it. */
+    onSelectDate: ((LocalDate) -> Unit)? = null,
 ) {
+    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(Spacing.md)) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -56,16 +62,17 @@ fun DayNavigator(
                 )
                 .clickable(onClick = onOpenCalendar),
         ) {
-            Text(
-                text = localizedDayTitle(date),
-                style = MaterialTheme.typography.titleLarge,
+            // One line: "Hôm nay", "Hôm qua", or the date of an older day, no weekday. It shrinks
+            // to fit beside the buttons at a large font instead of wrapping.
+            AutoResizeText(
+                text = when (date) {
+                    LocalDate.now(), LocalDate.now().minusDays(1) -> localizedDayTitle(date)
+                    else -> readableDate(date, LocalLocale.current.platformLocale, withWeekday = false)
+                },
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Start,
-            )
-            Text(
-                text = localizedDaySubtitle(date),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Start,
+                softWrap = false,
             )
         }
 
@@ -73,21 +80,23 @@ fun DayNavigator(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            OpenVitalsIconSurfaceButton(onClick = onPreviousDay) {
-                Icon(
-                    imageVector = Icons.Outlined.ChevronLeft,
-                    contentDescription = stringResource(R.string.cd_previous_day),
-                )
-            }
+            if (onSelectDate == null) {
+                OpenVitalsIconSurfaceButton(onClick = onPreviousDay) {
+                    Icon(
+                        imageVector = Icons.Outlined.ChevronLeft,
+                        contentDescription = stringResource(R.string.cd_previous_day),
+                    )
+                }
 
-            OpenVitalsIconSurfaceButton(
-                onClick = onNextDay,
-                enabled = canGoForward,
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.ChevronRight,
-                    contentDescription = stringResource(R.string.cd_next_day),
-                )
+                OpenVitalsIconSurfaceButton(
+                    onClick = onNextDay,
+                    enabled = canGoForward,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.ChevronRight,
+                        contentDescription = stringResource(R.string.cd_next_day),
+                    )
+                }
             }
 
             OpenVitalsIconSurfaceButton(onClick = onOpenCalendar) {
@@ -106,6 +115,8 @@ fun DayNavigator(
                 }
             }
         }
+    }
+    onSelectDate?.let { select -> WeekDayStrip(selected = date, onSelect = select) }
     }
 }
 

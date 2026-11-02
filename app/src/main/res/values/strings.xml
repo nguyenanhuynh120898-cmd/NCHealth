@@ -87,7 +87,7 @@
     <string name="screen_error_gps_recording_unavailable">GPS recording is not available.</string>
     <string name="screen_error_activity_import_unavailable">Activity file import is not available.</string>
     <string name="screen_error_no_active_recording">No active activity recording was found.</string>
-    <string name="screen_error_entry_not_editable">Only OpenVitals entries can be edited.</string>
+    <string name="screen_error_entry_not_editable">Only NCHealth entries can be edited.</string>
     <string name="not_available">Not available</string>
     <string name="not_recorded">Not recorded</string>
     <string name="no_data">No data</string>
@@ -104,11 +104,11 @@
     <string name="chart_body_energy_influences">Charged %1$d, drained %2$d</string>
     <string name="loading">Loading...</string>
 
-    <string name="home_metric_widget_description">OpenVitals metric</string>
+    <string name="home_metric_widget_description">NCHealth metric</string>
     <string name="home_metric_widget_config_title">Choose metric</string>
     <string name="home_metric_widget_config_prompt">Choose the metric for the widget:</string>
     <string name="home_metric_widget_no_metrics">No metrics available.</string>
-    <string name="home_metric_widget_permission_needed">Grant permission in OpenVitals</string>
+    <string name="home_metric_widget_permission_needed">Grant permission in NCHealth</string>
     <string name="home_metric_widget_update_failed">Unable to update</string>
     <string name="home_metric_widget_open_for_details">Open for details</string>
     <string name="home_metric_widget_not_configured">Select a metric</string>
@@ -121,9 +121,9 @@
     <string name="home_quick_beverage_widget_tap_to_log">Tap to log</string>
     <string name="home_quick_beverage_widget_saved">Saved now</string>
     <string name="home_quick_beverage_widget_saved_nutrition">Saved as nutrition</string>
-    <string name="home_daily_readiness_widget_description">OpenVitals daily readiness</string>
-    <string name="home_body_energy_widget_description">OpenVitals body energy</string>
-    <string name="home_today_vitals_widget_description">OpenVitals today vitals</string>
+    <string name="home_daily_readiness_widget_description">NCHealth daily readiness</string>
+    <string name="home_body_energy_widget_description">NCHealth body energy</string>
+    <string name="home_today_vitals_widget_description">NCHealth today vitals</string>
     <string name="home_widget_today_title">Today</string>
     <string name="home_widget_hrv_short">HRV</string>
     <string name="home_widget_body_energy_charged">Charged</string>
@@ -168,9 +168,9 @@
     <string name="manual_entry_add_widgets">Add entry widgets</string>
     <string name="manual_entry_all_widgets_added">All entry widgets are already shown.</string>
     <string name="mindfulness_entry_subtitle">Mindfulness sessions are saved directly to Health Connect.</string>
-    <string name="mindfulness_entry_permission_needed">For the summary, OpenVitals only asks for view permissions. To add mindfulness entries, we need write permission. OpenVitals will not store these sessions; entries are saved in Health Connect.</string>
+    <string name="mindfulness_entry_permission_needed">For the summary, NCHealth only asks for view permissions. To add mindfulness entries, we need write permission. NCHealth will not store these sessions; entries are saved in Health Connect.</string>
     <string name="activity_entry_subtitle">Create a Health Connect activity session. Imported route or activity details are written only when you save.</string>
-    <string name="activity_entry_permission_needed">For the summary, OpenVitals only asks for view permissions. To add activities, we need Health Connect write permissions for sessions, routes, distance, elevation, calories, and recorded sensor metrics such as heart rate; treadmill entries ask for steps when needed. OpenVitals will not store these entries; they are saved in Health Connect.</string>
+    <string name="activity_entry_permission_needed">For the summary, NCHealth only asks for view permissions. To add activities, we need Health Connect write permissions for sessions, routes, distance, elevation, calories, and recorded sensor metrics such as heart rate; treadmill entries ask for steps when needed. NCHealth will not store these entries; they are saved in Health Connect.</string>
     <string name="activity_entry_hub_plans_empty">No plans for today yet. Build one under Manage plans.</string>
     <string name="activity_entry_hub_log_from_plan">Log</string>
     <string name="activity_entry_hub_log_manually">Log manually</string>
@@ -330,7 +330,7 @@
     <string name="activity_entry_error_total_calories">Enter total calories greater than 0.</string>
     <string name="activity_entry_error_total_calories_below_active">Total calories cannot be lower than active calories.</string>
     <string name="activity_entry_location_permission_needed">Precise location permission is required to record GPS activities.</string>
-    <string name="activity_entry_notification_permission_needed">Notification permission is required so OpenVitals can show an ongoing recording notification.</string>
+    <string name="activity_entry_notification_permission_needed">Notification permission is required so NCHealth can show an ongoing recording notification.</string>
     <string name="activity_entry_activity_recognition_permission_needed">Activity recognition permission is required to count treadmill steps.</string>
     <string name="activity_entry_route_import_failed">Could not import activity file: %1$s</string>
     <string name="activity_entry_route_import_while_recording">A recording is running. Finish or discard it before you import a file.</string>
@@ -504,31 +504,31 @@
     <string name="mindfulness_reminder_notification_body">Your goal is %1$s today. Take a mindful pause when you can.</string>
     <string name="mindfulness_reminder_notification_progress">%1$s / %2$s</string>
     <string name="body_entry_subtitle">%1$s entries are saved directly to Health Connect.</string>
-    <string name="body_entry_permission_needed">To add %1$s entries, OpenVitals needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="body_entry_permission_needed">To add %1$s entries, NCHealth needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="body_entry_value_label">%1$s (%2$s)</string>
     <string name="body_entry_add_selected">Add %1$s</string>
     <string name="body_entry_invalid_value">Enter a valid value for this measurement.</string>
     <string name="body_entry_write_failed">Could not save body measurement: %1$s</string>
     <string name="body_entry_nothing_to_save">Enter at least one value.</string>
     <string name="body_composition_entry_subtitle">Enter what your scale shows and leave the rest blank. Every value is saved to Health Connect with the same time.</string>
-    <string name="body_composition_entry_permission_needed">To save these values, OpenVitals needs Health Connect write permission for each of them. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="body_composition_entry_permission_needed">To save these values, NCHealth needs Health Connect write permission for each of them. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="body_composition_entry_save">Save measurements</string>
     <string name="body_composition_entry_invalid_values">Check the highlighted values.</string>
     <string name="body_composition_entry_water_needs_weight">Enter your weight to save body water as a percentage.</string>
     <string name="nutrition_entry_subtitle">Entries are saved directly to Health Connect. Fill in only the amounts you have.</string>
-    <string name="nutrition_entry_permission_needed">To add nutrition entries, OpenVitals needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="nutrition_entry_permission_needed">To add nutrition entries, NCHealth needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="nutrition_entry_add">Log nutrition entry</string>
     <string name="nutrition_entry_add_another_nutrient">Add another nutrient</string>
     <string name="nutrition_entry_no_values">Enter at least one amount.</string>
     <string name="nutrition_entry_invalid_value">Enter a valid amount in every filled field.</string>
     <string name="nutrition_entry_write_failed">Could not save nutrition: %1$s</string>
     <string name="vitals_entry_subtitle">%1$s entries are saved directly to Health Connect.</string>
-    <string name="vitals_entry_permission_needed">To add %1$s entries, OpenVitals needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="vitals_entry_permission_needed">To add %1$s entries, NCHealth needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="vitals_entry_value_label">%1$s (%2$s)</string>
     <string name="vitals_entry_systolic_label">Systolic (mmHg)</string>
     <string name="vitals_entry_diastolic_label">Diastolic (mmHg)</string>
     <string name="vitals_entry_pulse_label">Pulse (bpm, optional)</string>
-    <string name="vitals_entry_pulse_permission_needed">To save the pulse with a reading, OpenVitals needs Health Connect write permission for heart rate. The pulse is saved as a heart rate record at the time of the reading.</string>
+    <string name="vitals_entry_pulse_permission_needed">To save the pulse with a reading, NCHealth needs Health Connect write permission for heart rate. The pulse is saved as a heart rate record at the time of the reading.</string>
     <string name="vitals_entry_invalid_pulse">Enter a pulse between 20 and 300 bpm, or leave it empty.</string>
     <string name="vitals_entry_add_selected">Add %1$s</string>
     <string name="vitals_entry_invalid_value">Enter a valid value for this vital.</string>
@@ -598,8 +598,8 @@
     <string name="settings_watch_music">Music controls on watch</string>
     <string name="settings_watch_music_body">Show what the phone is playing on the watch, and play, pause, skip and change the volume from the wrist. Works while the watch stays connected.</string>
     <string name="settings_watch_music_no_access">Notification access is off. Android only shows the phone\'s players to an app that has it. Grant it in system settings.</string>
-    <string name="settings_watch_music_disclosure_title">OpenVitals will read what your phone is playing</string>
-    <string name="settings_watch_music_disclosure_body">To show music controls on your watch, OpenVitals reads the phone\'s media players: the app that is playing, the track, artist and album, and how far into the track it is.\n\nAndroid shows players only to an app with notification access, so the next screen asks for that. While notification forwarding is off, OpenVitals does not keep or forward your notifications.\n\nTrack details are read on this device and sent only to the watch you paired, over Bluetooth. They are never stored.\n\nYou can switch this off at any time.</string>
+    <string name="settings_watch_music_disclosure_title">NCHealth will read what your phone is playing</string>
+    <string name="settings_watch_music_disclosure_body">To show music controls on your watch, NCHealth reads the phone\'s media players: the app that is playing, the track, artist and album, and how far into the track it is.\n\nAndroid shows players only to an app with notification access, so the next screen asks for that. While notification forwarding is off, NCHealth does not keep or forward your notifications.\n\nTrack details are read on this device and sent only to the watch you paired, over Bluetooth. They are never stored.\n\nYou can switch this off at any time.</string>
     <string name="settings_watch_calendar">Calendar on watch</string>
     <string name="settings_watch_calendar_body">Show the phone\'s upcoming events in the watch\'s calendar glance. Events go to the watch over Bluetooth and nowhere else.</string>
     <string name="settings_watch_calendar_no_permission">Calendar access was declined. Grant it in system settings to sync events.</string>
@@ -607,7 +607,7 @@
     <string name="settings_watch_navigation_body">Whenever CoMaps is navigating, show the next turn, the distance to it and the street on the watch as a notification that updates in place. No recording needed; it works during one too.</string>
     <string name="settings_watch_navigation_no_permission">CoMaps access was declined, so there is nothing to send. Grant it in system settings, or install CoMaps.</string>
     <string name="settings_watch_agps">GPS ephemeris</string>
-    <string name="settings_watch_agps_body">Import a satellite prediction file so the watch finds GPS in seconds. Nothing is downloaded: fetch the file yourself and OpenVitals hands it over when the watch asks.</string>
+    <string name="settings_watch_agps_body">Import a satellite prediction file so the watch finds GPS in seconds. Nothing is downloaded: fetch the file yourself and NCHealth hands it over when the watch asks.</string>
     <string name="settings_watch_agps_import">Import file</string>
     <string name="settings_watch_agps_replace">Replace</string>
     <string name="settings_watch_agps_remove">Remove</string>
@@ -627,7 +627,7 @@
     <string name="settings_watch_live_now">Now: %1$d bpm</string>
     <string name="settings_watch_auto_sync">Automatic sync</string>
     <string name="settings_watch_auto_sync_body">Syncs the watch on its own, so sleep and activity arrive without opening the app. The watch has to be in range, and Android decides the exact moment, so a run can be a little late. Off means the watch is only synced when you ask.</string>
-    <string name="settings_watch_auto_sync_background_access">Health Connect background access is off. A sync that runs while OpenVitals is closed still saves the watch\'s data. Body energy and the history charts catch up only when you open the app.</string>
+    <string name="settings_watch_auto_sync_background_access">Health Connect background access is off. A sync that runs while NCHealth is closed still saves the watch\'s data. Body energy and the history charts catch up only when you open the app.</string>
     <string name="settings_watch_auto_sync_background_access_action">Allow background access</string>
     <string name="settings_watch_auto_sync_off">Off</string>
     <string name="settings_watch_auto_sync_30m">30 min</string>
@@ -767,7 +767,7 @@
     <string name="workout_plan_copied_to_today">Plan copied to today</string>
     <string name="workout_plan_deleted">Plan deleted</string>
     <string name="workout_plan_action_failed">That did not work. Try again.</string>
-    <string name="workout_plan_read_only_other_app">Created by another app. OpenVitals can start or copy it, but not edit it.</string>
+    <string name="workout_plan_read_only_other_app">Created by another app. NCHealth can start or copy it, but not edit it.</string>
     <string name="workout_plan_unavailable_on_device">Health Connect on this device does not support workout plans.</string>
     <string name="workout_plan_discard_title">Discard changes?</string>
     <string name="workout_plan_discard_body">Your edits to this plan have not been saved.</string>
@@ -982,7 +982,7 @@
     <string name="dashboard_sleep_score_subtitle">%1$s &#8226; %2$s</string>
     <string name="sleep_score_calculation_title">How it is calculated</string>
     <string name="sleep_score_day_numbers_title">Today values</string>
-    <string name="sleep_score_calculation_summary">OpenVitals scores objective sleep health from duration, quality, and overnight recovery — the same three pillars Garmin describes, grounded in NSF and AASM sleep-science references. It does not diagnose sleep disorders.</string>
+    <string name="sleep_score_calculation_summary">NCHealth scores objective sleep health from duration, quality, and overnight recovery — the same three pillars Garmin describes, grounded in NSF and AASM sleep-science references. It does not diagnose sleep disorders.</string>
     <string name="sleep_score_formula">Sleep score = duration 40 + quality 40 + overnight recovery 20</string>
     <string name="sleep_score_formula_body">Duration uses age-banded NSF recommendations (adults 7–9 h; older adults 7–8 h). Quality combines sleep efficiency, wake after sleep onset / continuity, and restorative deep + REM balance when stages are available. Overnight recovery compares night HRV RMSSD with your recent personal baseline.</string>
     <string name="sleep_score_components_body">Missing stage or HRV inputs stay neutral and lower confidence rather than inventing values. Sleep midpoint regularity is shown for context but is not a scored pillar. Consumer stage estimates vary, so stage balance is a modest share of quality.</string>
@@ -1018,7 +1018,7 @@
     <string name="sleep_efficiency_calculation_summary">Sleep efficiency is the percentage of the sleep window spent asleep. Higher values usually mean less time awake in bed.</string>
     <string name="sleep_efficiency_formula">Sleep efficiency = total sleep time / time in bed x 100</string>
     <string name="sleep_efficiency_formula_body">Total sleep time is the sum of Health Connect sleep stages when stages are available. Time in bed is the main sleep session start-to-end window.</string>
-    <string name="sleep_efficiency_data_body">When sleep stages are missing, Health Connect may only provide a session duration. OpenVitals can still show an estimate, but confidence is low because awake time in bed may be hidden.</string>
+    <string name="sleep_efficiency_data_body">When sleep stages are missing, Health Connect may only provide a session duration. NCHealth can still show an estimate, but confidence is low because awake time in bed may be hidden.</string>
     <string name="sleep_efficiency_not_diagnostic">Sleep efficiency is a sleep-continuity signal, not a diagnosis. Persistently low values can be worth discussing with a clinician.</string>
     <string name="sleep_efficiency_quality_no_data">Insufficient sleep data for efficiency.</string>
     <string name="sleep_efficiency_quality_stage_based">Uses Health Connect sleep stages for total sleep time.</string>
@@ -1039,11 +1039,11 @@
     <string name="cardio_load_calculation_title">How it is calculated</string>
     <string name="cardio_load_day_numbers_title">Today values</string>
     <string name="cardio_load_references_title">Backed links</string>
-    <string name="cardio_load_calculation_summary">OpenVitals uses HR-based TRIMP when heart-rate data is available, then falls back to movement only when HR is not usable.</string>
+    <string name="cardio_load_calculation_summary">NCHealth uses HR-based TRIMP when heart-rate data is available, then falls back to movement only when HR is not usable.</string>
     <string name="cardio_load_formula">TRIMP = minutes x HRR x a x e^(b x HRR)</string>
-    <string name="cardio_load_formula_body">HRR is heart-rate reserve: (heart rate - resting heart rate) / (max heart rate - resting heart rate). OpenVitals sums this over available heart-rate intervals for the day.</string>
+    <string name="cardio_load_formula_body">HRR is heart-rate reserve: (heart rate - resting heart rate) / (max heart rate - resting heart rate). NCHealth sums this over available heart-rate intervals for the day.</string>
     <string name="cardio_load_formula_weighting">a = 0.64 and b = 1.92 for men, a = 0.86 and b = 1.67 for women (Banister). If your body profile has no sex, the values for men are used.</string>
-    <string name="cardio_load_max_hr_body">Your maximum heart rate comes from your body profile. If none is set, OpenVitals uses the highest heart rate it has measured, when that is high enough to count. Otherwise it estimates the maximum from your age: 206 - 0.88 x age for women (Gulati), 208 - 0.7 x age for everyone else (Tanaka).</string>
+    <string name="cardio_load_max_hr_body">Your maximum heart rate comes from your body profile. If none is set, NCHealth uses the highest heart rate it has measured, when that is high enough to count. Otherwise it estimates the maximum from your age: 206 - 0.88 x age for women (Gulati), 208 - 0.7 x age for everyone else (Tanaka).</string>
     <string name="cardio_load_mapping_body">When recorded activities exist, heart-rate samples are mapped by timestamp into each activity start and end window. Without activity windows, only elevated heart-rate intervals are counted. If HR is not usable, movement and active calories are shown as a low-confidence fallback.</string>
     <string name="cardio_load_method">Method</string>
     <string name="cardio_load_trimp_score">TRIMP score</string>
@@ -1182,8 +1182,8 @@
     <string name="interpretation_bp_source_esc">Source: European Society of Cardiology 2024 office blood pressure categories.</string>
     <string name="interpretation_bp_source_ish">Source: International Society of Hypertension 2020 office blood pressure categories.</string>
     <string name="interpretation_bp_explanation_title">How it is classified</string>
-    <string name="interpretation_bp_explanation_summary">OpenVitals names your latest reading with the %1$s categories. A reading takes the highest category that either number reaches. You can change the guideline in Settings, under Vitals.</string>
-    <string name="interpretation_bp_explanation_note">Values are in mmHg, for adult readings taken in a clinic. Home readings often run lower. OpenVitals flags any reading above 180 or above 120, whichever guideline you choose.</string>
+    <string name="interpretation_bp_explanation_summary">NCHealth names your latest reading with the %1$s categories. A reading takes the highest category that either number reaches. You can change the guideline in Settings, under Vitals.</string>
+    <string name="interpretation_bp_explanation_note">Values are in mmHg, for adult readings taken in a clinic. Home readings often run lower. NCHealth flags any reading above 180 or above 120, whichever guideline you choose.</string>
     <string name="interpretation_bp_show_categories">Show categories</string>
     <string name="interpretation_bp_hide_categories">Hide categories</string>
     <string name="interpretation_bp_bounds_lowest">Systolic below %1$d and diastolic below %2$d</string>
@@ -1306,7 +1306,7 @@
     <string name="hydration_reminder_notification_body_unknown">Time for a drink. Today\'s total could not be read just now.</string>
     <string name="hydration_tracker_title">Log beverage</string>
     <string name="hydration_tracker_subtitle">Saved directly to Health Connect</string>
-    <string name="hydration_tracker_permission_needed">For the summary, OpenVitals only asks for view permissions. To add this manual entry, we need write permission. OpenVitals will not store this data; entries are saved in Health Connect.</string>
+    <string name="hydration_tracker_permission_needed">For the summary, NCHealth only asks for view permissions. To add this manual entry, we need write permission. NCHealth will not store this data; entries are saved in Health Connect.</string>
     <string name="hydration_nutrition_permission_needed">Grant nutrition write permission to save drink nutrients in Health Connect.</string>
     <string name="hydration_custom_drinks_title">Saved drinks</string>
     <string name="hydration_catalog_drinks_title">Drink catalog</string>
@@ -1363,7 +1363,7 @@
     <string name="hydration_write_failed">Could not save hydration entry: %1$s</string>
     <string name="food_tracker_title">Log food</string>
     <string name="food_tracker_subtitle">Saved directly to Health Connect</string>
-    <string name="food_tracker_permission_needed">To add food entries, OpenVitals needs Health Connect nutrition write permission. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="food_tracker_permission_needed">To add food entries, NCHealth needs Health Connect nutrition write permission. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="food_today_energy">Today: %1$s</string>
     <string name="food_catalog_search">Search foods</string>
     <string name="food_catalog_empty">No saved foods yet. Create one with New food.</string>
@@ -1423,7 +1423,7 @@
     <string name="dashboard_action_start_workout">Start workout</string>
     <string name="dashboard_activities_today">Activities</string>
     <string name="dashboard_delete_activity_title">Delete activity?</string>
-    <string name="dashboard_delete_activity_message">Delete this %1$s activity from OpenVitals?</string>
+    <string name="dashboard_delete_activity_message">Delete this %1$s activity from NCHealth?</string>
     <string name="dashboard_readiness_title">Daily readiness</string>
     <string name="dashboard_readiness_score">Readiness</string>
     <string name="dashboard_readiness_body_energy">Body energy</string>
@@ -1440,7 +1440,7 @@
     <string name="dashboard_readiness_recovery_mode_body">Activity goals are reduced so you can focus on rest.</string>
     <string name="dashboard_readiness_why">Why this recommendation</string>
     <string name="stress_details_how_tracked">How this is tracked</string>
-    <string name="stress_details_how_tracked_body">OpenVitals estimates physiological stress locally from HRV versus your baseline, resting heart rate versus your baseline, and average heart rate compared with resting heart rate. It is a strain estimate, not a diagnosis or a mental-stress detector.</string>
+    <string name="stress_details_how_tracked_body">NCHealth estimates physiological stress locally from HRV versus your baseline, resting heart rate versus your baseline, and average heart rate compared with resting heart rate. It is a strain estimate, not a diagnosis or a mental-stress detector.</string>
     <string name="stress_details_scale">Scale: 0-25 resting, 26-50 low, 51-75 medium, 76-100 high.</string>
     <string name="stress_details_inputs">Inputs used</string>
     <string name="stress_details_no_inputs">No usable HRV or heart-rate baseline signals were available.</string>
@@ -1452,7 +1452,7 @@
     <string name="readiness_details_signals_used">Signals used</string>
     <string name="readiness_details_guidance">What this means</string>
     <string name="readiness_details_caveats">Caveats</string>
-    <string name="readiness_details_caveat_local">This is a local rule-based estimate from the data currently available in OpenVitals.</string>
+    <string name="readiness_details_caveat_local">This is a local rule-based estimate from the data currently available in NCHealth.</string>
     <string name="readiness_details_caveat_not_medical">It is not a diagnosis, medical advice, coaching, or injury prediction.</string>
     <string name="readiness_details_caveat_missing_data">Missing permissions, sparse samples, or missing baselines lower confidence.</string>
     <string name="readiness_details_score_strong">Strong</string>
@@ -1510,12 +1510,12 @@
     <string name="onboarding_privacy_title">Privacy first</string>
     <string name="onboarding_privacy_body">No account required. Data stays on your device. No cloud upload, no analytics, no ads.</string>
     <string name="health_disclaimer_title">Health disclaimer</string>
-    <string name="health_disclaimer_body">OpenVitals is for general wellness and informational use only. It is not a medical device and does not provide medical advice. It does not diagnose, treat, cure, or prevent any disease or medical condition. Always consult a qualified healthcare professional for medical advice, diagnosis, or treatment. Medical records are shown as they were received. OpenVitals does not interpret them.</string>
+    <string name="health_disclaimer_body">NCHealth is for general wellness and informational use only. It is not a medical device and does not provide medical advice. It does not diagnose, treat, cure, or prevent any disease or medical condition. Always consult a qualified healthcare professional for medical advice, diagnosis, or treatment. Medical records are shown as they were received. NCHealth does not interpret them.</string>
     <string name="onboarding_health_connect_title">Powered by Health Connect</string>
     <string name="onboarding_health_connect_body">Reads from the secure on-device Android health store and saves entries you create back to Health Connect. Works with all data imported into Health Connect.</string>
     <string name="onboarding_unable_open_permissions">Unable to open Health Connect permissions.</string>
     <string name="onboarding_health_connect_not_supported">Health Connect is not supported on this device.</string>
-    <string name="onboarding_health_connect_needs_play_store">This device is running Android 13 with the standalone Health Connect app installed. Sadly, this version depends on Google Play Store services, which are missing on this device, so Health Connect rejects requests before OpenVitals can read your data. OpenVitals cannot fix or bypass this device-side Health Connect issue. The only way to solve it is to install Google Play services or upgrade to Android 14 or higher, where Health Connect is part of the operating system and does not need Google services.</string>
+    <string name="onboarding_health_connect_needs_play_store">This device is running Android 13 with the standalone Health Connect app installed. Sadly, this version depends on Google Play Store services, which are missing on this device, so Health Connect rejects requests before NCHealth can read your data. NCHealth cannot fix or bypass this device-side Health Connect issue. The only way to solve it is to install Google Play services or upgrade to Android 14 or higher, where Health Connect is part of the operating system and does not need Google services.</string>
     <string name="onboarding_health_connect_update">Health Connect needs to be installed or updated to use this app.</string>
     <string name="onboarding_install_health_connect">Install Health Connect</string>
     <string name="onboarding_status_not_supported">Not supported</string>
@@ -1540,15 +1540,15 @@
     <string name="onboarding_category_mindfulness_desc">Health Connect will ask for:\n* Mindfulness sessions</string>
     <string name="onboarding_category_mindfulness_unavailable">Mindfulness sessions require a newer Health Connect version.</string>
     <string name="onboarding_category_additional_data_access">Additional data access</string>
-    <string name="onboarding_category_additional_data_access_desc">In Health Connect permissions, open OpenVitals &gt; Additional access and set:\n* Access past data: Enable\n* Access data in the background: Enable\n* Access exercise routes: Always</string>
-    <string name="onboarding_category_additional_data_access_manual_note">%1$s\n\nIf Access exercise routes is missing from the access dialog, open Health Connect settings for OpenVitals and set it under Additional access.</string>
+    <string name="onboarding_category_additional_data_access_desc">In Health Connect permissions, open NCHealth &gt; Additional access and set:\n* Access past data: Enable\n* Access data in the background: Enable\n* Access exercise routes: Always</string>
+    <string name="onboarding_category_additional_data_access_manual_note">%1$s\n\nIf Access exercise routes is missing from the access dialog, open Health Connect settings for NCHealth and set it under Additional access.</string>
     <string name="onboarding_category_vitals">Vitals</string>
     <string name="onboarding_category_vitals_desc">Health Connect will ask for:\n* Blood pressure\n* Oxygen saturation\n* Respiratory rate\n* Body temperature\n* VO2 max\n* Blood glucose\n* Skin temperature, when supported</string>
     <string name="onboarding_category_cycle_tracking">Cycle tracking</string>
     <string name="onboarding_category_cycle_tracking_desc">Health Connect will ask for sensitive cycle data:\n* Menstruation flow\n* Menstruation periods\n* Ovulation tests\n* Cervical mucus\n* Basal body temperature\n* Intermenstrual bleeding\n* Sexual activity</string>
     <!-- Onboarding wizard (redesigned flow) -->
-    <string name="onboarding_step_categories_title">Choose what OpenVitals can read</string>
-    <string name="onboarding_step_categories_body">Each one opens Health Connect so you can confirm it. OpenVitals asks to read and to save, so entries you create here go back to Health Connect too.</string>
+    <string name="onboarding_step_categories_title">Choose what NCHealth can read</string>
+    <string name="onboarding_step_categories_body">Each one opens Health Connect so you can confirm it. NCHealth asks to read and to save, so entries you create here go back to Health Connect too.</string>
     <string name="onboarding_hc_category_activity">Activity</string>
     <string name="onboarding_hc_category_activity_desc">Read and save:\n\u2022 Steps and distance\n\u2022 Workouts\n\u2022 Calories burned\n\u2022 Floors climbed and elevation\n\u2022 Wheelchair pushes\n\u2022 Speed, power and cadence\n\u2022 VO2 max</string>
     <string name="onboarding_hc_category_body">Body measurements</string>
@@ -1564,7 +1564,7 @@
     <string name="onboarding_hc_category_mindfulness">Mindfulness</string>
     <string name="onboarding_hc_category_mindfulness_desc">Read and save mindfulness sessions.</string>
     <string name="onboarding_hc_category_additional">Additional access</string>
-    <string name="onboarding_hc_category_additional_desc">Past data and background access let OpenVitals fill in history and keep up to date without being opened.</string>
+    <string name="onboarding_hc_category_additional_desc">Past data and background access let NCHealth fill in history and keep up to date without being opened.</string>
     <string name="onboarding_step_mindfulness_title">Mindfulness</string>
     <string name="onboarding_step_mindfulness_body">Log mindfulness sessions and see them alongside the rest of your data.</string>
     <string name="onboarding_mindfulness_opt_in_title">Include mindfulness</string>
@@ -1599,7 +1599,7 @@
 
     <string name="settings_all_requestable_granted">All requestable permissions granted</string>
     <string name="settings_manual_permissions_title">Manual permissions required</string>
-    <string name="settings_manual_permissions_body">Some Health Connect permissions cannot be granted from the normal request dialog. Open Health Connect and enable them for OpenVitals.</string>
+    <string name="settings_manual_permissions_body">Some Health Connect permissions cannot be granted from the normal request dialog. Open Health Connect and enable them for NCHealth.</string>
     <string name="settings_open_health_permissions">Open Health Connect permissions</string>
     <string name="settings_display_group_title">Display</string>
     <string name="settings_display_group_summary">Language, units, theme, and charts</string>
@@ -1649,10 +1649,10 @@
     <string name="activity_recording_live_power">Power</string>
     <string name="activity_recording_live_speed">Speed</string>
     <string name="activity_recording_notification_heart_rate">HR %1$s</string>
-    <string name="settings_nutrition_group_title">Nutrition</string>
-    <string name="settings_nutrition_group_body">Calories data and caffeine personalization</string>
+    <string name="settings_nutrition_group_title">Water and calories</string>
+    <string name="settings_nutrition_group_body">Daily water goal and calories data</string>
     <string name="settings_body_profile_group_title">Body profile</string>
-    <string name="settings_body_profile_group_body">Age, body size, and metabolism</string>
+    <string name="settings_body_profile_group_body">Age, body size, and BMR</string>
     <string name="settings_vitals_group_title">Vitals</string>
     <string name="settings_vitals_group_body">Blood pressure categories</string>
     <string name="settings_recovery_group_title">Recovery</string>
@@ -1689,7 +1689,7 @@
     <string name="report_saved_toast">Report saved</string>
     <string name="report_save_failed_toast">Could not save the report</string>
     <string name="report_error_body">Building the report failed. Try again.</string>
-    <string name="report_pdf_generated_at">Generated %1$s with OpenVitals</string>
+    <string name="report_pdf_generated_at">Generated %1$s with NCHealth</string>
     <string name="report_pdf_range_line">%1$s – %2$s · %3$s</string>
     <string name="report_pdf_stat_average">Average</string>
     <string name="report_pdf_stat_min">Min</string>
@@ -1704,7 +1704,7 @@
     <string name="report_pdf_status_skipped">Skipped — the report was cancelled while building.</string>
     <string name="report_pdf_status_missing_permission">Not included — read access was not granted.</string>
     <string name="report_pdf_notice_missing_permissions">Not included (no read access): %1$s</string>
-    <string name="report_pdf_notice_truncated">Limited to the last %1$d days — OpenVitals has no permission to read older history.</string>
+    <string name="report_pdf_notice_truncated">Limited to the last %1$d days — NCHealth has no permission to read older history.</string>
     <string name="report_pdf_notice_cancelled">This report was cancelled while building; later sections may be missing.</string>
     <string name="report_pdf_page_of">Page %1$d of %2$d</string>
     <string name="report_pdf_caption_sum">Total %1$s · daily average %2$s</string>
@@ -1768,12 +1768,12 @@
     <string name="settings_debug_diagnostics_group_title">Debug diagnostics</string>
     <string name="settings_debug_diagnostics_group_body">Save diagnostics logs for troubleshooting</string>
     <string name="settings_health_connect_sync_title">Sync with Health Connect</string>
-    <string name="settings_health_connect_sync_body">When on, OpenVitals reads and writes health data according to your permissions. When off, sync pauses without revoking access.</string>
+    <string name="settings_health_connect_sync_body">When on, NCHealth reads and writes health data according to your permissions. When off, sync pauses without revoking access.</string>
     <string name="settings_health_connect_manage_access">Manage access</string>
     <string name="health_connect_access_insufficient_title">Choose data to share</string>
-    <string name="health_connect_access_insufficient_body">OpenVitals needs Health Connect access to show this information. Set up the data you want to share to continue.</string>
+    <string name="health_connect_access_insufficient_body">NCHealth needs Health Connect access to show this information. Set up the data you want to share to continue.</string>
     <string name="health_connect_access_double_cancel_title">Permissions need attention</string>
-    <string name="health_connect_access_double_cancel_body">Health Connect permissions were not granted. Open Health Connect settings to choose which data to share with OpenVitals.</string>
+    <string name="health_connect_access_double_cancel_body">Health Connect permissions were not granted. Open Health Connect settings to choose which data to share with NCHealth.</string>
     <string name="health_connect_sync_paused">Health Connect sync is paused</string>
     <string name="health_connect_sync_in_progress">Syncing with Health Connect…</string>
     <string name="health_connect_rate_limited_retrying_in">Health Connect is busy. Retrying in %1$s</string>
@@ -1782,7 +1782,7 @@
     <string name="data_source_synced_label">%1$s (synced)</string>
     <string name="dashboard_health_connect_sync_paused_body">Turn sync back on in Settings to refresh your dashboard.</string>
     <string name="health_connect_promote_activity_title">Unlock activity insights</string>
-    <string name="health_connect_promote_activity_body">Allow activity data to see steps, distance, workouts, and trends in OpenVitals.</string>
+    <string name="health_connect_promote_activity_body">Allow activity data to see steps, distance, workouts, and trends in NCHealth.</string>
     <string name="health_connect_promote_activities_title">See your workouts</string>
     <string name="health_connect_promote_activities_body">Allow exercise session access to browse activities synced through Health Connect.</string>
     <string name="health_connect_promote_calories_title">Track calories burned</string>
@@ -1826,7 +1826,7 @@
     <string name="medical_records_none">No records</string>
     <string name="medical_records_no_access">No access</string>
     <string name="medical_records_count_failed">Couldn\'t count records</string>
-    <string name="medical_records_declined_note">Showing only records OpenVitals added. Records from other apps need access.</string>
+    <string name="medical_records_declined_note">Showing only records NCHealth added. Records from other apps need access.</string>
     <string name="medical_records_tile_browse">Tap to browse</string>
     <string name="medical_records_unavailable">Medical records need Android 14 or newer and an up-to-date Health Connect.</string>
     <string name="medical_records_empty_category">No records here yet</string>
@@ -1924,9 +1924,9 @@
     <string name="medical_import_pick_body">Choose a file with medical records: a FHIR file (one resource, a Bundle, or NDJSON), a CDA document (XML, as patient portals hand out), an Apple Health export with clinical records, an Estonian health portal export (zip), or a SMART Health Card (a .smart-health-card file, or a photo, screenshot or PDF of its QR code). Other PDFs, scans and photos of documents are not supported yet. You can also scan a card\'s QR code with the camera.</string>
     <string name="medical_import_choose_file">Choose a file</string>
     <string name="medical_import_allow_access">Allow access</string>
-    <string name="medical_import_needs_write">OpenVitals needs permission to add medical records to Health Connect.</string>
+    <string name="medical_import_needs_write">NCHealth needs permission to add medical records to Health Connect.</string>
     <string name="medical_import_reading">Reading the file…</string>
-    <string name="medical_import_error_not_supported">OpenVitals can\'t read this file. It found no FHIR records, CDA document or SMART Health Card in it. Other PDFs, scans and photos of documents are not supported yet.</string>
+    <string name="medical_import_error_not_supported">NCHealth can\'t read this file. It found no FHIR records, CDA document or SMART Health Card in it. Other PDFs, scans and photos of documents are not supported yet.</string>
     <string name="medical_import_error_too_large">This file is larger than 8 MB.</string>
     <string name="medical_import_error_unreadable">This file could not be read.</string>
     <string name="medical_import_error_no_records">This file holds nothing Health Connect stores.</string>
@@ -1940,8 +1940,8 @@
     <string name="medical_import_include_anyway">Import anyway</string>
     <string name="medical_import_patient_mismatch_title">This file names someone else</string>
     <string name="medical_import_patient_several_title">This file names more than one person</string>
-    <string name="medical_import_patient_unknown_title">OpenVitals can\'t check who this file is about</string>
-    <string name="medical_import_patient_body">OpenVitals keeps one person\'s records: yours. Import only records about you.</string>
+    <string name="medical_import_patient_unknown_title">NCHealth can\'t check who this file is about</string>
+    <string name="medical_import_patient_body">NCHealth keeps one person\'s records: yours. Import only records about you.</string>
     <string name="medical_import_patient_in_file">In the file: %1$s</string>
     <string name="medical_import_patient_here">Already here: %1$s</string>
     <string name="medical_import_patient_born">%1$s, born %2$s</string>
@@ -1982,7 +1982,7 @@
     <string name="medical_export_title">Export medical records</string>
     <string name="medical_export_building">Preparing the file…</string>
     <string name="medical_export_warning">The file holds your medical records. Share it only with people and apps you trust.</string>
-    <string name="medical_export_own_only">Without read access, these hold only the records OpenVitals added: %1$s.</string>
+    <string name="medical_export_own_only">Without read access, these hold only the records NCHealth added: %1$s.</string>
     <string name="medical_export_left_out">Left out, with no access: %1$s.</string>
     <string name="medical_export_empty">There are no records to export.</string>
     <string name="medical_export_share">Share</string>
@@ -1994,10 +1994,10 @@
     <string name="medical_record_delete_body">It is removed from Health Connect. This can\'t be undone.</string>
     <string name="medical_record_delete_failed">Couldn\'t delete the record.</string>
     <string name="medical_record_open_health_connect">Open Health Connect</string>
-    <string name="medical_sources_title">Added by OpenVitals</string>
-    <string name="medical_sources_row_body">See and delete the records OpenVitals imported</string>
+    <string name="medical_sources_title">Added by NCHealth</string>
+    <string name="medical_sources_row_body">See and delete the records NCHealth imported</string>
     <string name="medical_sources_intro">Each source holds the records from one provider or file. Deleting a source removes it and all its records from Health Connect.</string>
-    <string name="medical_sources_empty">OpenVitals hasn\'t added any medical records.</string>
+    <string name="medical_sources_empty">NCHealth hasn\'t added any medical records.</string>
     <string name="medical_sources_delete_action">Delete %1$s</string>
     <string name="medical_sources_delete_title">Delete %1$s?</string>
     <string name="medical_sources_delete_body_unknown">All its records are removed from Health Connect. This can\'t be undone.</string>
@@ -2029,7 +2029,7 @@
     <string name="medical_entry_owner_body">Records you add say whose they are. Your name goes in once, with your birth date if you want.</string>
     <string name="medical_entry_given_name">Given name</string>
     <string name="medical_entry_family_name">Family name</string>
-    <string name="medical_entry_source_name">Entered in OpenVitals</string>
+    <string name="medical_entry_source_name">Entered in NCHealth</string>
     <string name="medical_entry_add_visit">Add visit</string>
     <string name="medical_entry_edit_visit">Edit visit</string>
     <string name="medical_entry_add_procedure">Add procedure</string>
@@ -2132,7 +2132,7 @@
     <string name="medical_report_none_recorded">%1$s: none recorded</string>
     <string name="medical_report_none_in_range">%1$s: none in this range</string>
     <string name="medical_report_failed">Couldn\'t be read: %1$s.</string>
-    <string name="medical_report_disclaimer">Medical records are shown as they were received. OpenVitals does not interpret them.</string>
+    <string name="medical_report_disclaimer">Medical records are shown as they were received. NCHealth does not interpret them.</string>
     <string name="medical_report_option_body">Allergies, conditions and medications as recorded, and vaccines and lab results in the range. It uses the medical access you already gave.</string>
     <string name="medical_documents_title">Saved documents</string>
     <string name="medical_documents_keep">Keep a copy of this document on the phone</string>
@@ -2183,10 +2183,10 @@
     <string name="medical_import_scan_hint">Point the camera at the QR code of a SMART Health Card.</string>
     <string name="medical_import_scan_partial">Part %1$d of %2$d read. Now scan the next QR code.</string>
     <string name="medical_import_scan_not_card">This QR code is not a SMART Health Card.</string>
-    <string name="medical_import_error_camera_denied">OpenVitals needs the camera to scan a QR code. You can allow it in the phone\'s settings, or pick a photo of the code instead.</string>
-    <string name="medical_record_converted">Converted by OpenVitals from an older FHIR version (DSTU2).</string>
+    <string name="medical_import_error_camera_denied">NCHealth needs the camera to scan a QR code. You can allow it in the phone\'s settings, or pick a photo of the code instead.</string>
+    <string name="medical_record_converted">Converted by NCHealth from an older FHIR version (DSTU2).</string>
     <string name="medical_import_card_title">SMART Health Card</string>
-    <string name="medical_import_card_unverified">OpenVitals can\'t check this card\'s signature, because that needs the internet. Its records are marked as not verified.</string>
+    <string name="medical_import_card_unverified">NCHealth can\'t check this card\'s signature, because that needs the internet. Its records are marked as not verified.</string>
     <string name="medical_record_card_unverified">From a SMART Health Card. Its signature was not checked.</string>
     <string name="medical_import_skip_card_incomplete">Part of a card split over several QR codes; the other parts are not in the file</string>
     <string name="medical_documents_keep_each">Keep the PDF of each document on the phone</string>
@@ -2208,7 +2208,7 @@
     <string name="health_connect_promote_readiness_title">Improve readiness insights</string>
     <string name="health_connect_promote_readiness_body">Allow additional Health Connect data to refine daily readiness scores.</string>
     <string name="health_connect_new_permissions_title">New data available</string>
-    <string name="health_connect_new_permissions_body">OpenVitals can now read additional health data types. Grant access to use the new features.</string>
+    <string name="health_connect_new_permissions_body">NCHealth can now read additional health data types. Grant access to use the new features.</string>
     <string name="health_connect_new_permissions_action">Review permissions</string>
     <string name="privacy_reconsent_title">Privacy policy updated</string>
     <string name="privacy_reconsent_body">Our privacy policy has changed. Review and accept to continue syncing with Health Connect.</string>
@@ -2216,7 +2216,7 @@
     <string name="privacy_reconsent_no_browser">No app on this phone can open the link. The policy is at %1$s</string>
     <string name="dashboard_summary_today">Today</string>
     <string name="settings_debug_logs_title">Diagnostics logs</string>
-    <string name="settings_debug_logs_body">Share or save OpenVitals logs as a text file. Every line is kept so Health Connect and sync issues can be traced; device addresses, identifiers, file locations, dates and error details are masked. Read it before you share it.</string>
+    <string name="settings_debug_logs_body">Share or save NCHealth logs as a text file. Every line is kept so Health Connect and sync issues can be traced; device addresses, identifiers, file locations, dates and error details are masked. Read it before you share it.</string>
     <string name="settings_debug_logs_share">Share logs</string>
     <string name="settings_debug_logs_share_chooser_title">Share diagnostics logs</string>
     <string name="settings_debug_logs_share_failed">Could not share diagnostics logs</string>
@@ -2226,8 +2226,8 @@
     <string name="settings_privacy_policy_link">View privacy policy</string>
     <string name="settings_privacy_policy_url" translatable="false">https://github.com/OpenVitals-MTU/android-app/blob/main/PRIVACY.md</string>
     <string name="settings_app_lock_title">App lock</string>
-    <string name="settings_app_lock_body">Require device unlock to open OpenVitals.</string>
-    <string name="app_lock_locked_title">OpenVitals is locked</string>
+    <string name="settings_app_lock_body">Require device unlock to open NCHealth.</string>
+    <string name="app_lock_locked_title">NCHealth is locked</string>
     <string name="app_lock_unlock_action">Unlock</string>
     <string name="onboarding_core_required">Activity and sleep are needed to show you anything at all. The rest are optional \u2014 you can add them now or later from Settings.</string>
     <string name="settings_language_title">Language</string>
@@ -2307,7 +2307,7 @@
     <string name="settings_dashboard_sort_empty_title">Sort empty tiles last</string>
     <string name="settings_dashboard_sort_empty_body">Outside edit mode, tiles with no recent data move behind the ones with some. Turn off to always keep your exact arrangement.</string>
     <string name="settings_calorie_data_title">Total calories data</string>
-    <string name="settings_calorie_data_body">Show plain Health Connect total calories by default. Turn on OpenVitals calculations to fill missing totals from active calories and BMR.</string>
+    <string name="settings_calorie_data_body">Show plain Health Connect total calories by default. Turn on NCHealth calculations to fill missing totals from active calories and BMR.</string>
     <string name="settings_nutrition_average_title">Average logged days only</string>
     <string name="settings_nutrition_average_body">Nutrition averages divide by the days you logged food. Turn off to divide by every day of the week, month or year instead.</string>
     <string name="settings_caffeine_title">Caffeine model</string>
@@ -2588,13 +2588,13 @@
     <string name="settings_csv_import_confirm_range">%1$s: %2$s to %3$s</string>
     <string name="settings_csv_import_confirm_dates">Dates run from %1$s to %2$s</string>
     <string name="settings_csv_import_permission_title">Permission needed</string>
-    <string name="settings_csv_import_permission_body">OpenVitals needs permission to write these measurements to Health Connect.</string>
+    <string name="settings_csv_import_permission_body">NCHealth needs permission to write these measurements to Health Connect.</string>
     <string name="settings_csv_import_start">Import</string>
     <string name="settings_csv_import_cancel">Cancel</string>
     <string name="settings_csv_import_progress">Row %1$d · records written %2$d, rejected %3$d</string>
     <string name="settings_csv_import_quota_pause">Health Connect is limiting writes for now. The import continues in %1$d s.</string>
     <string name="settings_csv_import_drip_title">drip export detected</string>
-    <string name="settings_csv_import_drip_body">%1$s is a cycle history exported by drip. Choose what to bring into OpenVitals. Each day is read in this phone\'s time zone, and nothing is written until you confirm.</string>
+    <string name="settings_csv_import_drip_body">%1$s is a cycle history exported by drip. Choose what to bring into NCHealth. Each day is read in this phone\'s time zone, and nothing is written until you confirm.</string>
     <string name="settings_csv_import_drip_bleeding">Bleeding</string>
     <string name="settings_csv_import_drip_bleeding_body">Period flow and spotting to Health Connect. Bleeding you excluded in drip becomes spotting.</string>
     <string name="settings_csv_import_drip_temperature">Basal body temperature</string>
@@ -2606,8 +2606,8 @@
     <string name="settings_csv_import_drip_journal">Journal</string>
     <string name="settings_csv_import_drip_journal_body">Pain and mood as symptoms, mood and energy levels, the cervix, desire, and every note, into the cycle journal on this phone.</string>
     <string name="settings_csv_import_drip_confirm_summary">%1$s · %2$d of the first %3$d days hold something to import</string>
-    <string name="settings_csv_import_workouts_title">OpenVitals workout export detected</string>
-    <string name="settings_csv_import_workouts_body">%1$s has the columns of an OpenVitals workout export. Each row becomes a workout of its own, editable like any other. Nothing is written until you confirm.</string>
+    <string name="settings_csv_import_workouts_title">NCHealth workout export detected</string>
+    <string name="settings_csv_import_workouts_body">%1$s has the columns of an NCHealth workout export. Each row becomes a workout of its own, editable like any other. Nothing is written until you confirm.</string>
     <string name="settings_csv_import_workouts_columns_title">Columns that will be imported</string>
     <string name="settings_csv_import_workouts_ignored_title">Columns that will not be imported</string>
     <string name="settings_csv_import_workouts_ignored_body">A workout has no field for an average speed, power or cadence, a maximum heart rate, or the app that wrote it.</string>
@@ -2626,7 +2626,7 @@
     <string name="settings_csv_import_workout_column_wheelchair_pushes">Wheelchair pushes</string>
     <string name="settings_csv_import_workout_column_notes">Notes</string>
     <string name="settings_csv_import_workouts_confirm_summary">%1$s · %2$d of the first %3$d rows hold a workout</string>
-    <string name="settings_csv_import_workouts_permission_body">OpenVitals needs permission to write these workouts and their totals to Health Connect.</string>
+    <string name="settings_csv_import_workouts_permission_body">NCHealth needs permission to write these workouts and their totals to Health Connect.</string>
     <string name="settings_csv_import_tally_workouts_title">Workouts</string>
     <string name="settings_csv_import_journal_days">Journal days: %1$d, of which %2$d updated</string>
     <string name="settings_csv_import_tally_rows_title">Rows of the file</string>
@@ -2681,7 +2681,7 @@
     <string name="settings_offline_maps_format_mapsforge">Mapsforge</string>
     <string name="settings_offline_maps_render_format_title">Render format</string>
     <string name="settings_offline_maps_render_format_option">%1$s (%2$d)</string>
-    <string name="settings_offline_maps_render_format_body">OpenVitals renders every imported pack in the selected format together.</string>
+    <string name="settings_offline_maps_render_format_body">NCHealth renders every imported pack in the selected format together.</string>
     <string name="settings_offline_maps_pack_detail">%1$s • %2$s • %3$s</string>
     <string name="settings_offline_maps_import_action">Import offline map</string>
     <string name="settings_offline_maps_importing">Importing...</string>
@@ -2704,7 +2704,7 @@
     <string name="settings_elevation_body">Replace the altitude in imported GPX, TCX, KML and FIT files, in watch activities, and in activities recorded on this phone with values from elevation tiles stored here.</string>
     <string name="settings_elevation_toggle_title">Correct altitude from tiles</string>
     <string name="settings_elevation_toggle_body">A route that is not fully covered by your tiles keeps its own altitudes.</string>
-    <string name="settings_elevation_tiles_empty">No elevation tiles yet. OpenVitals has no internet access. Download the tiles for your area on a computer and import them here.</string>
+    <string name="settings_elevation_tiles_empty">No elevation tiles yet. NCHealth has no internet access. Download the tiles for your area on a computer and import them here.</string>
     <string name="settings_elevation_tile_detail">%1$s • %2$s</string>
     <string name="settings_elevation_tile_resolution_1">1 arc-second (30 m)</string>
     <string name="settings_elevation_tile_resolution_3">3 arc-second (90 m)</string>
@@ -2716,14 +2716,14 @@
     <string name="settings_elevation_help_link">Open elevation tiles guide</string>
     <string name="settings_elevation_help_url" translatable="false">https://docs.openvitals.health/how-to/elevation-tiles</string>
     <string name="section_support">Support</string>
-    <string name="settings_support_title">Support OpenVitals</string>
+    <string name="settings_support_title">Support NCHealth</string>
     <string name="settings_support_body">Report bugs, join community support discussions, or help fund ongoing development.</string>
     <string name="settings_support_issues_action">Report an issue</string>
     <string name="settings_support_discussion_action">Join Zulip discussions</string>
     <string name="settings_support_action">Open Liberapay</string>
     <string name="settings_support_discussion_url" translatable="false">https://openvitals.zulipchat.com/</string>
     <string name="settings_support_url" translatable="false">https://liberapay.com/manuel.mmarca.tech/donate</string>
-    <string name="crash_report_email_chooser_title">Email OpenVitals report</string>
+    <string name="crash_report_email_chooser_title">Email NCHealth report</string>
     <string name="crash_report_fallback_title">No email app found</string>
     <string name="crash_report_fallback_body">Copy the report or save it as a text file, then send it to %1$s later.</string>
     <string name="crash_report_fallback_copy">Copy report</string>
@@ -2732,7 +2732,7 @@
     <string name="crash_report_fallback_saved">Report saved.</string>
     <string name="crash_report_fallback_save_failed">Could not save report.</string>
     <string name="crash_report_fallback_save_unavailable">No file saver found. Report copied.</string>
-    <string name="crash_report_clipboard_label">OpenVitals report</string>
+    <string name="crash_report_clipboard_label">NCHealth report</string>
     <string name="settings_privacy_no_account">No account required</string>
     <string name="settings_privacy_no_cloud">No cloud sync of health data</string>
     <string name="settings_privacy_no_analytics">No analytics SDK</string>
@@ -2784,7 +2784,7 @@
     <string name="detail_sleep_session">Sleep session</string>
 
     <string name="recording_comaps_title">CoMaps guidance</string>
-    <string name="recording_comaps_permission_missing">Allow OpenVitals to read CoMaps navigation to show turn-by-turn guidance while you record.</string>
+    <string name="recording_comaps_permission_missing">Allow NCHealth to read CoMaps navigation to show turn-by-turn guidance while you record.</string>
     <string name="recording_comaps_permission_action">Allow CoMaps guidance</string>
     <string name="recording_comaps_app_unavailable">CoMaps is not installed, or its version does not share navigation yet.</string>
     <string name="recording_comaps_provider_unavailable">This CoMaps version does not share navigation data.</string>
@@ -2803,7 +2803,7 @@
     <string name="recording_comaps_exit">Exit %1$s</string>
     <string name="recording_comaps_dashboard_label">CoMaps guidance</string>
     <string name="settings_activity_recording_comaps_title">CoMaps navigation guidance</string>
-    <string name="settings_activity_recording_comaps_body">Show CoMaps turn-by-turn guidance while recording GPS activities. OpenVitals only reads what CoMaps is navigating.</string>
+    <string name="settings_activity_recording_comaps_body">Show CoMaps turn-by-turn guidance while recording GPS activities. NCHealth only reads what CoMaps is navigating.</string>
     <string name="settings_activity_recording_comaps_save_title">Save CoMaps guidance with activity</string>
     <string name="settings_activity_recording_comaps_save_body">Keep a log of the guidance shown during the recording with the saved activity. Stays on this device, never in Health Connect.</string>
     <string name="activity_detail_comaps_title">CoMaps navigation</string>
@@ -2868,7 +2868,7 @@
     <string name="cycle_mucus_value">%1$s, %2$s</string>
     <string name="screen_cycle_entry">Log cycle</string>
     <string name="cycle_log_action">Log</string>
-    <string name="cycle_entry_permission_needed">To log cycle data, OpenVitals needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
+    <string name="cycle_entry_permission_needed">To log cycle data, NCHealth needs Health Connect write permission. The app will not store this data; entries are saved in Health Connect.</string>
     <string name="cycle_entry_section_flow">Period flow</string>
     <string name="cycle_entry_section_spotting">Spotting</string>
     <string name="cycle_entry_section_sexual_activity">Sexual activity</string>
@@ -2945,7 +2945,7 @@
     <string name="caffeine_section_sleep">Sleep impact</string>
     <string name="caffeine_section_science">Science</string>
     <string name="caffeine_setup_title">Personalize caffeine insights</string>
-    <string name="caffeine_setup_body">OpenVitals found caffeine data. Personalization improves the caffeine curve and bedtime forecast.</string>
+    <string name="caffeine_setup_body">NCHealth found caffeine data. Personalization improves the caffeine curve and bedtime forecast.</string>
     <string name="caffeine_current_title">Active caffeine</string>
     <string name="caffeine_today_total">Today total</string>
     <string name="caffeine_time_to_safe">Time to safe</string>
@@ -2996,7 +2996,7 @@
     <string name="caffeine_drink_peak_explainer">The peak is lower than the amount you drank: your body starts clearing caffeine before it has finished absorbing it.</string>
     <string name="caffeine_empty">No caffeine entries for this period. Caffeinated drinks added through hydration or nutrition will appear here when Health Connect includes caffeine.</string>
     <string name="caffeine_science_title">How the estimate works</string>
-    <string name="caffeine_science_body">OpenVitals reads caffeine from Health Connect nutrition records in milligrams, then estimates absorption across your configured absorption window and exponential elimination from your personalized half-life.</string>
+    <string name="caffeine_science_body">NCHealth reads caffeine from Health Connect nutrition records in milligrams, then estimates absorption across your configured absorption window and exponential elimination from your personalized half-life.</string>
     <string name="caffeine_science_measurements">Measurements used</string>
     <string name="caffeine_science_measurements_body">The recorded dose always comes from Health Connect. Start/end time, entry name, meal type, and data-origin package are used for timing, matching, and analytics labels. Catalog matches only annotate entries; they never replace the recorded dose.</string>
     <string name="caffeine_science_limits">This is a practical population model, not medical advice. Pregnancy, medications, liver disease, genetics, smoking, alcohol, sensitivity, and habituation can all shift caffeine response.</string>
@@ -3053,7 +3053,7 @@
     <string name="data_confidence_source_mixed">Mixed sources: %1$s</string>
     <string name="data_confidence_kind_measured">Measured Health Connect records</string>
     <string name="data_confidence_kind_aggregated">Aggregated from Health Connect records</string>
-    <string name="data_confidence_kind_calculated">Calculated by OpenVitals</string>
+    <string name="data_confidence_kind_calculated">Calculated by NCHealth</string>
     <string name="data_confidence_kind_estimated">Estimated or derived value</string>
     <string name="data_confidence_kind_mixed">Mixed measured and calculated data</string>
     <string name="data_confidence_warning_low_coverage">Missing days can weaken averages and trends.</string>
@@ -3064,7 +3064,7 @@
     <string name="data_confidence_warning_no_sources">This aggregate does not expose source-level details.</string>
 
     <string name="body_energy_calibration_title">Turn on Body energy</string>
-    <string name="body_energy_calibration_body">OpenVitals estimates drain from heart-rate intensity over time. Your resting and maximum heart rate are measured from your own data, so there is nothing to enter for them.</string>
+    <string name="body_energy_calibration_body">NCHealth estimates drain from heart-rate intensity over time. Your resting and maximum heart rate are measured from your own data, so there is nothing to enter for them.</string>
     <string name="body_energy_calibration_optional_body">Manual heart-rate zones are optional. Without them, zones are worked out from your birth year and the hardest effort in the last four weeks, which is why the birth year is needed.</string>
     <string name="body_energy_calibration_birth_year">Birth year</string>
     <string name="body_energy_calibration_max_hr">Max heart rate</string>
@@ -3080,14 +3080,14 @@
     <string name="body_energy_calibration_saved">Body energy calibration saved</string>
     <string name="body_energy_calibration_reset">Body energy calibration reset to automatic</string>
     <string name="settings_derived_metrics_reset_title">Start Body energy and Recovery over</string>
-    <string name="settings_derived_metrics_reset_body">Clears everything OpenVitals has worked out on its own for these metrics — the Body energy history, the tuning learned from your watch and the baselines — and rebuilds them from Health Connect, as a fresh install would. Your Health Connect data, body profile, heart zones and goals are kept.</string>
+    <string name="settings_derived_metrics_reset_body">Clears everything NCHealth has worked out on its own for these metrics — the Body energy history, the tuning learned from your watch and the baselines — and rebuilds them from Health Connect, as a fresh install would. Your Health Connect data, body profile, heart zones and goals are kept.</string>
     <string name="settings_derived_metrics_reset_action">Start over</string>
     <string name="settings_derived_metrics_reset_confirm_title">Start these metrics over?</string>
     <string name="settings_derived_metrics_reset_confirm_body">Body energy history, learned tuning and baselines will be deleted and recomputed from Health Connect. Nothing in Health Connect is changed. This cannot be undone.</string>
     <string name="settings_derived_metrics_reset_done">Metrics reset. Recomputing from Health Connect in the background.</string>
     <string name="settings_derived_metrics_reset_failed">Could not reset the metrics</string>
     <string name="body_energy_not_set_up">Not set up</string>
-    <string name="body_energy_timeline_estimated">Estimated by OpenVitals</string>
+    <string name="body_energy_timeline_estimated">Estimated by NCHealth</string>
     <string name="body_energy_timeline_start">Start</string>
     <string name="body_energy_timeline_charged">Charged</string>
     <string name="body_energy_timeline_drained">Drained</string>
@@ -3133,16 +3133,16 @@
     <string name="body_energy_calibration_mode_manual_values">Manual values</string>
     <string name="body_energy_calibration_mode_manual_zones">Manual zones</string>
     <string name="body_energy_calculation_title">How Body energy is estimated</string>
-    <string name="body_energy_calculation_body">OpenVitals divides the selected day into short buckets, starts from the previous available score when possible, then adds charge from sleep or quiet rest and subtracts drain from exertion, elevated awake heart rate, and recovery debt after harder effort.</string>
+    <string name="body_energy_calculation_body">NCHealth divides the selected day into short buckets, starts from the previous available score when possible, then adds charge from sleep or quiet rest and subtracts drain from exertion, elevated awake heart rate, and recovery debt after harder effort.</string>
     <string name="body_energy_calculation_inputs_body">Heart rate, resting heart rate, personal zones, sleep, workouts, HRV, and respiratory rate can all improve the estimate. Missing inputs make the estimate more conservative and lower confidence.</string>
     <string name="body_energy_calculation_limits_body">This is an on-device wellness estimate, not a direct measurement or medical advice. The displayed inputs and reasons are exposed so the method can be reviewed and improved.</string>
     <string name="metric_body_energy">Body energy</string>
 
     <string name="privacy_policy_title">Privacy policy</string>
-    <string name="privacy_policy_body_1">OpenVitals reads data from Health Connect to show steps, workouts, sleep, heart rate, weight, calories, hydration, nutrition, mindfulness, and vitals on your device. Entries you explicitly log, including imported GPX/KML/KMZ routes and imported FIT files, are written to Health Connect.</string>
+    <string name="privacy_policy_body_1">NCHealth reads data from Health Connect to show steps, workouts, sleep, heart rate, weight, calories, hydration, nutrition, mindfulness, and vitals on your device. Entries you explicitly log, including imported GPX/KML/KMZ routes and imported FIT files, are written to Health Connect.</string>
     <string name="privacy_policy_body_2">This app does not include ads and does not upload your health data to a cloud service, with one exception you control: when you turn on the Claude assistant, today\'s health numbers are sent to Anthropic\'s Claude API with your own API key.</string>
-    <string name="privacy_policy_body_medical">Where Health Connect offers medical records, OpenVitals shows, imports and exports them on your device. It reads a category only with your permission, writes only when you import, and shows records as received, without interpreting them.</string>
-    <string name="privacy_policy_body_3">OpenVitals is not a medical device and does not diagnose, treat, cure, or prevent any disease or medical condition. It is not a substitute for medical advice, diagnosis, or treatment from a qualified healthcare professional.</string>
+    <string name="privacy_policy_body_medical">Where Health Connect offers medical records, NCHealth shows, imports and exports them on your device. It reads a category only with your permission, writes only when you import, and shows records as received, without interpreting them.</string>
+    <string name="privacy_policy_body_3">NCHealth is not a medical device and does not diagnose, treat, cure, or prevent any disease or medical condition. It is not a substitute for medical advice, diagnosis, or treatment from a qualified healthcare professional.</string>
     <string name="body_energy_reason_strong_calibration">Heart-rate intensity has strong calibration.</string>
     <string name="body_energy_reason_observed_or_age">Heart-rate intensity uses observed or age-based calibration.</string>
     <string name="body_energy_reason_incomplete_calibration">Calibration is incomplete, so automatic estimates are conservative.</string>
@@ -3198,7 +3198,7 @@
     <string name="stress_window_at">at %1$s</string>
     <string name="stress_window_range">from %1$s to %2$s</string>
     <string name="stress_caveat_not_mental">This estimate does not diagnose mental stress.</string>
-    <string name="stress_caveat_no_hc_score">Health Connect does not provide a stress score, so OpenVitals estimates physiological strain locally.</string>
+    <string name="stress_caveat_no_hc_score">Health Connect does not provide a stress score, so NCHealth estimates physiological strain locally.</string>
     <string name="stress_caveat_confounders">Food, caffeine, alcohol, illness, heat, dehydration, exercise, and emotional excitement can all move the estimate.</string>
     <string name="stress_caveat_all_day_model">A true all-day stress model should use inactive-period HRV samples; this screen uses the local signals currently available.</string>
     <string name="stress_caveat_workout">Recorded workouts or active minutes are present today, so this should not be read as a quiet resting stress score.</string>
@@ -3213,7 +3213,7 @@
     <string name="stress_detail_low">The estimate is in the low range; this usually means no strong strain signal is visible.</string>
     <string name="stress_detail_medium">The estimate is elevated. Low HRV, higher resting heart rate, activity, illness, caffeine, food, heat, or alcohol can all contribute.</string>
     <string name="stress_detail_high">The estimate is high. Treat this as physiological strain, especially if it follows exercise, poor sleep, illness, caffeine, alcohol, heat, or dehydration.</string>
-    <string name="stress_detail_needs_more">OpenVitals needs more local signals to estimate physiological stress.</string>
+    <string name="stress_detail_needs_more">NCHealth needs more local signals to estimate physiological stress.</string>
     <string name="stress_confidence_none">No stress estimate</string>
     <string name="stress_reason_all_signals">HRV, resting HR, and average HR</string>
     <string name="stress_reason_partial">partial HRV or heart-rate context</string>
@@ -3239,7 +3239,7 @@
     <string name="device_sync_host_option_body_compare">Let the other phone find this one.</string>
     <string name="device_sync_guest_option">Find a phone to sync with</string>
     <string name="device_sync_guest_option_body_compare">Scan nearby and pick it.</string>
-    <string name="device_sync_privacy_note">Transfer runs on a paired, encrypted Bluetooth link. OpenVitals has no internet permission, so this never touches a network.</string>
+    <string name="device_sync_privacy_note">Transfer runs on a paired, encrypted Bluetooth link. NCHealth has no internet permission, so this never touches a network.</string>
     <string name="device_sync_bluetooth_off">Turn on Bluetooth to sync with another phone.</string>
     <string name="device_sync_host_heading">Waiting for the other phone</string>
     <string name="device_sync_host_body_compare">On the other phone, choose Find a phone and tap this device.</string>
@@ -3290,7 +3290,7 @@
     <string name="device_sync_medical_held_back">Medical records were not synced. The other phone\'s records name a different person, or more than one. To move them anyway, export them on that phone and import them here.</string>
     <string name="device_sync_start_sync">Start sync, %1$d selected</string>
     <string name="device_sync_rewrite_title">Overwrite existing records</string>
-    <string name="device_sync_rewrite_body">Records this phone already has are written again under OpenVitals. Use this when Health Connect lists the records but leaves them out of its totals.</string>
+    <string name="device_sync_rewrite_body">Records this phone already has are written again under NCHealth. Use this when Health Connect lists the records but leaves them out of its totals.</string>
     <string name="device_sync_progress_heading">Syncing</string>
     <string name="device_sync_phase_handshake">Handshake and dedup check</string>
     <string name="device_sync_phase_confirming">Waiting for the other phone to confirm the code</string>
@@ -3320,7 +3320,7 @@
     <string name="settings_watch_notifications_title">Send notifications to the watch</string>
     <string name="settings_watch_notifications_body">Phone notifications appear on your wrist. Read on this device and sent only to this watch.</string>
     <string name="settings_watch_notifications_grant">Allow notification access</string>
-    <string name="settings_watch_notifications_grant_body">Android asks for this on its own settings screen. OpenVitals cannot request it from here.</string>
+    <string name="settings_watch_notifications_grant_body">Android asks for this on its own settings screen. NCHealth cannot request it from here.</string>
     <string name="settings_watch_notifications_apps_none">All apps send to the watch</string>
     <plurals name="settings_watch_notifications_apps_blocked">
         <item quantity="one">%1$d app silenced</item>
@@ -3328,30 +3328,30 @@
     </plurals>
     <string name="settings_watch_notifications_apps_intro">Turn an app off to stop its notifications reaching the watch. Everything else keeps coming through.</string>
     <string name="settings_watch_notifications_apps_empty">No apps found.</string>
-    <string name="settings_watch_notifications_disclosure_title">OpenVitals will read your notifications</string>
-    <string name="settings_watch_notifications_disclosure_body">To show notifications on your watch, OpenVitals reads the notifications your phone receives — including their text.\n\nThey are read on this device and sent only to the watch you paired, over Bluetooth. Nothing is saved to a file or a database, and OpenVitals has no internet permission, so notifications cannot be sent anywhere else.\n\nYou can turn this off at any time, and revoke notification access from Android settings.</string>
+    <string name="settings_watch_notifications_disclosure_title">NCHealth will read your notifications</string>
+    <string name="settings_watch_notifications_disclosure_body">To show notifications on your watch, NCHealth reads the notifications your phone receives — including their text.\n\nThey are read on this device and sent only to the watch you paired, over Bluetooth. Nothing is saved to a file or a database, and NCHealth has no internet permission, so notifications cannot be sent anywhere else.\n\nYou can turn this off at any time, and revoke notification access from Android settings.</string>
     <string name="settings_watch_notifications_disclosure_accept">Continue</string>
     <string name="settings_watch_notifications_disclosure_decline">Not now</string>
 
     <!-- Watches settings section + list screen (features/watches) -->
     <string name="settings_watches_group_title">Watches</string>
     <string name="settings_watches_group_body">Copy sleep, heart rate and activities recorded on your watch</string>
-    <string name="settings_watches_intro">Copies what your watch recorded into OpenVitals. Nothing is sent to the internet.</string>
+    <string name="settings_watches_intro">Copies what your watch recorded into NCHealth. Nothing is sent to the internet.</string>
     <string name="settings_watches_empty_title">No watch paired</string>
-    <string name="settings_watches_empty_body">Pairing a watch lets OpenVitals copy what it recorded — sleep stages, resting heart rate, stress and Body Battery — without sending anything to the internet.</string>
+    <string name="settings_watches_empty_body">Pairing a watch lets NCHealth copy what it recorded — sleep stages, resting heart rate, stress and Body Battery — without sending anything to the internet.</string>
     <string name="settings_watches_add">Pair a watch</string>
     <string name="settings_watches_scan_empty">No watches found yet. Make sure your watch is awake and close to your phone.</string>
 
     <!-- Watch onboarding (features/watches) -->
     <string name="settings_watch_pair_title">Pair this watch</string>
-    <string name="settings_watch_pair_body">OpenVitals will pair with the watch, then copy its recorded activity, sleep and health files. Confirm the code shown on the watch when it appears.</string>
+    <string name="settings_watch_pair_body">NCHealth will pair with the watch, then copy its recorded activity, sleep and health files. Confirm the code shown on the watch when it appears.</string>
     <string name="settings_watch_step_bonding">Pairing with the watch</string>
     <string name="settings_watch_step_associating">Asking Android for access</string>
     <string name="settings_watch_step_associating_hint">Optional. Allowing this lets syncing continue reliably in the background.</string>
     <string name="settings_watch_step_probing">Checking what the watch supports</string>
     <string name="settings_watch_pair_action">Pair</string>
-    <string name="settings_watch_unsupported_notice">Paired, but this watch uses a connection OpenVitals does not support yet, so it cannot sync.</string>
-    <string name="settings_watch_no_companion_notice">Paired, but Android access was not granted. Syncing works while OpenVitals is open.</string>
+    <string name="settings_watch_unsupported_notice">Paired, but this watch uses a connection NCHealth does not support yet, so it cannot sync.</string>
+    <string name="settings_watch_no_companion_notice">Paired, but Android access was not granted. Syncing works while NCHealth is open.</string>
 
     <!-- Watch device screen (features/watches) -->
     <string name="settings_watch_connected">Connected</string>
@@ -3450,7 +3450,7 @@
     <string name="settings_watch_name_label">Name</string>
     <string name="settings_watch_remove">Remove watch</string>
     <string name="settings_device_remove_confirm_title">Remove %1$s?</string>
-    <string name="settings_watch_remove_confirm_body">OpenVitals will unpair the watch and forget which files it has already copied, so a future pairing starts fresh. Data already saved to Health Connect is kept.</string>
+    <string name="settings_watch_remove_confirm_body">NCHealth will unpair the watch and forget which files it has already copied, so a future pairing starts fresh. Data already saved to Health Connect is kept.</string>
     <string name="settings_watch_remove_delete_history">Also delete the stress, Body Battery and score history that only this phone holds</string>
     <string name="action_remove">Remove</string>
 
@@ -3463,7 +3463,7 @@
 
     <!-- Watch data screen (features/watches) -->
     <string name="settings_watch_data_title">Watch data</string>
-    <string name="settings_watch_data_intro">Measurements only your watch makes. Health Connect has no place for these, so they stay in OpenVitals.</string>
+    <string name="settings_watch_data_intro">Measurements only your watch makes. Health Connect has no place for these, so they stay in NCHealth.</string>
     <string name="settings_watch_data_empty">Nothing yet. Sync your watch and whatever it has recorded will appear here.</string>
     <string name="settings_watch_data_missing">Not sent by this watch: %1$s</string>
     <string name="settings_watch_data_last_night">Last night</string>
@@ -3727,7 +3727,7 @@
     <string name="settings_cycle_group_title">Cycle</string>
     <string name="settings_cycle_group_body">Tracking focus, age range and reminders</string>
     <string name="cycle_settings_contexts_title">Areas of focus</string>
-    <string name="cycle_settings_contexts_body">Optional. You can change these at any time. OpenVitals makes no diagnosis.</string>
+    <string name="cycle_settings_contexts_body">Optional. You can change these at any time. NCHealth makes no diagnosis.</string>
     <string name="cycle_settings_context_group_timing">Widens the range of your estimates, without moving its central date.</string>
     <string name="cycle_settings_context_group_observation">Adds suggested observations to the day log.</string>
     <string name="cycle_context_pms">Premenstrual syndrome (PMS)</string>
@@ -3781,7 +3781,7 @@
     <string name="cycle_reminders_custom_body">Custom message</string>
     <string name="cycle_reminders_notification_channel">Cycle reminders</string>
     <string name="cycle_reminders_notification_channel_desc">Daily log and estimated-range reminders for cycle tracking</string>
-    <string name="cycle_reminder_public_title">OpenVitals</string>
+    <string name="cycle_reminder_public_title">NCHealth</string>
     <string name="cycle_reminder_public_body">Reminder</string>
     <string name="cycle_reminder_concealed_title">Reminder</string>
     <string name="cycle_reminder_concealed_body">Take a moment for your daily log.</string>
@@ -3831,7 +3831,7 @@
     <string name="widget_cycle_today_empty">Nothing recorded today</string>
     <string name="widget_cycle_add_today">Add today\'s observations</string>
     <string name="widget_cycle_edit_today">Edit today\'s observations</string>
-    <string name="widget_cycle_unavailable">Open OpenVitals to try again.</string>
+    <string name="widget_cycle_unavailable">Open NCHealth to try again.</string>
     <string name="cycle_widget_privacy_notice">Concealing the widget limits casual viewing. It does not remove previews the launcher already kept.</string>
 
     <!-- Cycle tips -->
@@ -3957,34 +3957,34 @@
     <string name="settings_watch_wearos_status_section">Wear OS App Status</string>
     <string name="settings_watch_wearos_bt_paired">Watch paired with this phone</string>
     <string name="settings_watch_wearos_bt_not_paired">No paired Wear OS watch found</string>
-    <string name="settings_watch_wearos_app_running">OpenVitals Wear OS app is running on watch</string>
-    <string name="settings_watch_wearos_app_no_answer">No answer: the watch is off, out of range, or the OpenVitals app on it is not installed or not running.</string>
-    <string name="settings_watch_wearos_bt_permission">OpenVitals needs the Nearby devices permission to reach the watch.</string>
+    <string name="settings_watch_wearos_app_running">NCHealth Wear OS app is running on watch</string>
+    <string name="settings_watch_wearos_app_no_answer">No answer: the watch is off, out of range, or the NCHealth app on it is not installed or not running.</string>
+    <string name="settings_watch_wearos_bt_permission">NCHealth needs the Nearby devices permission to reach the watch.</string>
     <string name="settings_watch_wearos_status_bluetooth_off">Bluetooth is off on this phone.</string>
     <string name="settings_watch_wearos_status_bond_lost">The watch is not paired with this phone. Open Bluetooth settings and pair it; make the watch discoverable from its own Bluetooth settings first.</string>
-    <string name="settings_watch_wearos_status_pending">Waiting for you to allow this phone on the watch. Open OpenVitals on the watch and tap Allow.</string>
-    <string name="settings_watch_wearos_status_unauthorized_mismatch">The watch refused this phone: its key does not match. On the watch, open OpenVitals, forget this phone, then validate again.</string>
-    <string name="settings_watch_wearos_status_unauthorized_blocked">This phone is blocked on the watch. On the watch, open OpenVitals and unblock it.</string>
-    <string name="settings_watch_wearos_status_update_watch">The OpenVitals app on the watch is older than this one. Update the watch app.</string>
-    <string name="settings_watch_wearos_status_update_phone">The OpenVitals app on the watch is newer than this one. Update OpenVitals on the phone.</string>
-    <string name="settings_watch_wearos_status_protocol">The watch answered something OpenVitals could not read. Update both apps and try again.</string>
+    <string name="settings_watch_wearos_status_pending">Waiting for you to allow this phone on the watch. Open NCHealth on the watch and tap Allow.</string>
+    <string name="settings_watch_wearos_status_unauthorized_mismatch">The watch refused this phone: its key does not match. On the watch, open NCHealth, forget this phone, then validate again.</string>
+    <string name="settings_watch_wearos_status_unauthorized_blocked">This phone is blocked on the watch. On the watch, open NCHealth and unblock it.</string>
+    <string name="settings_watch_wearos_status_update_watch">The NCHealth app on the watch is older than this one. Update the watch app.</string>
+    <string name="settings_watch_wearos_status_update_phone">The NCHealth app on the watch is newer than this one. Update NCHealth on the phone.</string>
+    <string name="settings_watch_wearos_status_protocol">The watch answered something NCHealth could not read. Update both apps and try again.</string>
     <string name="settings_watch_wearos_linked_to">Linked to %1$s</string>
     <string name="settings_watch_wearos_fail_recording">An activity recording is in progress. Finish or discard it before syncing the watch.</string>
     <string name="settings_watch_wearos_fail_partial">The watch stopped answering part-way. What arrived was saved; sync again to continue.</string>
-    <string name="settings_watch_wearos_fail_health_connect">Allow OpenVitals to write heart rate and sleep in Health Connect, then sync again.</string>
+    <string name="settings_watch_wearos_fail_health_connect">Allow NCHealth to write heart rate and sleep in Health Connect, then sync again.</string>
     <string name="settings_watch_wearos_fail_generic">The watch could not be synced. Try again.</string>
     <string name="settings_watch_wearos_check_app">Validate Wear OS App</string>
     <string name="settings_watch_wearos_checking">Checking Wear OS app…</string>
     <string name="settings_watch_wearos_sync_section">Watch Sync</string>
-    <string name="settings_watch_wearos_sync_body">The OpenVitals app on the watch records your heart rate and what a sleep estimate needs, and keeps a week of it. Sync copies the new heart rate into Health Connect and writes one estimated sleep session per night.</string>
+    <string name="settings_watch_wearos_sync_body">The NCHealth app on the watch records your heart rate and what a sleep estimate needs, and keeps a week of it. Sync copies the new heart rate into Health Connect and writes one estimated sleep session per night.</string>
     <string name="settings_watch_wearos_sync_now">Sync watch</string>
     <string name="settings_watch_wearos_syncing">Syncing watch…</string>
     <string name="settings_watch_wearos_synced_none">Nothing new on the watch</string>
     <string name="settings_watch_wearos_needs_weight">Walking calories not estimated: add your weight in Body profile or record one in Health Connect.</string>
-    <string name="settings_watch_wearos_needs_weight_read">Walking calories not estimated: add your weight in Body profile, or allow OpenVitals to read your weight in Health Connect.</string>
-    <string name="settings_watch_wearos_needs_steps_write">Steps not written: allow OpenVitals to write steps in Health Connect, then sync again.</string>
-    <string name="settings_watch_wearos_needs_calories_write">Walking calories not written: allow OpenVitals to write active calories and read workouts in Health Connect to estimate them from the next sync on.</string>
-    <string name="settings_watch_wearos_needs_resting_heart_rate">Resting heart rate not written: allow OpenVitals to read and write resting heart rate in Health Connect to estimate it from the next sync on.</string>
+    <string name="settings_watch_wearos_needs_weight_read">Walking calories not estimated: add your weight in Body profile, or allow NCHealth to read your weight in Health Connect.</string>
+    <string name="settings_watch_wearos_needs_steps_write">Steps not written: allow NCHealth to write steps in Health Connect, then sync again.</string>
+    <string name="settings_watch_wearos_needs_calories_write">Walking calories not written: allow NCHealth to write active calories and read workouts in Health Connect to estimate them from the next sync on.</string>
+    <string name="settings_watch_wearos_needs_resting_heart_rate">Resting heart rate not written: allow NCHealth to read and write resting heart rate in Health Connect to estimate it from the next sync on.</string>
     <plurals name="settings_watch_wearos_synced_samples">
         <item quantity="one">%1$d heart rate sample synced</item>
         <item quantity="other">%1$d heart rate samples synced</item>
@@ -4006,12 +4006,12 @@
     <string name="settings_scales_last_weigh_in_at">Last weigh-in %1$s</string>
     <string name="settings_scales_not_listening">Not listening</string>
     <string name="settings_scales_find_title">Find the scale</string>
-    <string name="settings_scales_find_body">Step on the scale so it lights up, then tap Find. Android lists the scales it hears and asks whether OpenVitals may use the one you pick.</string>
+    <string name="settings_scales_find_body">Step on the scale so it lights up, then tap Find. Android lists the scales it hears and asks whether NCHealth may use the one you pick.</string>
     <string name="settings_scales_find_action">Find</string>
     <string name="settings_scales_find_searching">Looking for the scale…</string>
     <string name="settings_scales_key_step">Enter the key</string>
     <string name="settings_scales_permissions_title">Permissions for your scale</string>
-    <string name="settings_scales_permissions_body">OpenVitals needs this to hear the scale.</string>
+    <string name="settings_scales_permissions_body">NCHealth needs this to hear the scale.</string>
     <string name="settings_scales_slot_label">Your user on the scale</string>
     <string name="settings_scales_slot_unknown">Not known yet. Step on the scale once.</string>
     <string name="settings_scales_slot">User %1$d</string>
@@ -4019,23 +4019,23 @@
     <string name="settings_scales_address">Address</string>
     <string name="settings_scales_section_listening">Listening</string>
     <string name="settings_scales_section_scale">Scale</string>
-    <string name="settings_scales_wake_row">Android is not waking OpenVitals for this scale, so weigh-ins are heard only while the app is open.</string>
+    <string name="settings_scales_wake_row">Android is not waking NCHealth for this scale, so weigh-ins are heard only while the app is open.</string>
     <string name="settings_scales_supported_action">Supported scales</string>
     <string name="settings_scales_key_help_action">How to get the key</string>
     <string name="settings_scales_supported_url" translatable="false">https://docs.openvitals.health/features/scales</string>
     <string name="settings_scales_group_title">Scales</string>
     <string name="settings_scales_group_body">Save your weight from a Bluetooth scale as you step on it</string>
-    <string name="settings_scales_intro">OpenVitals saves each weigh-in from a Bluetooth scale as it happens, with the app open or closed. It never connects to the scale, and nothing is sent to the internet.</string>
+    <string name="settings_scales_intro">NCHealth saves each weigh-in from a Bluetooth scale as it happens, with the app open or closed. It never connects to the scale, and nothing is sent to the internet.</string>
     <string name="settings_scales_key_help">The scale encrypts what it sends. Pair it once in Xiaomi Home, read its Bluetooth key from your Xiaomi account with a token extractor tool, and paste the key here. It stays on this phone.</string>
     <string name="settings_scales_key_label">Bluetooth key</string>
     <string name="settings_scales_key_invalid">A key is 32 characters: digits and the letters a to f.</string>
     <string name="settings_scales_key_replace">Change key</string>
     <string name="settings_scales_key_rejected">This key does not open what the scale sends. A scale paired again in Xiaomi Home gets a new key.</string>
     <string name="settings_scales_listening">Listening for the scale</string>
-    <string name="settings_scales_listening_while_open">Weigh-ins are saved while OpenVitals is open.</string>
-    <string name="settings_scales_wake_action">Wake OpenVitals for the scale</string>
+    <string name="settings_scales_listening_while_open">Weigh-ins are saved while NCHealth is open.</string>
+    <string name="settings_scales_wake_action">Wake NCHealth for the scale</string>
     <string name="settings_scales_wake_failed">Android did not find the scale. Step on it to wake it, then try again.</string>
-    <string name="settings_scales_scan_permission">OpenVitals needs the Nearby devices permission to hear the scale.</string>
+    <string name="settings_scales_scan_permission">NCHealth needs the Nearby devices permission to hear the scale.</string>
     <string name="settings_scales_location_permission">On this version of Android, hearing the scale needs the location permission.</string>
     <string name="settings_scales_bluetooth_off">Bluetooth is off. Turn it on to hear the scale.</string>
     <string name="settings_scales_unavailable">This phone cannot listen for the scale.</string>
@@ -4044,13 +4044,13 @@
     <string name="settings_scales_estimate_note">Body fat, lean mass and body water are estimates from published equations. They differ from what the scale shows.</string>
     <string name="settings_scales_profile_hint">Set your height and sex in Body profile to get body fat, lean mass and body water.</string>
     <string name="settings_scales_pending">Some weigh-ins are waiting to be saved to Health Connect.</string>
-    <string name="settings_scales_health_connect_missing">OpenVitals is not allowed to write everything the scale measures to Health Connect.</string>
+    <string name="settings_scales_health_connect_missing">NCHealth is not allowed to write everything the scale measures to Health Connect.</string>
     <string name="settings_scales_other_profile">A weigh-in the scale assigned to someone else was not saved.</string>
     <string name="settings_scales_other_profile_action">That was me</string>
     <string name="settings_scales_delete_title">Delete this weigh-in?</string>
     <string name="settings_scales_delete_body">Its weight, heart rate and body composition are removed from Health Connect.</string>
     <string name="settings_scales_remove">Remove scale</string>
-    <string name="settings_scales_remove_body">OpenVitals stops listening and forgets the key. Weigh-ins already saved stay.</string>
+    <string name="settings_scales_remove_body">NCHealth stops listening and forgets the key. Weigh-ins already saved stay.</string>
     <string name="screen_assistant">Assistant</string>
     <string name="assistant_title">Claude assistant</string>
     <string name="assistant_subtitle">Claude reads today\'s numbers from your wearable and tells you how you are and what to do next.</string>

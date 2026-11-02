@@ -486,7 +486,7 @@ class EntryWritePathsTest {
         val totals = all(NutritionRecord::class).single()
         assertThat(totals.metadata.clientRecordId).startsWith("openvitals_manual_nutrition_")
         assertThat(totals.metadata.clientRecordId).doesNotContain("openvitals_nutrition_")
-        assertThat(totals.name).isEqualTo("OpenVitals nutrition")
+        assertThat(totals.name).isEqualTo("NCHealth nutrition")
         assertThat(totals.energy!!.inKilocalories).isWithin(1e-9).of(2150.0)
         assertThat(totals.protein!!.inGrams).isWithin(1e-9).of(120.0)
         assertThat(totals.totalFat!!.inGrams).isWithin(1e-9).of(70.0)

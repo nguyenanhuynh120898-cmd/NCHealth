@@ -524,7 +524,7 @@ private fun CsvDoneStep(
         onCopyReport = {
             val text = viewModel.reportText() ?: return@CsvImportResultView
             scope.launch {
-                clipboard.setSensitiveText("OpenVitals", text)
+                clipboard.setSensitiveText("NCHealth", text)
                 Toast.makeText(context, reportCopied, Toast.LENGTH_SHORT).show()
             }
         },

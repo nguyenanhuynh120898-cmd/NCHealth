@@ -78,7 +78,7 @@ class PrivacySafeDebugLogExporterTest {
         val text = PrivacySafeDebugLogExporter.exportText("tech.mmarca.openvitals", exported)
 
         PrivacySentinels.assertNoneIn(text, except = setOf(PrivacySentinels.Value, PrivacySentinels.Name))
-        assertThat(text).startsWith("OpenVitals diagnostics log export\npackage=tech.mmarca.openvitals\n")
+        assertThat(text).startsWith("NCHealth diagnostics log export\npackage=tech.mmarca.openvitals\n")
         assertThat(text).contains(PrivacySafeDebugLogExporter.PrivacyHeader)
         assertThat(text).contains("writtenLines=1\ndroppedLines=0\n\n" + prefix + "connected to ")
         assertThat(text).doesNotContain("not responding")

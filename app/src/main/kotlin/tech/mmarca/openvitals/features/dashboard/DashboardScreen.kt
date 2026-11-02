@@ -153,6 +153,7 @@ fun DashboardScreen(
                     onPreviousDay = viewModel::previousDay,
                     onNextDay = viewModel::nextDay,
                     onOpenCalendar = { showDatePicker = true },
+                    onSelectDate = viewModel::selectDate,
                     onMoveWidgetToTarget = viewModel::moveDashboardWidgetToTarget,
                     onRemoveWidget = viewModel::removeDashboardWidget,
                     onAddWidget = viewModel::addDashboardWidget,

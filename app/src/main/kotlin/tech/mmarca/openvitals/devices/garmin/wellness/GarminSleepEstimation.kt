@@ -161,4 +161,4 @@ class GarminSleepEstimationWriter(
 private const val WatchSleepIdPrefix = "garmin_fit_sleep_"
 private const val EstimatedSleepIdPrefix = "garmin_fit_sleep_est_"
 private const val EstimatedSleepNotes =
-    "Sleep stages estimated by OpenVitals from heart rate and movement. This watch does not record sleep stages."
+    "Sleep stages estimated by NCHealth from heart rate and movement. This watch does not record sleep stages."

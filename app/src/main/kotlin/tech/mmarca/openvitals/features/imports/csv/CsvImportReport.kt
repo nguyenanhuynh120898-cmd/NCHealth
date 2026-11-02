@@ -25,7 +25,7 @@ fun buildCsvImportReport(
     /** Set for the app's own workout export, read through its plan instead of a mapping. */
     workouts: WorkoutImportPlan? = null,
 ): String = buildString {
-    appendLine("OpenVitals CSV import report")
+    appendLine("NCHealth CSV import report")
     appendLine("===========================")
     appendLine()
     appendLine("Outcome: ${outcomeLabel(result.outcome)}")
@@ -79,7 +79,7 @@ fun buildCsvImportReport(
         appendLine("Time zone:  ${drip.zone.id}")
     }
     if (workouts != null) {
-        appendLine("Format:     OpenVitals workout export")
+        appendLine("Format:     NCHealth workout export")
         appendLine("Date format: ${workouts.dateTime.format.reportName}")
         appendLine("Time zone:   ${zoneLabel(workouts.dateTime)}")
         workouts.dateTime.customPattern?.takeIf { it.isNotEmpty() }?.let {

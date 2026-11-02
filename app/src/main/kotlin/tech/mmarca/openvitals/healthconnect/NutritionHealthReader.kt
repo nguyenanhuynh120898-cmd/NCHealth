@@ -219,7 +219,7 @@ internal class NutritionHealthReader(
                 clientRecordVersion = request.clientRecordVersion,
             ),
             nutrientValues = nutrientValues,
-            name = request.name?.trim()?.takeIf { it.isNotBlank() } ?: "OpenVitals nutrition",
+            name = request.name?.trim()?.takeIf { it.isNotBlank() } ?: "NCHealth nutrition",
         )
 
         Log.d(TAG, "Writing nutrition record ${support.diagnosticsSummary()}")

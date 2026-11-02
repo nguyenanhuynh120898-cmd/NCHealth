@@ -27,11 +27,26 @@ fun timeRangeLabel(range: TimeRange): String = stringResource(
 fun localizedDayTitle(date: LocalDate): String = when (date) {
     LocalDate.now() -> stringResource(R.string.period_today)
     LocalDate.now().minusDays(1) -> stringResource(R.string.period_yesterday)
-    else -> DateTimeFormatter.ofPattern("EEE, d MMM", LocalLocale.current.platformLocale).format(date)
+    else -> readableDate(date, LocalLocale.current.platformLocale)
 }
 
-fun localizedDaySubtitle(date: LocalDate): String =
-    DateTimeFormatter.ofPattern("d MMM yyyy", Locale.getDefault()).format(date)
+/**
+ * A date in full words: "Thứ Hai, 2 tháng 11" / "Monday, 2 November". No "Th 2" or "thg"
+ * abbreviations, which read badly in Vietnamese; the year only when it is not this year.
+ */
+fun readableDate(
+    date: LocalDate,
+    locale: Locale,
+    withWeekday: Boolean = true,
+    today: LocalDate = LocalDate.now(),
+): String {
+    val pattern = buildString {
+        if (withWeekday) append("EEEE, ")
+        append("d MMMM")
+        if (date.year != today.year) append(", yyyy")
+    }
+    return DateTimeFormatter.ofPattern(pattern, locale).format(date)
+}
 
 @Composable
 fun localizedPeriodTitle(
@@ -42,7 +57,7 @@ fun localizedPeriodTitle(
     weekPeriodMode: WeekPeriodMode = LocalPeriodWeekMode.current,
 ): String {
     val locale = LocalLocale.current.platformLocale
-    val dateFormatter = DateTimeFormatter.ofPattern("EEE d MMM", locale)
+    val dateFormatter = DateTimeFormatter.ofPattern("d MMMM", locale)
     val monthFormatter = DateTimeFormatter.ofPattern("LLLL yyyy", locale)
     val yearFormatter = DateTimeFormatter.ofPattern("yyyy", locale)
 
@@ -50,7 +65,7 @@ fun localizedPeriodTitle(
         TimeRange.DAY -> when (period.start) {
             today -> stringResource(R.string.period_today)
             today.minusDays(1) -> stringResource(R.string.period_yesterday)
-            else -> dateFormatter.format(period.start)
+            else -> readableDate(period.start, locale, today = today)
         }
 
         TimeRange.WEEK -> if (weekPeriodMode.usesRollingDates() && period.end == today) {
@@ -87,9 +102,9 @@ fun localizedPeriodTitle(
 }
 
 fun localizedPeriodSubtitle(range: TimeRange, period: DatePeriod): String {
-    val dateFormatter = DateTimeFormatter.ofPattern("EEE d MMM", Locale.getDefault())
+    val dateFormatter = DateTimeFormatter.ofPattern("d MMMM", Locale.getDefault())
     return when (range) {
-        TimeRange.DAY -> dateFormatter.format(period.start)
+        TimeRange.DAY -> readableDate(period.start, Locale.getDefault())
         TimeRange.WEEK,
         TimeRange.MONTH,
         TimeRange.YEAR -> "${dateFormatter.format(period.start)} - ${dateFormatter.format(period.end)}"

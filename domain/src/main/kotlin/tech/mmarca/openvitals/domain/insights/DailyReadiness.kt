@@ -155,8 +155,8 @@ fun calculateHrvStatus(
     if (!hasHrvData || hrvRmssdMs == null || hrvRmssdMs <= 0.0) {
         return HrvStatusInsight(
             status = HrvStatus.NEEDS_MORE_HRV,
-            label = "Needs more HRV",
-            detail = "HRV was not available for this day.",
+            label = tr("Needs more HRV", "Cần thêm HRV"),
+            detail = tr("HRV was not available for this day.", "Không có HRV cho ngày này."),
             currentRmssdMs = hrvRmssdMs,
             baselineRmssdMs = baselineRmssdMs,
             percentFromBaseline = null,
@@ -165,8 +165,8 @@ fun calculateHrvStatus(
     if (baselineRmssdMs == null || baselineRmssdMs <= 0.0) {
         return HrvStatusInsight(
             status = HrvStatus.NEEDS_MORE_HRV,
-            label = "Needs more HRV",
-            detail = "HRV is recorded, but there is not enough history yet for a personal baseline.",
+            label = tr("Needs more HRV", "Cần thêm HRV"),
+            detail = tr("HRV is recorded, but there is not enough history yet for a personal baseline.", "Đã có HRV nhưng chưa đủ lịch sử để lập mức nền riêng của bạn."),
             currentRmssdMs = hrvRmssdMs,
             baselineRmssdMs = baselineRmssdMs,
             percentFromBaseline = null,
@@ -182,25 +182,25 @@ fun calculateHrvStatus(
         else -> HrvStatus.BALANCED
     }
     val label = when (status) {
-        HrvStatus.BALANCED -> "Balanced"
-        HrvStatus.LOW -> "Low"
-        HrvStatus.HIGH -> "High"
-        HrvStatus.UNUSUALLY_LOW -> "Unusually low"
-        HrvStatus.UNUSUALLY_HIGH -> "Unusually high"
-        HrvStatus.NEEDS_MORE_HRV -> "Needs more HRV"
+        HrvStatus.BALANCED -> tr("Balanced", "Cân bằng")
+        HrvStatus.LOW -> tr("Low", "Thấp")
+        HrvStatus.HIGH -> tr("High", "Cao")
+        HrvStatus.UNUSUALLY_LOW -> tr("Unusually low", "Thấp bất thường")
+        HrvStatus.UNUSUALLY_HIGH -> tr("Unusually high", "Cao bất thường")
+        HrvStatus.NEEDS_MORE_HRV -> tr("Needs more HRV", "Cần thêm HRV")
     }
     val comparison = when {
-        percent == 0 -> "near your usual baseline"
-        percent > 0 -> "$percent% above your usual baseline"
-        else -> "${abs(percent)}% below your usual baseline"
+        percent == 0 -> tr("near your usual baseline", "gần mức nền thường ngày của bạn")
+        percent > 0 -> tr("$percent% above your usual baseline", "cao hơn mức nền thường ngày $percent%")
+        else -> tr("${abs(percent)}% below your usual baseline", "thấp hơn mức nền thường ngày ${abs(percent)}%")
     }
     val detail = when (status) {
-        HrvStatus.BALANCED -> "HRV is $comparison."
-        HrvStatus.LOW -> "HRV is $comparison, which can point to incomplete recovery."
-        HrvStatus.HIGH -> "HRV is $comparison. Higher HRV can be positive when other signals agree."
-        HrvStatus.UNUSUALLY_LOW -> "HRV is $comparison, outside your usual range."
-        HrvStatus.UNUSUALLY_HIGH -> "HRV is $comparison, outside your usual range."
-        HrvStatus.NEEDS_MORE_HRV -> "HRV status needs more data."
+        HrvStatus.BALANCED -> tr("HRV is $comparison.", "HRV $comparison.")
+        HrvStatus.LOW -> tr("HRV is $comparison, which can point to incomplete recovery.", "HRV $comparison, có thể cơ thể chưa hồi phục hẳn.")
+        HrvStatus.HIGH -> tr("HRV is $comparison. Higher HRV can be positive when other signals agree.", "HRV $comparison. HRV cao thường là dấu hiệu tốt nếu các chỉ số khác cũng ổn.")
+        HrvStatus.UNUSUALLY_LOW -> tr("HRV is $comparison, outside your usual range.", "HRV $comparison, nằm ngoài khoảng thường ngày.")
+        HrvStatus.UNUSUALLY_HIGH -> tr("HRV is $comparison, outside your usual range.", "HRV $comparison, nằm ngoài khoảng thường ngày.")
+        HrvStatus.NEEDS_MORE_HRV -> tr("HRV status needs more data.", "Cần thêm dữ liệu để đánh giá HRV.")
     }
     return HrvStatusInsight(
         status = status,
@@ -221,8 +221,8 @@ fun calculateIntensityMinutesReadiness(
     ) {
         return IntensityMinutesReadinessInsight(
             status = IntensityMinutesStatus.NEEDS_MORE_DATA,
-            label = "Needs more data",
-            detail = "Intensity minutes need workouts, heart rate, active calories, or activity load history.",
+            label = tr("Needs more data", "Cần thêm dữ liệu"),
+            detail = tr("Intensity minutes need workouts, heart rate, active calories, or activity load history.", "Phút cường độ cần dữ liệu buổi tập, nhịp tim, calo vận động hoặc lịch sử tải tập."),
             moderateEquivalentMinutes = null,
             targetMinutes = DefaultWeeklyIntensityMinutesTarget,
             todayModerateEquivalentMinutes = null,
@@ -240,37 +240,37 @@ fun calculateIntensityMinutesReadiness(
         else -> IntensityMinutesStatus.LOW
     }
     val label = when (status) {
-        IntensityMinutesStatus.GOAL_MET -> "Goal met"
-        IntensityMinutesStatus.ON_TRACK -> "On track"
-        IntensityMinutesStatus.BEHIND -> "Behind pace"
-        IntensityMinutesStatus.LOW -> "Low"
-        IntensityMinutesStatus.NEEDS_MORE_DATA -> "Needs more data"
+        IntensityMinutesStatus.GOAL_MET -> tr("Goal met", "Đã đạt mục tiêu")
+        IntensityMinutesStatus.ON_TRACK -> tr("On track", "Đúng tiến độ")
+        IntensityMinutesStatus.BEHIND -> tr("Behind pace", "Chậm tiến độ")
+        IntensityMinutesStatus.LOW -> tr("Low", "Thấp")
+        IntensityMinutesStatus.NEEDS_MORE_DATA -> tr("Needs more data", "Cần thêm dữ liệu")
     }
     val confidenceText = when (weeklyIntensityMinutes.confidence) {
-        IntensityMinutesConfidence.HIGH -> "high confidence"
-        IntensityMinutesConfidence.MEDIUM -> "medium confidence"
-        IntensityMinutesConfidence.LOW -> "low confidence estimate"
-        IntensityMinutesConfidence.NO_DATA -> "no data"
+        IntensityMinutesConfidence.HIGH -> tr("high confidence", "độ tin cậy cao")
+        IntensityMinutesConfidence.MEDIUM -> tr("medium confidence", "độ tin cậy trung bình")
+        IntensityMinutesConfidence.LOW -> tr("low confidence estimate", "ước tính, độ tin cậy thấp")
+        IntensityMinutesConfidence.NO_DATA -> tr("no data", "không có dữ liệu")
     }
     val todayText = if (weeklyIntensityMinutes.todayModerateEquivalentMinutes > 0) {
-        " Today added ${weeklyIntensityMinutes.todayModerateEquivalentMinutes}."
+        tr(" Today added ${weeklyIntensityMinutes.todayModerateEquivalentMinutes}.", " Hôm nay thêm ${weeklyIntensityMinutes.todayModerateEquivalentMinutes}.")
     } else {
         ""
     }
     val detail = when (status) {
         IntensityMinutesStatus.GOAL_MET -> {
-            "$minutes/$target moderate-equivalent min this week; vigorous minutes count double.$todayText"
+            tr("$minutes/$target moderate-equivalent min this week; vigorous minutes count double.$todayText", "$minutes/$target phút (quy đổi mức vừa) tuần này; phút cường độ cao tính gấp đôi.$todayText")
         }
         IntensityMinutesStatus.ON_TRACK -> {
-            "$minutes/$target moderate-equivalent min this week, on pace for day ${weeklyIntensityMinutes.daysElapsed}."
+            tr("$minutes/$target moderate-equivalent min this week, on pace for day ${weeklyIntensityMinutes.daysElapsed}.", "$minutes/$target phút (quy đổi mức vừa) tuần này, đúng nhịp cho ngày thứ ${weeklyIntensityMinutes.daysElapsed}.")
         }
         IntensityMinutesStatus.BEHIND -> {
-            "$minutes/$target moderate-equivalent min this week; expected about ${weeklyIntensityMinutes.expectedByNowMinutes} by now."
+            tr("$minutes/$target moderate-equivalent min this week; expected about ${weeklyIntensityMinutes.expectedByNowMinutes} by now.", "$minutes/$target phút (quy đổi mức vừa) tuần này; đến giờ nên đạt khoảng ${weeklyIntensityMinutes.expectedByNowMinutes}.")
         }
         IntensityMinutesStatus.LOW -> {
-            "$minutes/$target moderate-equivalent min this week; add easy aerobic work if recovery allows."
+            tr("$minutes/$target moderate-equivalent min this week; add easy aerobic work if recovery allows.", "$minutes/$target phút (quy đổi mức vừa) tuần này; thêm bài aerobic nhẹ nếu cơ thể đã hồi phục.")
         }
-        IntensityMinutesStatus.NEEDS_MORE_DATA -> "Intensity minutes need more data."
+        IntensityMinutesStatus.NEEDS_MORE_DATA -> tr("Intensity minutes need more data.", "Phút cường độ cần thêm dữ liệu.")
     }
     return IntensityMinutesReadinessInsight(
         status = status,
@@ -334,8 +334,8 @@ fun calculateDailyReadiness(
         trainingReadinessScore -= 8
         factors += DailyReadinessFactor(
             kind = ReadinessFactorKind.STRESS_HIGH,
-            label = "Body signals look elevated",
-            detail = "Several recovery signals are outside your usual range.",
+            label = tr("Body signals look elevated", "Chỉ số cơ thể đang tăng cao"),
+            detail = tr("Several recovery signals are outside your usual range.", "Một số chỉ số hồi phục nằm ngoài khoảng thường ngày."),
             impact = ReadinessFactorImpact.WARNING,
         )
     }
@@ -411,11 +411,11 @@ private val ReadinessFactorImpact.priority: Int
 
 private fun statusTitleFor(state: ReadinessState): String =
     when (state) {
-        ReadinessState.READY -> "Ready to train"
-        ReadinessState.MODERATE -> "Train, but keep it controlled"
-        ReadinessState.RECOVER -> "Recovery day"
-        ReadinessState.REST -> "Take it easy"
-        ReadinessState.UNKNOWN -> "Needs more data"
+        ReadinessState.READY -> tr("Ready to train", "Sẵn sàng tập")
+        ReadinessState.MODERATE -> tr("Train, but keep it controlled", "Tập được, nhưng giữ sức")
+        ReadinessState.RECOVER -> tr("Recovery day", "Ngày hồi phục")
+        ReadinessState.REST -> tr("Take it easy", "Nghỉ ngơi nhẹ nhàng")
+        ReadinessState.UNKNOWN -> tr("Needs more data", "Cần thêm dữ liệu")
     }
 
 private fun recommendationFor(
@@ -423,16 +423,16 @@ private fun recommendationFor(
     type: ReadinessRecommendationType,
 ): String =
     when (type) {
-        ReadinessRecommendationType.HARD_TRAINING -> "Good day for hard training if you feel normal."
-        ReadinessRecommendationType.MODERATE_TRAINING -> "Do moderate training today, but avoid maximal effort."
-        ReadinessRecommendationType.LIGHT_ACTIVITY -> "Keep it light today with easy movement or mobility."
-        ReadinessRecommendationType.REST -> "Avoid intense training today and focus on recovery."
+        ReadinessRecommendationType.HARD_TRAINING -> tr("Good day for hard training if you feel normal.", "Hôm nay hợp để tập nặng nếu bạn thấy khỏe.")
+        ReadinessRecommendationType.MODERATE_TRAINING -> tr("Do moderate training today, but avoid maximal effort.", "Hôm nay tập vừa sức, tránh dốc toàn lực.")
+        ReadinessRecommendationType.LIGHT_ACTIVITY -> tr("Keep it light today with easy movement or mobility.", "Hôm nay chỉ nên vận động nhẹ hoặc giãn cơ.")
+        ReadinessRecommendationType.REST -> tr("Avoid intense training today and focus on recovery.", "Hôm nay tránh tập nặng, tập trung hồi phục.")
         ReadinessRecommendationType.CHECK_SYMPTOMS -> {
-            "Some signals are outside your usual range. If you feel unwell, prioritize rest and hydration."
+            tr("Some signals are outside your usual range. If you feel unwell, prioritize rest and hydration.", "Vài chỉ số nằm ngoài khoảng thường ngày. Nếu thấy mệt, hãy ưu tiên nghỉ ngơi và uống đủ nước.")
         }
         ReadinessRecommendationType.MOBILITY -> when (state) {
-            ReadinessState.UNKNOWN -> "Connect sleep, HRV, resting heart rate, and workouts for a better guide."
-            else -> "Choose mobility or an easy walk until more data is available."
+            ReadinessState.UNKNOWN -> tr("Connect sleep, HRV, resting heart rate, and workouts for a better guide.", "Kết nối giấc ngủ, HRV, nhịp tim lúc nghỉ và buổi tập để có gợi ý chính xác hơn.")
+            else -> tr("Choose mobility or an easy walk until more data is available.", "Chọn giãn cơ hoặc đi bộ nhẹ cho đến khi có thêm dữ liệu.")
         }
     }
 
@@ -452,12 +452,12 @@ private fun explanationFor(
         .take(3)
     if (meaningful.isEmpty()) {
         return if (state == ReadinessState.UNKNOWN) {
-            "There is not enough local data yet to explain readiness with confidence."
+            tr("There is not enough local data yet to explain readiness with confidence.", "Chưa đủ dữ liệu để giải thích mức sẵn sàng một cách chắc chắn.")
         } else {
-            "Your recommendation is based on the local signals available today."
+            tr("Your recommendation is based on the local signals available today.", "Gợi ý này dựa trên các chỉ số có được hôm nay.")
         }
     }
-    return "Your signals suggest this mainly because " +
+    return tr("Your signals suggest this mainly because ", "Gợi ý này chủ yếu vì ") +
         meaningful.joinToNaturalText { it.detail.toExplanationClause() } +
         "."
 }
@@ -469,38 +469,38 @@ private fun String.toExplanationClause(): String =
 
 private fun alternativeFor(state: ReadinessState): String =
     when (state) {
-        ReadinessState.READY -> "If you feel sore, reduce the plan to 30-45 min easy cardio or mobility."
-        ReadinessState.MODERATE -> "If you feel tired, choose a 30 min easy walk or easy ride instead."
-        ReadinessState.RECOVER -> "If you still want movement, keep it conversational and stop if it feels harder than expected."
-        ReadinessState.REST -> "If you feel unwell, rest or seek medical advice when needed."
-        ReadinessState.UNKNOWN -> "Start with a walk, mobility, or breathing session until more recovery data is available."
+        ReadinessState.READY -> tr("If you feel sore, reduce the plan to 30-45 min easy cardio or mobility.", "Nếu thấy đau mỏi, giảm xuống 30-45 phút cardio nhẹ hoặc giãn cơ.")
+        ReadinessState.MODERATE -> tr("If you feel tired, choose a 30 min easy walk or easy ride instead.", "Nếu thấy mệt, thay bằng 30 phút đi bộ hoặc đạp xe nhẹ.")
+        ReadinessState.RECOVER -> tr("If you still want movement, keep it conversational and stop if it feels harder than expected.", "Nếu vẫn muốn vận động, giữ nhịp vừa đủ để nói chuyện được và dừng lại nếu thấy nặng hơn dự kiến.")
+        ReadinessState.REST -> tr("If you feel unwell, rest or seek medical advice when needed.", "Nếu thấy không khỏe, hãy nghỉ ngơi hoặc hỏi ý kiến bác sĩ khi cần.")
+        ReadinessState.UNKNOWN -> tr("Start with a walk, mobility, or breathing session until more recovery data is available.", "Bắt đầu với đi bộ, giãn cơ hoặc bài thở cho đến khi có thêm dữ liệu hồi phục.")
     }
 
 private fun suggestedWorkoutFor(state: ReadinessState): String =
     when (state) {
-        ReadinessState.READY -> "Strength training, intervals, a long bike ride, or your normal planned workout."
-        ReadinessState.MODERATE -> "Zone 2 cardio, moderate strength, technique work, or an easy bike ride."
-        ReadinessState.RECOVER -> "Walk, stretching, mobility, breathing, or an early night."
-        ReadinessState.REST -> "Rest, gentle movement only, and symptom monitoring if you feel unwell."
-        ReadinessState.UNKNOWN -> "Easy walk, mobility, or light stretching."
+        ReadinessState.READY -> tr("Strength training, intervals, a long bike ride, or your normal planned workout.", "Tập sức mạnh, interval, đạp xe đường dài hoặc bài tập theo kế hoạch.")
+        ReadinessState.MODERATE -> tr("Zone 2 cardio, moderate strength, technique work, or an easy bike ride.", "Cardio vùng 2, tập sức mạnh vừa phải, tập kỹ thuật hoặc đạp xe nhẹ.")
+        ReadinessState.RECOVER -> tr("Walk, stretching, mobility, breathing, or an early night.", "Đi bộ, kéo giãn, giãn cơ, tập thở hoặc đi ngủ sớm.")
+        ReadinessState.REST -> tr("Rest, gentle movement only, and symptom monitoring if you feel unwell.", "Nghỉ ngơi, chỉ vận động nhẹ và theo dõi triệu chứng nếu thấy không khỏe.")
+        ReadinessState.UNKNOWN -> tr("Easy walk, mobility, or light stretching.", "Đi bộ nhẹ, giãn cơ hoặc kéo giãn nhẹ.")
     }
 
 private fun avoidFor(state: ReadinessState): String =
     when (state) {
-        ReadinessState.READY -> "Overreaching if you feel sore."
-        ReadinessState.MODERATE -> "Max effort, HIIT, and very long sessions."
-        ReadinessState.RECOVER -> "Hard cardio, heavy lifting, and long intense sessions."
-        ReadinessState.REST -> "Intense training today."
-        ReadinessState.UNKNOWN -> "Making a hard training decision from incomplete data."
+        ReadinessState.READY -> tr("Overreaching if you feel sore.", "Tập quá sức khi đang đau mỏi.")
+        ReadinessState.MODERATE -> tr("Max effort, HIIT, and very long sessions.", "Dốc toàn lực, HIIT và buổi tập quá dài.")
+        ReadinessState.RECOVER -> tr("Hard cardio, heavy lifting, and long intense sessions.", "Cardio nặng, nâng tạ nặng và buổi tập dài cường độ cao.")
+        ReadinessState.REST -> tr("Intense training today.", "Tập cường độ cao hôm nay.")
+        ReadinessState.UNKNOWN -> tr("Making a hard training decision from incomplete data.", "Quyết định tập nặng khi dữ liệu còn thiếu.")
     }
 
 private fun strainTargetFor(state: ReadinessState): String =
     when (state) {
-        ReadinessState.READY -> "Today's strain target: 10-14"
-        ReadinessState.MODERATE -> "Today's strain target: 7-10"
-        ReadinessState.RECOVER -> "Today's strain target: 3-6"
-        ReadinessState.REST -> "Today's strain target: 0-3"
-        ReadinessState.UNKNOWN -> "Today's strain target: 3-6"
+        ReadinessState.READY -> tr("Today's strain target: 10-14", "Mục tiêu gắng sức hôm nay: 10-14")
+        ReadinessState.MODERATE -> tr("Today's strain target: 7-10", "Mục tiêu gắng sức hôm nay: 7-10")
+        ReadinessState.RECOVER -> tr("Today's strain target: 3-6", "Mục tiêu gắng sức hôm nay: 3-6")
+        ReadinessState.REST -> tr("Today's strain target: 0-3", "Mục tiêu gắng sức hôm nay: 0-3")
+        ReadinessState.UNKNOWN -> tr("Today's strain target: 3-6", "Mục tiêu gắng sức hôm nay: 3-6")
     }
 
 private fun currentStrainFor(data: DashboardData): String? {
@@ -508,7 +508,7 @@ private fun currentStrainFor(data: DashboardData): String? {
     if (load.targetScore <= 0) return null
     val dailyTarget = (load.targetScore / 7.0).coerceAtLeast(1.0)
     val strain = (load.todayScore / dailyTarget * 7.0).coerceIn(0.0, 15.0)
-    return "Current strain: ${formatOneDecimal(strain)}"
+    return tr("Current strain: ${formatOneDecimal(strain)}", "Mức gắng sức hiện tại: ${formatOneDecimal(strain)}")
 }
 
 private fun adaptiveGoalFor(
@@ -518,16 +518,16 @@ private fun adaptiveGoalFor(
     val normalSteps = goals.stepsGoal.roundToNearestHundred()
     return when (state) {
         ReadinessState.READY -> {
-            "Adaptive goal: ${(goals.stepsGoal * 1.1).roundToNearestHundred()} steps + workout"
+            tr("Adaptive goal: ${(goals.stepsGoal * 1.1).roundToNearestHundred()} steps + workout", "Mục tiêu thích ứng: ${(goals.stepsGoal * 1.1).roundToNearestHundred()} bước + một buổi tập")
         }
         ReadinessState.MODERATE -> {
-            "Adaptive goal: $normalSteps steps + ${goals.activeMinutesGoal.roundToInt()} active minutes"
+            tr("Adaptive goal: $normalSteps steps + ${goals.activeMinutesGoal.roundToInt()} active minutes", "Mục tiêu thích ứng: $normalSteps bước + ${goals.activeMinutesGoal.roundToInt()} phút vận động")
         }
         ReadinessState.RECOVER -> {
-            "Adaptive goal: ${(goals.stepsGoal * 0.5).roundToNearestHundred()} steps + 15 min mobility"
+            tr("Adaptive goal: ${(goals.stepsGoal * 0.5).roundToNearestHundred()} steps + 15 min mobility", "Mục tiêu thích ứng: ${(goals.stepsGoal * 0.5).roundToNearestHundred()} bước + 15 phút giãn cơ")
         }
-        ReadinessState.REST -> "Adaptive goal: goals are reduced; focus on rest and hydration"
-        ReadinessState.UNKNOWN -> "Adaptive goal: keep movement light until more data is available"
+        ReadinessState.REST -> tr("Adaptive goal: goals are reduced; focus on rest and hydration", "Mục tiêu thích ứng: giảm mục tiêu, tập trung nghỉ ngơi và uống đủ nước")
+        ReadinessState.UNKNOWN -> tr("Adaptive goal: keep movement light until more data is available", "Mục tiêu thích ứng: vận động nhẹ cho đến khi có thêm dữ liệu")
     }
 }
 
@@ -553,6 +553,6 @@ private fun <T> List<T>.joinToNaturalText(transform: (T) -> String): String =
     when (size) {
         0 -> ""
         1 -> transform(first())
-        2 -> "${transform(this[0])} and ${transform(this[1])}"
-        else -> dropLast(1).joinToString(separator = ", ", transform = transform) + ", and " + transform(last())
+        2 -> tr("${transform(this[0])} and ${transform(this[1])}", "${transform(this[0])} và ${transform(this[1])}")
+        else -> dropLast(1).joinToString(separator = ", ", transform = transform) + tr(", and ", " và ") + transform(last())
     }

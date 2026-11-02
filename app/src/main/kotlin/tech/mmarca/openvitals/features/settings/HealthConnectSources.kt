@@ -20,7 +20,7 @@ data class HealthConnectSource(
         const val UNKNOWN_PACKAGE = "unknown"
 
         private val FRIENDLY_NAMES = mapOf(
-            "tech.mmarca.openvitals" to "OpenVitals (this app)",
+            "tech.mmarca.openvitals" to "NCHealth (this app)",
             "com.sec.android.app.shealth" to "Samsung Health",
             "com.google.android.apps.healthdata" to "Health Connect",
             "com.google.android.apps.fitness" to "Google Fit",

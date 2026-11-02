@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import tech.mmarca.openvitals.domain.insights.InsightLanguage
 import tech.mmarca.openvitals.features.dashboard.DashboardWidgetId
 import tech.mmarca.openvitals.core.geo.GeoUri
 import tech.mmarca.openvitals.core.geo.SharedGeoPoint
@@ -63,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // A language switch recreates the activity; the :domain sentences follow it here.
+        InsightLanguage.vietnamese = resources.configuration.locales[0].language == "vi"
         if (redirectHealthConnectOnboardingIfNeeded(intent)) {
             return
         }

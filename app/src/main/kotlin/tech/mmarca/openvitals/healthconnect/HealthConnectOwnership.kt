@@ -8,6 +8,6 @@ internal fun isOpenVitalsRecord(sourcePackageName: String, appPackageName: Strin
 internal fun Record.requireOpenVitalsOrigin(appPackageName: String) {
     val sourcePackageName = metadata.dataOrigin.packageName
     require(isOpenVitalsRecord(sourcePackageName, appPackageName)) {
-        "Only records created by OpenVitals can be edited."
+        "Only records created by NCHealth can be edited."
     }
 }

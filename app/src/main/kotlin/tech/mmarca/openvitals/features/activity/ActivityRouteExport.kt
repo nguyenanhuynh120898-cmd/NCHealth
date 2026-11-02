@@ -129,7 +129,7 @@ internal fun writeActivityRouteGpx(
     serializer.startDocument(Charsets.UTF_8.name(), true)
     serializer.startTag(null, "gpx")
     serializer.attribute(null, "version", "1.1")
-    serializer.attribute(null, "creator", "OpenVitals")
+    serializer.attribute(null, "creator", "NCHealth")
     serializer.attribute(null, "xmlns", GpxNamespace)
 
     serializer.startTag(null, "trk")

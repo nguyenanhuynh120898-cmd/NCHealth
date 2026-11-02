@@ -223,7 +223,7 @@ class CoMapsNavigationSource @Inject constructor(
         val packageName = launchPackage() ?: return false
         val intent = if (latitude != null && longitude != null) {
             Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("cm://map?v=1&ll=$latitude,$longitude&n=OpenVitals")
+                data = Uri.parse("cm://map?v=1&ll=$latitude,$longitude&n=NCHealth")
                 setPackage(packageName)
             }
         } else {

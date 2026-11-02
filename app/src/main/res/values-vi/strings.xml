@@ -1622,10 +1622,10 @@
     <string name="activity_recording_live_power">Công suất</string>
     <string name="activity_recording_live_speed">Tốc độ</string>
     <string name="activity_recording_notification_heart_rate">Nhịp tim %1$s</string>
-    <string name="settings_nutrition_group_title">Dinh dưỡng</string>
-    <string name="settings_nutrition_group_body">Dữ liệu calo và cá nhân hóa caffeine</string>
+    <string name="settings_nutrition_group_title">Nước uống và calo</string>
+    <string name="settings_nutrition_group_body">Mục tiêu nước mỗi ngày và dữ liệu calo</string>
     <string name="settings_body_profile_group_title">Hồ sơ cơ thể</string>
-    <string name="settings_body_profile_group_body">Tuổi, kích thước cơ thể và trao đổi chất</string>
+    <string name="settings_body_profile_group_body">Tuổi, kích thước cơ thể và BMR</string>
     <string name="settings_vitals_group_title">Chỉ số sống</string>
     <string name="settings_vitals_group_body">Phân loại huyết áp</string>
     <string name="settings_recovery_group_title">Phục hồi</string>
@@ -2677,8 +2677,8 @@
     <string name="settings_elevation_help_prompt">Bạn muốn biết lấy ô độ cao ở đâu? Xem tại:</string>
     <string name="settings_elevation_help_link">Mở hướng dẫn ô độ cao</string>
     <string name="section_support">Hỗ trợ</string>
-    <string name="settings_support_title">Ủng hộ OpenVitals</string>
-    <string name="settings_support_body">Báo lỗi, tham gia thảo luận cộng đồng hoặc ủng hộ kinh phí phát triển dự án gốc OpenVitals.</string>
+    <string name="settings_support_title">Ủng hộ NCHealth</string>
+    <string name="settings_support_body">Báo lỗi, tham gia thảo luận cộng đồng hoặc ủng hộ kinh phí phát triển dự án gốc NCHealth.</string>
     <string name="settings_support_issues_action">Báo lỗi</string>
     <string name="settings_support_discussion_action">Tham gia thảo luận Zulip</string>
     <string name="settings_support_action">Mở Liberapay</string>

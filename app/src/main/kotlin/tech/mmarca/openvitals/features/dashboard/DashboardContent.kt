@@ -54,6 +54,7 @@ internal fun dashboardVisibleWidgetIds(
 ): List<DashboardWidgetId> {
     val ordered = dashboardWidgets
         .filter { it in specIds }
+        .filterNot { it in UnmeasuredWidgets }
         // Only what the wearable records through Google Health; editing shows every placed tile
         // so it can be dragged or removed.
         .filter { isEditingDashboard || it.isRecordedBy(presentMetrics, display) }
@@ -87,13 +88,40 @@ internal fun DashboardWidgetId.isRecordedBy(
     else -> presentMetrics == null || toDashboardMetricOrNull()?.let { it in presentMetrics } ?: true
 }
 
+/**
+ * What a smartwatch or Fitbit Air can neither measure nor estimate: food and caffeine intake,
+ * body composition a scale would give, and readings that need a cuff, a meter or a thermometer.
+ * These never show, not even in the add tray. BMR stays, since Fitbit estimates it from the
+ * profile and the wearable's data; water stays, for its reminders and quick manual entry.
+ */
+internal val UnmeasuredWidgets = setOf(
+    DashboardWidgetId.CALORIES_IN,
+    DashboardWidgetId.PROTEIN,
+    DashboardWidgetId.CARBS,
+    DashboardWidgetId.FAT,
+    DashboardWidgetId.CAFFEINE,
+    DashboardWidgetId.BODY_FAT,
+    DashboardWidgetId.LEAN_MASS,
+    DashboardWidgetId.BONE_MASS,
+    DashboardWidgetId.BODY_WATER_MASS,
+    DashboardWidgetId.FFMI,
+    DashboardWidgetId.BLOOD_PRESSURE,
+    DashboardWidgetId.BLOOD_GLUCOSE,
+    DashboardWidgetId.BODY_TEMPERATURE,
+    DashboardWidgetId.MEDICAL_RECORDS,
+)
+
 /** The edit-mode add tray: everything the grid does not show, in layout order. */
 internal fun dashboardTrayWidgetIds(
     specIds: List<DashboardWidgetId>,
     visibleIds: List<DashboardWidgetId>,
     isEditingDashboard: Boolean,
 ): List<DashboardWidgetId> =
-    if (isEditingDashboard) specIds.filterNot { it in visibleIds } else emptyList()
+    if (isEditingDashboard) {
+        specIds.filterNot { it in visibleIds || it in UnmeasuredWidgets }
+    } else {
+        emptyList()
+    }
 
 /** Today's activities: the workout list wins; the lone workout is the fallback. */
 internal fun dashboardActivitiesForDay(data: DashboardData): List<ExerciseData> =
@@ -123,6 +151,7 @@ internal fun DashboardContent(
     onPreviousDay: () -> Unit,
     onNextDay: () -> Unit,
     onOpenCalendar: () -> Unit,
+    onSelectDate: (LocalDate) -> Unit = {},
     onMoveWidgetToTarget: (DashboardWidgetId, DashboardWidgetId) -> Unit,
     onRemoveWidget: (DashboardWidgetId) -> Unit,
     onAddWidget: (DashboardWidgetId) -> Unit,
@@ -240,6 +269,7 @@ internal fun DashboardContent(
                         onNextDay = onNextDay,
                         onOpenCalendar = onOpenCalendar,
                         onOpenSettings = onOpenSettings,
+                        onSelectDate = onSelectDate,
                         modifier = Modifier.staggeredEntrance(0).padding(
                             horizontal = DashboardScreenPadding,
                             vertical = 4.dp,

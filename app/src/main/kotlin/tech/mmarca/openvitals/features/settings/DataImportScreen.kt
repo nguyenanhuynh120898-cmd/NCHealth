@@ -64,7 +64,7 @@ fun DataImportScreen(
 
     fun copyImportText(text: String, message: String) {
         coroutineScope.launch {
-            clipboard.setSensitiveText("OpenVitals", text)
+            clipboard.setSensitiveText("NCHealth", text)
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }

@@ -1692,7 +1692,8 @@ internal fun UnitOverridesCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = Spacing.xs),
             )
-            UnitQuantity.entries.forEach { quantity ->
+            // No wearable reads blood glucose, so its unit has nothing to apply to.
+            UnitQuantity.entries.filterNot { it == UnitQuantity.BLOOD_GLUCOSE }.forEach { quantity ->
                 UnitOverrideRow(
                     quantity = quantity,
                     selected = overrides[quantity],
