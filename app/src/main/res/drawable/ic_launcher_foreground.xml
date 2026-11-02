@@ -1,12 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NCHealth: a layered paper heart with a cream cross. The tile colour is the adaptive
+     icon's background, light or dark with the system theme. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <!-- Heart: deepest layer, then the middle sheet, then the face. -->
+    <group
+        android:translateX="1.8"
+        android:translateY="2.4">
+        <path
+            android:fillColor="@color/nc_icon_heart_shadow"
+            android:pathData="M54,78 C40,68 30,60 30,48 C30,41 35.5,36 42,36 C47,36 51.5,39 54,43 C56.5,39 61,36 66,36 C72.5,36 78,41 78,48 C78,60 68,68 54,78 Z" />
+    </group>
+    <group
+        android:translateX="0.9"
+        android:translateY="1.2">
+        <path
+            android:fillColor="@color/nc_icon_heart_mid"
+            android:pathData="M54,78 C40,68 30,60 30,48 C30,41 35.5,36 42,36 C47,36 51.5,39 54,43 C56.5,39 61,36 66,36 C72.5,36 78,41 78,48 C78,60 68,68 54,78 Z" />
+    </group>
     <path
-        android:fillColor="@color/ic_launcher_background"
-        android:pathData="M48.05,43.03m-7.08,0a7.08,7.08 135,1 1,14.15 0a7.08,7.08 0,1 1,-14.15 0" />
+        android:fillColor="@color/nc_icon_heart"
+        android:pathData="M54,78 C40,68 30,60 30,48 C30,41 35.5,36 42,36 C47,36 51.5,39 54,43 C56.5,39 61,36 66,36 C72.5,36 78,41 78,48 C78,60 68,68 54,78 Z" />
+    <!-- Cross: an edge in shadow, then the cream face. -->
+    <group
+        android:translateX="1.1"
+        android:translateY="1.5">
+        <path
+            android:fillColor="@color/nc_icon_cross_shadow"
+            android:pathData="M42.3,45.5 H62.7 A2.8,2.8 0 0 1 65.5,48.3 V53.7 A2.8,2.8 0 0 1 62.7,56.5 H42.3 A2.8,2.8 0 0 1 39.5,53.7 V48.3 A2.8,2.8 0 0 1 42.3,45.5 Z" />
+        <path
+            android:fillColor="@color/nc_icon_cross_shadow"
+            android:pathData="M49.8,38 H55.2 A2.8,2.8 0 0 1 58,40.8 V61.2 A2.8,2.8 0 0 1 55.2,64 H49.8 A2.8,2.8 0 0 1 47,61.2 V40.8 A2.8,2.8 0 0 1 49.8,38 Z" />
+    </group>
     <path
-        android:fillColor="@color/ic_launcher_background"
-        android:pathData="m57.42,49.51 l-6.96,14.51a0.67,0.67 80.78,0 1,-1.16 0.07l-6.2,-9.73a5.06,5.06 78.23,0 0,-8.57 0.05l-2.76,4.45c-0.21,0.33 -0.69,0.59 -1.08,0.58 -1.43,-0.03 -4.91,-0.08 -9.17,0.04 -6.73,0.19 -9.23,2.43 -9.23,2.43l22.99,2.34a2.52,2.52 98.22,0 0,2.18 -0.88l0.75,-0.88a0.76,0.76 99.47,0 1,1.22 0.09l6.79,10.86a5.06,5.06 91.13,0 0,8.86 -0.51l7.38,-15.47a0.66,0.66 134.1,0 1,1.12 -0.11l7.64,10.22a5.84,5.84 83.47,0 0,8.85 0.59l4.83,-4.92a1.44,1.44 64.62,0 1,0.96 -0.43l18.43,-0.88A1.94,1.94 54.55,0 0,106.11 60l0,-1.34a1.46,1.46 49.68,0 0,-1.51 -1.46l-22.39,0.77a5.1,5.1 110.91,0 0,-3.61 1.68l-1.62,1.79a0.73,0.73 99.52,0 1,-1.12 -0.05l-9.65,-12.76a5.18,5.18 129.34,0 0,-8.8 0.88z" />
+        android:fillColor="@color/nc_icon_cross"
+        android:pathData="M42.3,45.5 H62.7 A2.8,2.8 0 0 1 65.5,48.3 V53.7 A2.8,2.8 0 0 1 62.7,56.5 H42.3 A2.8,2.8 0 0 1 39.5,53.7 V48.3 A2.8,2.8 0 0 1 42.3,45.5 Z" />
+    <path
+        android:fillColor="@color/nc_icon_cross"
+        android:pathData="M49.8,38 H55.2 A2.8,2.8 0 0 1 58,40.8 V61.2 A2.8,2.8 0 0 1 55.2,64 H49.8 A2.8,2.8 0 0 1 47,61.2 V40.8 A2.8,2.8 0 0 1 49.8,38 Z" />
 </vector>

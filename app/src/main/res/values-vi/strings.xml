@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">NCHealth</string>
 
+    <string name="greeting_morning">Chào buổi sáng</string>
+    <string name="greeting_noon">Chào buổi trưa</string>
+    <string name="greeting_afternoon">Chào buổi chiều</string>
+    <string name="greeting_evening">Chào buổi tối</string>
     <string name="cd_back">Quay lại</string>
     <string name="cd_settings">Cài đặt</string>
     <string name="cd_achievements">Thành tích</string>

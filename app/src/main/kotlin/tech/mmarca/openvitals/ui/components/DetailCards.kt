@@ -1,8 +1,13 @@
 package tech.mmarca.openvitals.ui.components
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -35,9 +40,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -55,6 +63,7 @@ val OpenVitalsMetricTileSpacing: Dp = 8.dp
 val OpenVitalsActionRowHeight: Dp = 48.dp
 val OpenVitalsSurfacePadding: PaddingValues = PaddingValues(12.dp)
 val OpenVitalsStandardRowSpacing: Dp = 8.dp
+private const val PressedCardScale = 0.97f
 
 enum class OpenVitalsCardStyle {
     Neutral,
@@ -103,9 +112,21 @@ fun OpenVitalsCard(
     val effectiveOnClick = onClick?.takeUnless { metricSectionEditModeActive() }
 
     if (effectiveOnClick != null) {
+        // A tappable card sinks a little under the finger and springs back on release.
+        val interactionSource = remember { MutableInteractionSource() }
+        val pressed by interactionSource.collectIsPressedAsState()
+        val pressScale by animateFloatAsState(
+            targetValue = if (pressed) PressedCardScale else 1f,
+            animationSpec = spring(dampingRatio = 0.6f, stiffness = Spring.StiffnessMediumLow),
+            label = "OpenVitalsCardPress",
+        )
         Card(
             onClick = effectiveOnClick,
-            modifier = modifier,
+            modifier = modifier.graphicsLayer {
+                scaleX = pressScale
+                scaleY = pressScale
+            },
+            interactionSource = interactionSource,
             shape = shape,
             colors = colors,
             elevation = elevation,

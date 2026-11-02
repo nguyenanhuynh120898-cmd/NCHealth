@@ -251,7 +251,10 @@ fun AppNavigation(
         Screen.Metric.route -> currentMetricId?.let { stringResource(metricTitleRes(it)) }
         else -> null
     }
+    // The summary greets by the time of day instead of naming the app.
+    val dashboardGreeting = if (currentRoute == Screen.Dashboard.route) timeOfDayGreeting() else null
     val topBarTitle = screenAppBar?.title
+        ?: dashboardGreeting
         ?: screenOwnTitle
         ?: detailRouteTitleRes(currentRoute)?.let { stringResource(it) }
         ?: Screen.titleResFor(currentRoute)?.let { stringResource(it) }

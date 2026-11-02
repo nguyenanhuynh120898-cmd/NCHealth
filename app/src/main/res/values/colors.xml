@@ -2,4 +2,12 @@
 <resources>
     <color name="ic_launcher_background">#FBD6AC</color>
     <color name="ic_launcher_foreground_accent">#5396a5</color>
+
+    <!-- NCHealth launcher icon. The tile turns deep teal under the dark theme (values-night). -->
+    <color name="nc_icon_tile">#7FCDB3</color>
+    <color name="nc_icon_heart">#F47462</color>
+    <color name="nc_icon_heart_mid">#EA5546</color>
+    <color name="nc_icon_heart_shadow">#D23F33</color>
+    <color name="nc_icon_cross">#FBF3E4</color>
+    <color name="nc_icon_cross_shadow">#E2D3BC</color>
 </resources>

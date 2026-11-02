@@ -1,5 +1,8 @@
 package tech.mmarca.openvitals.ui.components
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import tech.mmarca.openvitals.R
+import tech.mmarca.openvitals.ui.theme.Motion
 
 @Composable
 fun MetricCard(
@@ -130,11 +136,26 @@ fun MetricCardPlaceholder(
             if (showHeader) {
                 Spacer(Modifier.height(12.dp))
             }
-            Text(
-                text = message,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-            )
+            // "Loading…" is drawn as a shimmer; the real message crossfades in over it.
+            val loadingLabel = stringResource(R.string.loading)
+            Crossfade(
+                targetState = message,
+                animationSpec = tween(Motion.standardMillis),
+                label = "MetricCardPlaceholderMessage",
+            ) { shown ->
+                if (shown == loadingLabel) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        ShimmerLine(width = 180.dp)
+                        ShimmerLine(width = 120.dp)
+                    }
+                } else {
+                    Text(
+                        text = shown,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                    )
+                }
+            }
         }
     }
 }

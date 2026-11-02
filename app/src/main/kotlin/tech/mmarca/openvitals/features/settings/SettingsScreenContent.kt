@@ -79,6 +79,9 @@ internal fun LazyListScope.settingsScreenContent(
 private fun LazyListScope.settingsRootCards(actions: SettingsScreenActions) {
     SettingsSection.entries
         .filter { BuildConfig.OPENVITALS_DIAGNOSTICS || it != SettingsSection.DEBUG_DIAGNOSTICS }
+        // NCHealth reads its wearable through Google Health and Health Connect, so the
+        // direct Bluetooth device pages and phone-to-phone sync stay out of the list.
+        .filterNot { it in HiddenRootSections }
         .forEach { settingsSection ->
             item {
                 SettingsCategoryCard(
@@ -89,30 +92,17 @@ private fun LazyListScope.settingsRootCards(actions: SettingsScreenActions) {
             }
         }
 
-    item { SectionHeader(stringResource(R.string.section_support)) }
-
-    item {
-        SupportOpenVitalsCard(
-            onOpenIssues = actions.onOpenIssues,
-            onOpenDiscussion = actions.onOpenDiscussion,
-            onOpenSupport = actions.onOpenSupport,
-            modifier = Modifier.padding(horizontal = LayoutMetrics.screenGutter),
-        )
-    }
-
-    item { SectionHeader(stringResource(R.string.section_privacy)) }
-
-    item {
-        PrivacyInfoCard(
-            onOpenPrivacyPolicy = actions.onOpenPrivacyPolicy,
-            modifier = Modifier.padding(horizontal = LayoutMetrics.screenGutter),
-        )
-    }
-
     item {
         SettingsVersionText()
     }
 }
+
+private val HiddenRootSections = setOf(
+    SettingsSection.SENSORS,
+    SettingsSection.WATCHES,
+    SettingsSection.SCALES,
+    SettingsSection.DEVICE_SYNC,
+)
 
 private fun LazyListScope.healthConnectCards(
     section: SettingsSection,

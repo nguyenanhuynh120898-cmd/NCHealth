@@ -1,5 +1,13 @@
 package tech.mmarca.openvitals.features.dashboard.components
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,14 +25,20 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import tech.mmarca.openvitals.R
 import tech.mmarca.openvitals.core.presentation.DisplayValue
+import tech.mmarca.openvitals.ui.components.AnimatedMetricIcon
+import tech.mmarca.openvitals.ui.components.ShimmerLine
+import tech.mmarca.openvitals.ui.theme.Motion
 import tech.mmarca.openvitals.features.dashboard.dashboardDisplayValue
 import tech.mmarca.openvitals.ui.components.AutoResizeText
 import tech.mmarca.openvitals.ui.theme.Spacing
@@ -57,6 +71,8 @@ internal fun MetricStatCard(
         fallback = MaterialTheme.colorScheme.surfaceContainerHighest,
     )
     val progressFillColor = accentColor.copy(alpha = 0.55f)
+    // The tiles pass the "Loading…" label as their message; it is drawn as a shimmer instead.
+    val isLoading = message == stringResource(R.string.loading)
 
     OpenVitalsCard(
         modifier = modifier.fillMaxWidth(),
@@ -71,19 +87,12 @@ internal fun MetricStatCard(
                     .padding(horizontal = 12.dp, vertical = 10.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(MetricStatIconSize)
-                        .background(color = iconContainerColor, shape = CircleShape),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = accentColor,
-                        modifier = Modifier.size(MetricStatIconGlyphSize),
-                    )
-                }
+                AnimatedMetricIcon(
+                    icon = icon,
+                    accentColor = accentColor,
+                    containerColor = iconContainerColor,
+                    settled = !isLoading,
+                )
                 Spacer(Modifier.width(10.dp))
                 Column(
                     modifier = Modifier.weight(1f),
@@ -97,18 +106,38 @@ internal fun MetricStatCard(
                             maxLines = 1,
                         )
                     }
-                    AutoResizeText(
-                        text = message ?: dashboardDisplayValue(value),
-                        // titleMedium, measured off the shipping app; the design screenshot is stale.
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = if (message == null) {
-                            MaterialTheme.colorScheme.onSurface
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
+                    // A shimmer holds the value's place while it loads, then the value fades
+                    // and rises in; a later change of value slides over the old one.
+                    AnimatedContent(
+                        targetState = if (isLoading) null else (message ?: dashboardDisplayValue(value)),
+                        transitionSpec = {
+                            (fadeIn(tween(Motion.standardMillis)) +
+                                slideInVertically(tween(Motion.standardMillis)) { it / 3 }) togetherWith
+                                fadeOut(tween(Motion.pressMillis))
                         },
-                        maxLines = 1,
-                    )
+                        label = "MetricStatValue",
+                    ) { shown ->
+                        if (shown == null) {
+                            ShimmerLine(
+                                width = 72.dp,
+                                height = 18.dp,
+                                modifier = Modifier.padding(vertical = 3.dp),
+                            )
+                        } else {
+                            AutoResizeText(
+                                text = shown,
+                                // titleMedium, measured off the shipping app; the design screenshot is stale.
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = if (message == null) {
+                                    MaterialTheme.colorScheme.onSurface
+                                } else {
+                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                },
+                                maxLines = 1,
+                            )
+                        }
+                    }
                     if (message == null && subtitle != null) {
                         AutoResizeText(
                             text = subtitle,
@@ -124,11 +153,16 @@ internal fun MetricStatCard(
                 }
             }
             if (progressFraction != null) {
+                val animatedFraction by animateFloatAsState(
+                    targetValue = progressFraction.coerceIn(0f, 1f),
+                    animationSpec = tween(Motion.revealMillis, easing = FastOutSlowInEasing),
+                    label = "MetricStatProgress",
+                )
                 Box(
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .height(MetricStatProgressHeight)
-                        .fillMaxWidth(progressFraction.coerceIn(0f, 1f))
+                        .fillMaxWidth(animatedFraction)
                         .clip(MaterialTheme.shapes.extraSmall)
                         .background(progressFillColor),
                 )
