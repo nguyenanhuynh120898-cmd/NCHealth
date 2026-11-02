@@ -123,6 +123,5 @@ private fun AppColorTheme.labelRes(): Int = when (this) {
     AppColorTheme.TEAL -> R.string.color_theme_teal
     AppColorTheme.OCEAN -> R.string.color_theme_ocean
     AppColorTheme.SUNSET -> R.string.color_theme_sunset
-    AppColorTheme.LAVENDER -> R.string.color_theme_lavender
     AppColorTheme.FOREST -> R.string.color_theme_forest
 }

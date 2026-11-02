@@ -99,6 +99,7 @@ import sh.calvin.reorderable.rememberReorderableLazyStaggeredGridState
 import tech.mmarca.openvitals.ui.theme.Motion
 import tech.mmarca.openvitals.ui.theme.loopingMotionAllowed
 import tech.mmarca.openvitals.R
+import tech.mmarca.openvitals.ui.components.staggeredEntrance
 import tech.mmarca.openvitals.domain.insights.SleepScoreConfidence
 import tech.mmarca.openvitals.core.presentation.DateTimeFormatterProvider
 import tech.mmarca.openvitals.core.presentation.DisplayValue
@@ -443,6 +444,8 @@ internal fun DashboardWidgetTile(
 
     Box(
         modifier = modifier
+            // Tiles arrive in a short cascade after the hero.
+            .staggeredEntrance(3 + spec.id.ordinal % 4)
             .zIndex(if (isDragging) 1f else 0f)
             .graphicsLayer {
                 alpha = if (hideContent) 0f else 1f

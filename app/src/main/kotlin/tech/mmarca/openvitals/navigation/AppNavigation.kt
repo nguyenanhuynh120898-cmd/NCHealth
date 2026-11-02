@@ -6,9 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Dashboard
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.SelfImprovement
-import androidx.compose.material.icons.outlined.WorkspacePremium
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Composable
@@ -190,8 +188,10 @@ fun AppNavigation(
     val isActivityEntryRoute =
         currentRoute == Screen.ActivityEntry.basePath ||
             currentRoute == Screen.ActivityEntryEdit.basePath
+    // The summary has no top bar: its settings sit beside the calendar, Claude in its own card.
     val showTopBar = currentRoute != null &&
         currentRoute != Screen.Onboarding.route &&
+        currentRoute != Screen.Dashboard.route &&
         screenAppBar?.hidesAppBar != true
     val showNavigation =
         topLevelDestinations.size > 1 && currentRoute?.let { it in topLevelRoutes } == true
@@ -310,47 +310,17 @@ fun AppNavigation(
                     )
                 }
             }
-            if (currentRoute == Screen.Dashboard.route) {
-                OpenVitalsIconButton(
-                    onClick = { navController.navigate(Screen.Assistant.route) { launchSingleTop = true } },
-                ) {
-                    Icon(
-                        painter = androidx.compose.ui.res.painterResource(R.drawable.ic_assistant_spark),
-                        contentDescription = stringResource(R.string.assistant_title),
-                        tint = androidx.compose.ui.graphics.Color.Unspecified,
-                    )
-                }
-                OpenVitalsIconButton(
-                    onClick = {
-                        navController.navigate(Screen.Achievements.route) {
-                            launchSingleTop = true
-                        }
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.WorkspacePremium,
-                        contentDescription = stringResource(R.string.cd_achievements),
-                    )
-                }
-                OpenVitalsIconButton(
-                    onClick = {
-                        navController.navigate(Screen.Settings.route) {
-                            launchSingleTop = true
-                        }
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Settings,
-                        contentDescription = stringResource(R.string.cd_settings),
-                    )
-                }
-            }
         },
     ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = startDestination,
             modifier = Modifier.padding(innerPadding),
+            // Screens glide: the new one slides in a little and fades up, the old one eases back.
+            enterTransition = { screenEnterTransition() },
+            exitTransition = { screenExitTransition() },
+            popEnterTransition = { screenPopEnterTransition() },
+            popExitTransition = { screenPopExitTransition() },
         ) {
             composable(Screen.Onboarding.route) {
                 val onboardingViewModel = hiltViewModel<OnboardingViewModel>()
@@ -383,6 +353,8 @@ fun AppNavigation(
                     onOpenActivities = {
                         navController.navigate(Screen.Activity.route)
                     },
+                    onOpenAssistant = { navController.navigate(Screen.Assistant.route) { launchSingleTop = true } },
+                    onOpenSettings = { navController.navigate(Screen.Settings.route) { launchSingleTop = true } },
                     onOpenActivity = { activityId ->
                         navController.navigate(Screen.ActivityDetail.createRoute(activityId))
                     },

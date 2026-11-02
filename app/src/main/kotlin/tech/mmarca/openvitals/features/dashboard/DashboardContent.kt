@@ -4,10 +4,14 @@ import tech.mmarca.openvitals.domain.model.DashboardMetric
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.text.font.FontWeight
-import tech.mmarca.openvitals.navigation.timeOfDayGreeting
+import tech.mmarca.openvitals.features.assistant.AssistantBriefCard
+import tech.mmarca.openvitals.ui.components.staggeredEntrance
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -124,6 +128,8 @@ internal fun DashboardContent(
     onOpenMetric: (DashboardWidgetId) -> Unit,
     onSyncWatch: () -> Unit = {},
     onOpenActivities: () -> Unit,
+    onOpenAssistant: () -> Unit = {},
+    onOpenSettings: () -> Unit = {},
     onOpenActivity: (String) -> Unit,
     onEditActivity: (String) -> Unit,
     onDeleteActivity: (String) -> Unit,
@@ -217,8 +223,10 @@ internal fun DashboardContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
+                // No top bar on the summary: the list starts below the status bar and scrolls under it.
                 contentPadding = PaddingValues(
-                    top = DashboardScrollTopPadding,
+                    top = DashboardScrollTopPadding +
+                        WindowInsets.statusBars.asPaddingValues().calculateTopPadding(),
                     bottom = DashboardScrollBottomPadding,
                 ),
             ) {
@@ -230,24 +238,23 @@ internal fun DashboardContent(
                         onPreviousDay = onPreviousDay,
                         onNextDay = onNextDay,
                         onOpenCalendar = onOpenCalendar,
-                        modifier = Modifier.padding(
+                        onOpenSettings = onOpenSettings,
+                        modifier = Modifier.staggeredEntrance(0).padding(
                             horizontal = DashboardScreenPadding,
                             vertical = 4.dp,
                         ),
                     )
                 }
 
-                // The greeting sits under the day, set back so the date stays the headline.
-                item(key = "greeting") {
-                    Text(
-                        text = timeOfDayGreeting(),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Medium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                // Claude speaks first: its latest check-in, or its greeting until there is one.
+                item(key = "assistant_brief") {
+                    AssistantBriefCard(
+                        onOpenAssistant = onOpenAssistant,
                         modifier = Modifier
+                            .staggeredEntrance(1)
                             .animateItem()
                             .padding(horizontal = DashboardScreenPadding)
-                            .padding(top = 2.dp, bottom = 10.dp),
+                            .padding(top = 4.dp, bottom = 12.dp),
                     )
                 }
 
@@ -256,6 +263,7 @@ internal fun DashboardContent(
                         data = data,
                         display = display,
                         modifier = Modifier
+                            .staggeredEntrance(2)
                             .animateItem()
                             .padding(horizontal = DashboardScreenPadding)
                             .padding(bottom = 12.dp),

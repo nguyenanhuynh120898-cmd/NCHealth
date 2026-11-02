@@ -142,8 +142,10 @@ class AssistantRepository @Inject constructor(
         }
         return """
             $focus
-            Start with two scored lines: overall health right now out of 10, and readiness right now
-            out of 100, each with a one-line reason. Then 2 to 4 concrete recommendations for the next
+            Open with one short, warm greeting to the person that suits the time of day, then give the
+            single most useful piece of health advice for right now in one or two sentences. After
+            that, two scored lines: overall health right now out of 10, and readiness right now out of
+            100, each with a one-line reason. End with 2 to 4 concrete recommendations for the next
             few hours.
         """.trimIndent()
     }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ChevronLeft
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material3.DatePicker
@@ -37,6 +38,8 @@ fun DayNavigator(
     onNextDay: () -> Unit,
     onOpenCalendar: () -> Unit,
     modifier: Modifier = Modifier,
+    /** The summary keeps its settings button here, beside the calendar, instead of in a top bar. */
+    onOpenSettings: (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -92,6 +95,15 @@ fun DayNavigator(
                     imageVector = Icons.Outlined.CalendarMonth,
                     contentDescription = stringResource(R.string.cd_open_calendar),
                 )
+            }
+
+            onOpenSettings?.let { openSettings ->
+                OpenVitalsIconSurfaceButton(onClick = openSettings) {
+                    Icon(
+                        imageVector = Icons.Outlined.Settings,
+                        contentDescription = stringResource(R.string.cd_settings),
+                    )
+                }
             }
         }
     }

@@ -3991,6 +3991,11 @@
     <string name="color_theme_teal">Ngọc</string>
     <string name="color_theme_ocean">Đại dương</string>
     <string name="color_theme_sunset">Hoàng hôn</string>
-    <string name="color_theme_lavender">Oải hương</string>
     <string name="color_theme_forest">Rừng</string>
+    <string name="assistant_brief_more">Xem thêm</string>
+    <string name="assistant_brief_less">Thu gọn</string>
+    <string name="assistant_brief_ask">Hỏi Claude</string>
+    <string name="assistant_brief_first">Hôm nay mình chưa đánh giá. Bấm bên dưới để Claude xem số liệu của bạn.</string>
+    <string name="assistant_brief_setup_body">Mình là Claude. Thêm khóa Claude API để mình đọc số liệu từ thiết bị đeo và gợi ý cho bạn 4 lần mỗi ngày.</string>
+    <string name="assistant_brief_setup_action">Thiết lập</string>
 </resources>

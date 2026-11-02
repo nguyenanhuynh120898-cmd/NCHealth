@@ -4097,6 +4097,11 @@
     <string name="color_theme_teal">Jade</string>
     <string name="color_theme_ocean">Ocean</string>
     <string name="color_theme_sunset">Sunset</string>
-    <string name="color_theme_lavender">Lavender</string>
     <string name="color_theme_forest">Forest</string>
+    <string name="assistant_brief_more">See more</string>
+    <string name="assistant_brief_less">Show less</string>
+    <string name="assistant_brief_ask">Ask Claude</string>
+    <string name="assistant_brief_first">There is no check-in for today yet. Tap below and Claude will read your numbers.</string>
+    <string name="assistant_brief_setup_body">I am Claude. Add your Claude API key and I will read your wearable data and give you advice four times a day.</string>
+    <string name="assistant_brief_setup_action">Set up</string>
 </resources>

@@ -29,10 +29,6 @@ enum class AppColorTheme(
         Color(0xFFC2552F), Color(0xFFFFB59A), Color(0xFFFFDBCF), Color(0xFF7A2E14),
         listOf(Color(0xFFF7A985), Color(0xFFF47462), Color(0xFFF5C66B)),
     ),
-    LAVENDER(
-        Color(0xFF6A55C2), Color(0xFFC8BCFF), Color(0xFFE6DEFF), Color(0xFF4A3A93),
-        listOf(Color(0xFFB7A6F2), Color(0xFF8A73E6), Color(0xFFF2A6C9)),
-    ),
     FOREST(
         Color(0xFF3E7D3A), Color(0xFF9FD68F), Color(0xFFD6F0CD), Color(0xFF24521F),
         listOf(Color(0xFFA6D99A), Color(0xFF5FA857), Color(0xFFE3D27A)),
