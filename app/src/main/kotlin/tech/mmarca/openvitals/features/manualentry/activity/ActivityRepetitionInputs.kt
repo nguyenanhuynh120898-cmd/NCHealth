@@ -234,6 +234,8 @@ private fun StepRow(
                 listOf(false to R.string.workout_plan_goal_reps, true to R.string.workout_plan_goal_seconds)
                     .forEachIndexed { buttonIndex, (isDuration, labelRes) ->
                         SegmentedButton(
+                            // The fill colour marks the choice; no check mark.
+                            icon = {},
                             selected = set.isDuration == isDuration,
                             onClick = { onGoalTypeChanged(isDuration) },
                             enabled = enabled,

@@ -363,6 +363,8 @@ internal fun <T> SplitSelector(
         SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
             options.forEachIndexed { index, option ->
                 SegmentedButton(
+                    // The fill colour marks the choice; no check mark.
+                    icon = {},
                     selected = selected == option,
                     onClick = { onSelect(option) },
                     shape = SegmentedButtonDefaults.itemShape(

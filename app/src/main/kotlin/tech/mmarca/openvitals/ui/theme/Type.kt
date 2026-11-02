@@ -3,9 +3,12 @@ package tech.mmarca.openvitals.ui.theme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.sp
+import tech.mmarca.openvitals.R
 
 /**
  * Every style claims its full line-height box, as Flutter's `Text` does.
@@ -22,7 +25,7 @@ private fun TextStyle.withFullLineHeight(): TextStyle = copy(
     platformStyle = PlatformTextStyle(includeFontPadding = false),
 )
 
-val AppTypography = Typography(
+private val BaseTypography = Typography(
     headlineLarge = TextStyle(
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
@@ -93,3 +96,34 @@ val AppTypography = Typography(
         letterSpacing = 0.5.sp,
     ).withFullLineHeight(),
 )
+
+/**
+ * Be Vietnam Pro, bundled so the app reads the same on every phone and every Vietnamese
+ * diacritic is drawn by a face designed for it (SIL Open Font License, see assets/licenses).
+ */
+val BeVietnamPro = FontFamily(
+    Font(R.font.be_vietnam_pro_regular, FontWeight.Normal),
+    Font(R.font.be_vietnam_pro_medium, FontWeight.Medium),
+    Font(R.font.be_vietnam_pro_semibold, FontWeight.SemiBold),
+    Font(R.font.be_vietnam_pro_bold, FontWeight.Bold),
+)
+
+val AppTypography = BaseTypography.run {
+    Typography(
+        displayLarge = displayLarge.copy(fontFamily = BeVietnamPro),
+        displayMedium = displayMedium.copy(fontFamily = BeVietnamPro),
+        displaySmall = displaySmall.copy(fontFamily = BeVietnamPro),
+        headlineLarge = headlineLarge.copy(fontFamily = BeVietnamPro),
+        headlineMedium = headlineMedium.copy(fontFamily = BeVietnamPro),
+        headlineSmall = headlineSmall.copy(fontFamily = BeVietnamPro),
+        titleLarge = titleLarge.copy(fontFamily = BeVietnamPro),
+        titleMedium = titleMedium.copy(fontFamily = BeVietnamPro),
+        titleSmall = titleSmall.copy(fontFamily = BeVietnamPro),
+        bodyLarge = bodyLarge.copy(fontFamily = BeVietnamPro),
+        bodyMedium = bodyMedium.copy(fontFamily = BeVietnamPro),
+        bodySmall = bodySmall.copy(fontFamily = BeVietnamPro),
+        labelLarge = labelLarge.copy(fontFamily = BeVietnamPro),
+        labelMedium = labelMedium.copy(fontFamily = BeVietnamPro),
+        labelSmall = labelSmall.copy(fontFamily = BeVietnamPro),
+    )
+}

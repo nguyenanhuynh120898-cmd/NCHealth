@@ -256,6 +256,8 @@ private fun WorkoutPlanStepRow(
                 SingleChoiceSegmentedButtonRow(modifier = Modifier.weight(1f)) {
                     GoalChoice.entries.forEachIndexed { index, choice ->
                         SegmentedButton(
+                            // The fill colour marks the choice; no check mark.
+                            icon = {},
                             selected = selected == choice,
                             onClick = {
                                 when (choice) {
@@ -366,6 +368,8 @@ private fun DurationUnitButtons(
     SingleChoiceSegmentedButtonRow(modifier = modifier) {
         WorkoutPlanDurationUnit.entries.forEachIndexed { index, choice ->
             SegmentedButton(
+                // The fill colour marks the choice; no check mark.
+                icon = {},
                 selected = unit == choice,
                 onClick = { onUnitChanged(choice) },
                 enabled = enabled,

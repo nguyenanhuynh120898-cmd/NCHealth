@@ -541,6 +541,8 @@ internal fun ThemeModeCard(
             ) {
                 AppThemeMode.entries.forEachIndexed { index, mode ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = selected == mode,
                         onClick = { onSelect(mode) },
                         shape = SegmentedButtonDefaults.itemShape(
@@ -692,6 +694,8 @@ internal fun HomeWidgetRefreshCard(
             ) {
                 HomeWidgetRefreshInterval.entries.forEachIndexed { index, interval ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = selected == interval,
                         onClick = { onSelect(interval) },
                         shape = SegmentedButtonDefaults.itemShape(
@@ -746,6 +750,8 @@ internal fun ActivityWeekModeCard(
             ) {
                 ActivityWeekMode.entries.forEachIndexed { index, mode ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = selected == mode,
                         onClick = { onSelect(mode) },
                         shape = SegmentedButtonDefaults.itemShape(
@@ -1168,6 +1174,8 @@ private fun OfflineMapRenderFormatSelector(
             OfflineMapPackFormat.entries.forEachIndexed { index, format ->
                 val packCount = mapPacks.count { it.format == format }
                 SegmentedButton(
+                    // The fill colour marks the choice; no check mark.
+                    icon = {},
                     selected = activeFormat == format,
                     enabled = packCount > 0,
                     onClick = { onSelect(format) },
@@ -1299,6 +1307,8 @@ private fun ActivityRecordingSegmentedChoice(
         ) {
             options.forEachIndexed { index, value ->
                 SegmentedButton(
+                    // The fill colour marks the choice; no check mark.
+                    icon = {},
                     selected = selected == value,
                     enabled = enabled,
                     onClick = { onSelect(value) },
@@ -1332,6 +1342,8 @@ private fun ActivityRecordingRouteGapChoice(
         ) {
             options.forEachIndexed { index, value ->
                 SegmentedButton(
+                    // The fill colour marks the choice; no check mark.
+                    icon = {},
                     selected = selected == value,
                     onClick = { onSelect(value) },
                     shape = SegmentedButtonDefaults.itemShape(
@@ -1421,6 +1433,8 @@ private fun ActivityRecordingNullableChoice(
         ) {
             allOptions.forEachIndexed { index, value ->
                 SegmentedButton(
+                    // The fill colour marks the choice; no check mark.
+                    icon = {},
                     selected = selected == value,
                     enabled = enabled,
                     onClick = { onSelect(value) },
@@ -1594,6 +1608,8 @@ internal fun ActivitySplitDistanceCard(
             ) {
                 presets.forEachIndexed { index, presetMeters ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = selectedPreset == presetMeters,
                         onClick = { onSelect(presetMeters) },
                         shape = SegmentedButtonDefaults.itemShape(
@@ -1634,6 +1650,8 @@ internal fun UnitSystemCard(
             ) {
                 UnitSystemPreference.entries.forEachIndexed { index, preference ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = selected == preference,
                         onClick = { onSelect(preference) },
                         shape = SegmentedButtonDefaults.itemShape(

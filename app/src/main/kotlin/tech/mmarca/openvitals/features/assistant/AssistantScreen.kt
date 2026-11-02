@@ -22,11 +22,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -49,6 +47,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -148,9 +148,10 @@ private fun AssistantHeader(
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                imageVector = Icons.Outlined.AutoAwesome,
+                painter = painterResource(R.drawable.ic_assistant_spark),
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = Color.Unspecified,
+                modifier = Modifier.size(28.dp),
             )
             Spacer(Modifier.width(8.dp))
             Text(
@@ -215,6 +216,8 @@ private fun AssistantSettingsCard(config: AssistantConfig, viewModel: AssistantV
             SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                 AssistantModel.entries.forEachIndexed { index, model ->
                     SegmentedButton(
+                        // The fill colour marks the choice; no check mark.
+                        icon = {},
                         selected = config.model == model,
                         onClick = { viewModel.setModel(model) },
                         shape = SegmentedButtonDefaults.itemShape(index, AssistantModel.entries.size),
@@ -274,7 +277,7 @@ private fun ChatBubble(turn: AssistantTurn, modifier: Modifier = Modifier) {
                 .widthIn(max = 320.dp)
                 .background(
                     color = if (turn.fromUser) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
-                    shape = RoundedCornerShape(18.dp),
+                    shape = MaterialTheme.shapes.medium,
                 )
                 .padding(horizontal = 14.dp, vertical = 10.dp),
         )
@@ -325,7 +328,7 @@ private fun AskBar(question: String, onQuestionChange: (String) -> Unit, enabled
             value = question,
             onValueChange = onQuestionChange,
             placeholder = { Text(stringResource(R.string.assistant_ask_hint)) },
-            shape = RoundedCornerShape(24.dp),
+            shape = MaterialTheme.shapes.large,
             maxLines = 4,
             modifier = Modifier.weight(1f),
         )

@@ -8,7 +8,6 @@ import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Dashboard
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.SelfImprovement
-import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material.icons.outlined.WorkspacePremium
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.LaunchedEffect
@@ -316,9 +315,9 @@ fun AppNavigation(
                     onClick = { navController.navigate(Screen.Assistant.route) { launchSingleTop = true } },
                 ) {
                     Icon(
-                        imageVector = Icons.Outlined.AutoAwesome,
+                        painter = androidx.compose.ui.res.painterResource(R.drawable.ic_assistant_spark),
                         contentDescription = stringResource(R.string.assistant_title),
-                        tint = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+                        tint = androidx.compose.ui.graphics.Color.Unspecified,
                     )
                 }
                 OpenVitalsIconButton(

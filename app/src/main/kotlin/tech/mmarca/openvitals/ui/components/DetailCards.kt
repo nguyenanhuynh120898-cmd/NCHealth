@@ -45,7 +45,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -64,6 +66,21 @@ val OpenVitalsActionRowHeight: Dp = 48.dp
 val OpenVitalsSurfacePadding: PaddingValues = PaddingValues(12.dp)
 val OpenVitalsStandardRowSpacing: Dp = 8.dp
 private const val PressedCardScale = 0.97f
+private const val GlassAlphaLight = 0.66f
+private const val GlassAlphaDark = 0.58f
+
+/** Whether the cards sit on a dark ground; the glass is a touch thinner there. */
+@Composable
+private fun isSystemInDarkThemeOrAmoled(): Boolean = MaterialTheme.colorScheme.background.luminance() < 0.5f
+
+/** The glass hairline: bright along the top edge, almost gone at the bottom. */
+@Composable
+fun glassEdgeBorder(): BorderStroke {
+    val dark = isSystemInDarkThemeOrAmoled()
+    val top = Color.White.copy(alpha = if (dark) 0.22f else 0.9f)
+    val bottom = Color.White.copy(alpha = if (dark) 0.04f else 0.25f)
+    return BorderStroke(1.dp, Brush.verticalGradient(listOf(top, bottom)))
+}
 
 enum class OpenVitalsCardStyle {
     Neutral,
@@ -108,7 +125,15 @@ fun OpenVitalsCard(
         else -> MaterialTheme.colorScheme.surfaceContainer
     }
 
-    val colors = CardDefaults.cardColors(containerColor = resolvedContainerColor)
+    // Liquid glass: an opaque card turns translucent over the screen's tinted ground, and a
+    // hairline that is bright at the top and fades down catches the light like a glass edge.
+    val glassColor = if (resolvedContainerColor.alpha == 1f && style != OpenVitalsCardStyle.Error) {
+        resolvedContainerColor.copy(alpha = if (isSystemInDarkThemeOrAmoled()) GlassAlphaDark else GlassAlphaLight)
+    } else {
+        resolvedContainerColor
+    }
+    val colors = CardDefaults.cardColors(containerColor = glassColor)
+    val glassEdge = glassEdgeBorder()
     val effectiveOnClick = onClick?.takeUnless { metricSectionEditModeActive() }
 
     if (effectiveOnClick != null) {
@@ -130,6 +155,7 @@ fun OpenVitalsCard(
             shape = shape,
             colors = colors,
             elevation = elevation,
+            border = glassEdge,
         ) {
             content()
         }
@@ -139,6 +165,7 @@ fun OpenVitalsCard(
             shape = shape,
             colors = colors,
             elevation = elevation,
+            border = glassEdge,
         ) {
             content()
         }

@@ -9,7 +9,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -67,7 +67,7 @@ fun ShimmerLine(
         modifier = modifier
             .width(width)
             .height(height)
-            .clip(RoundedCornerShape(height / 2))
+            .clip(CircleShape)
             .shimmer(),
     )
 }

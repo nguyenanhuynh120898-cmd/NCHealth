@@ -64,22 +64,18 @@ class DesignSystemConformanceTest {
     // Shape.
 
     @Test
-    fun `the card corner is 12dp`() {
-        // Finding F10: OpenVitals cards draw a 12dp corner. The old 16 never matched a shipped pixel.
-        assertThat(Radii.md).isEqualTo(12.dp)
+    fun `the card corner is 22dp`() {
+        // NCHealth's liquid-glass cards round further than OpenVitals' 12dp.
+        assertThat(Radii.md).isEqualTo(22.dp)
     }
 
     @Test
-    fun `the radius scale matches, including the deliberate duplicate`() {
+    fun `the radius scale matches`() {
         assertThat(Radii.xs).isEqualTo(8.dp)
-        assertThat(Radii.sm).isEqualTo(12.dp)
-        assertThat(Radii.md).isEqualTo(12.dp)
-        assertThat(Radii.lg).isEqualTo(24.dp)
+        assertThat(Radii.sm).isEqualTo(14.dp)
+        assertThat(Radii.md).isEqualTo(22.dp)
+        assertThat(Radii.lg).isEqualTo(28.dp)
         assertThat(Radii.xl).isEqualTo(32.dp)
-        // sm and md coincide on purpose. Two names so they can diverge later; do not fold them.
-        assertWithMessage("sm and md are documented as coinciding")
-            .that(Radii.sm)
-            .isEqualTo(Radii.md)
     }
 
     // Typography.

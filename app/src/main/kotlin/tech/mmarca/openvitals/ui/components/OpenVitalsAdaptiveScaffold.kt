@@ -83,7 +83,10 @@ fun OpenVitalsAdaptiveScaffold(
             modifier = modifier.fillMaxSize(),
             // The scaffold's ground shows through the top bar and the bottom inset,
             // so a screen with its own background must say what surrounds it.
-            containerColor = containerColor ?: MaterialTheme.colorScheme.background,
+            // Transparent by default, so the tinted aurora ground shows through the glass cards.
+            containerColor = containerColor ?: Color.Transparent,
+            // A transparent container has no content colour of its own; text follows the theme.
+            contentColor = MaterialTheme.colorScheme.onBackground,
             // The navigation-bar inset only: the top bar carries its own, and the
             // bottom navigation pads itself. Fixes screens without that bar.
             contentWindowInsets = WindowInsets.navigationBars,
@@ -180,6 +183,7 @@ fun OpenVitalsAdaptiveScaffold(
     }
     val groundColor = containerColor ?: MaterialTheme.colorScheme.background
     Box(modifier = Modifier.fillMaxSize()) {
+        if (containerColor == null) AuroraBackground(Modifier.fillMaxSize())
         scaffoldContent()
         // The app draws edge to edge. A veil of the screen's own ground sits under the status
         // bar, so scrolled content fades out beneath the clock and icons instead of colliding.

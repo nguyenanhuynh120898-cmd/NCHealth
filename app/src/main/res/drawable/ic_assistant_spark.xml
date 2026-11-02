@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The assistant's mark: an original spark in Claude's warm terracotta. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M13.58,12.22 L21.41,13.32 M13.26,12.99 L17.67,16.43 M12.60,13.48 L15.37,20.34 M11.78,13.58 L10.91,19.72 M11.01,13.26 L6.09,19.56 M10.52,12.60 L5.51,14.62 M10.42,11.78 L3.29,10.78 M10.74,11.01 L6.01,7.32 M11.40,10.52 L8.52,3.38 M12.22,10.42 L13.03,4.67 M12.99,10.74 L17.60,4.83 M13.48,11.40 L19.32,9.04"
+        android:strokeColor="#D97757"
+        android:strokeWidth="2.1"
+        android:strokeLineCap="round" />
+</vector>

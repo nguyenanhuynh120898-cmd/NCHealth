@@ -604,6 +604,7 @@ private fun AutoSyncCard(
             ) {
                 AutoSyncInterval.entries.forEachIndexed { index, interval ->
                     SegmentedButton(
+                        icon = {},
                         selected = selected == interval,
                         onClick = { onSelect(interval) },
                         shape = SegmentedButtonDefaults.itemShape(

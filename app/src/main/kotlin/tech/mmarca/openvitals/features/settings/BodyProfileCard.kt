@@ -139,6 +139,8 @@ private fun BodyProfileSexField(
     ) {
         options.forEachIndexed { index, option ->
             SegmentedButton(
+                // The fill colour marks the choice; no check mark.
+                icon = {},
                 selected = option == selected,
                 onClick = { onSelect(option) },
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),

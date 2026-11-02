@@ -5,6 +5,7 @@
 
     <!-- NCHealth launcher icon. The tile turns deep teal under the dark theme (values-night). -->
     <color name="nc_icon_tile">#7FCDB3</color>
+    <color name="nc_icon_ground">#FEF9EC</color>
     <color name="nc_icon_heart">#F47462</color>
     <color name="nc_icon_heart_mid">#EA5546</color>
     <color name="nc_icon_heart_shadow">#D23F33</color>

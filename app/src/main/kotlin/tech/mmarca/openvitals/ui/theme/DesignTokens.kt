@@ -17,21 +17,21 @@ object Spacing {
 }
 
 /**
- * Corner radii. [sm] and [md] are both 12dp today; both names exist so they
- * can diverge later. Prefer `MaterialTheme.shapes` where a component takes one.
+ * Corner radii, rounded for NCHealth's liquid-glass cards. Prefer
+ * `MaterialTheme.shapes` where a component takes one.
  */
 object Radii {
     /** Progress fills, tiny chips. */
     val xs: Dp = 8.dp
 
     /** Inputs, drink rows. */
-    val sm: Dp = 12.dp
+    val sm: Dp = 14.dp
 
     /** The default card corner. */
-    val md: Dp = 12.dp
+    val md: Dp = 22.dp
 
     /** Segmented pills, selectors. */
-    val lg: Dp = 24.dp
+    val lg: Dp = 28.dp
 
     /** Hero and onboarding cards. */
     val xl: Dp = 32.dp
