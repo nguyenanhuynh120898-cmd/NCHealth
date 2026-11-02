@@ -11,6 +11,7 @@ work = "2.12.0"
 glance = "1.2.0"
 room = "2.8.5"
 kotlinx-serialization-json = "1.11.0"
+anthropic-java = "2.34.0"
 zxing = "3.5.4"
 camerax = "1.6.2"
 junit4 = "4.13.2"
@@ -68,6 +69,7 @@ androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lif
 # Coroutines
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+anthropic-java = { group = "com.anthropic", name = "anthropic-java", version.ref = "anthropic-java" }
 zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 androidx-camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }

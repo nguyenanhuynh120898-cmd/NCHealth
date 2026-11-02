@@ -8,6 +8,7 @@ import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Dashboard
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.SelfImprovement
+import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material.icons.outlined.WorkspacePremium
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.LaunchedEffect
@@ -311,6 +312,15 @@ fun AppNavigation(
                 }
             }
             if (currentRoute == Screen.Dashboard.route) {
+                OpenVitalsIconButton(
+                    onClick = { navController.navigate(Screen.Assistant.route) { launchSingleTop = true } },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.AutoAwesome,
+                        contentDescription = stringResource(R.string.assistant_title),
+                        tint = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+                    )
+                }
                 OpenVitalsIconButton(
                     onClick = {
                         navController.navigate(Screen.Achievements.route) {
@@ -756,6 +766,10 @@ fun AppNavigation(
                     unitFormatter = unitFormatter,
                     dateTimeFormatterProvider = dateTimeFormatterProvider,
                 )
+            }
+
+            composable(Screen.Assistant.route) {
+                tech.mmarca.openvitals.features.assistant.AssistantScreen(viewModel = hiltViewModel())
             }
 
             watchRoutes(

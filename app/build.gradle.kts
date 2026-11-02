@@ -185,6 +185,16 @@ android {
         jniLibs {
             useLegacyPackaging = true
         }
+        // The Claude API client's Jackson and OkHttp jars each carry these build notes.
+        resources {
+            excludes += setOf(
+                "META-INF/DEPENDENCIES",
+                "META-INF/LICENSE*",
+                "META-INF/NOTICE*",
+                "META-INF/INDEX.LIST",
+                "META-INF/*.kotlin_module",
+            )
+        }
     }
 
     sourceSets {
@@ -300,6 +310,8 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+    // NCHealth assistant: the official Claude API client, used only when the user turns the assistant on.
+    implementation(libs.anthropic.java)
     // Reads the QR code of a SMART Health Card from an image or a PDF page.
     implementation(libs.zxing.core)
     // The live preview and frames for scanning a SMART Health Card with the camera.

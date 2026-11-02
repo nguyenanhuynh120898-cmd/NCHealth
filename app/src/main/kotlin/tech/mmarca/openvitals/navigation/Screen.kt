@@ -317,6 +317,7 @@ sealed class Screen(
         }
     }
     data object Achievements : Screen("achievements", R.string.screen_achievements)
+    data object Assistant : Screen("assistant", R.string.screen_assistant)
 
     companion object {
         /** Every screen. `ScreenTitleTest` fails when one is missing. */
@@ -392,6 +393,7 @@ sealed class Screen(
                 WatchSettings,
                 WatchSendPoint,
                 Achievements,
+                Assistant,
             )
         }
 

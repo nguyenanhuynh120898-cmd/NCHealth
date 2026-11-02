@@ -13,8 +13,12 @@ class LocalAppManifestPolicyTest {
         val permissionTags = manifestTags(manifest, "uses-permission")
         val featureTags = manifestTags(manifest, "uses-feature")
 
+        // NCHealth's one exception: the opt-in Claude assistant needs INTERNET.
+        assertTrue(
+            "INTERNET is declared for the Claude assistant.",
+            permissionTags.any { it.names("android.permission.INTERNET") && !it.removesNode() },
+        )
         listOf(
-            "android.permission.INTERNET",
             "android.permission.ACCESS_NETWORK_STATE",
             "android.permission.ACCESS_WIFI_STATE",
         ).forEach { permission ->

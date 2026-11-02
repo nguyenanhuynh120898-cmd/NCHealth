@@ -216,10 +216,10 @@
     <uses-permission android:name="app.comaps.google.permission.READ_NAVIGATION_DATA" />
     <uses-permission android:name="app.comaps.huawei.permission.READ_NAVIGATION_DATA" />
 
-    <!-- OpenVitals is offline-only. Do not inherit network permissions from dependencies. -->
-    <uses-permission
-        android:name="android.permission.INTERNET"
-        tools:node="remove" />
+    <!-- NCHealth reaches the network for one thing only: the Claude assistant, which the user
+         turns on with their own API key. Everything else stays on the device. Network state
+         and Wi-Fi permissions are still not inherited from dependencies. -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:node="remove" />

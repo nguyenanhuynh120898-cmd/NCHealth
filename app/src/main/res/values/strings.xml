@@ -3140,7 +3140,7 @@
 
     <string name="privacy_policy_title">Privacy policy</string>
     <string name="privacy_policy_body_1">OpenVitals reads data from Health Connect to show steps, workouts, sleep, heart rate, weight, calories, hydration, nutrition, mindfulness, and vitals on your device. Entries you explicitly log, including imported GPX/KML/KMZ routes and imported FIT files, are written to Health Connect.</string>
-    <string name="privacy_policy_body_2">This app does not upload your health data to a cloud service, does not include ads, and does not share data with third parties.</string>
+    <string name="privacy_policy_body_2">This app does not include ads and does not upload your health data to a cloud service, with one exception you control: when you turn on the Claude assistant, today\'s health numbers are sent to Anthropic\'s Claude API with your own API key.</string>
     <string name="privacy_policy_body_medical">Where Health Connect offers medical records, OpenVitals shows, imports and exports them on your device. It reads a category only with your permission, writes only when you import, and shows records as received, without interpreting them.</string>
     <string name="privacy_policy_body_3">OpenVitals is not a medical device and does not diagnose, treat, cure, or prevent any disease or medical condition. It is not a substitute for medical advice, diagnosis, or treatment from a qualified healthcare professional.</string>
     <string name="body_energy_reason_strong_calibration">Heart-rate intensity has strong calibration.</string>
@@ -4051,4 +4051,34 @@
     <string name="settings_scales_delete_body">Its weight, heart rate and body composition are removed from Health Connect.</string>
     <string name="settings_scales_remove">Remove scale</string>
     <string name="settings_scales_remove_body">OpenVitals stops listening and forgets the key. Weigh-ins already saved stay.</string>
+    <string name="screen_assistant">Assistant</string>
+    <string name="assistant_title">Claude assistant</string>
+    <string name="assistant_subtitle">Claude reads today\'s numbers from your wearable and tells you how you are and what to do next.</string>
+    <string name="assistant_evaluate_now">Evaluate now</string>
+    <string name="assistant_settings_title">Assistant settings</string>
+    <string name="assistant_privacy_note">When the assistant runs, today\'s health numbers (sleep, heart rate, HRV, activity and similar) are sent to Anthropic\'s Claude API with your own API key, and nowhere else. Your key is stored encrypted on this phone.</string>
+    <string name="assistant_api_key">Claude API key</string>
+    <string name="assistant_api_key_replace">New Claude API key (one is saved)</string>
+    <string name="assistant_api_key_save">Save key</string>
+    <string name="assistant_api_key_remove">Remove key</string>
+    <string name="assistant_model_label">Model</string>
+    <string name="assistant_model_sonnet">Sonnet 5.5 · deeper</string>
+    <string name="assistant_model_haiku">Haiku 5.5 · cheaper</string>
+    <string name="assistant_schedule_toggle">Check-ins at 8:00, 14:00, 17:30, 22:00</string>
+    <string name="assistant_notify_toggle">Notify me</string>
+    <string name="assistant_schedule_note">Android may run a check-in a few minutes late to save battery. It needs an internet connection.</string>
+    <string name="assistant_history_title">Earlier check-ins</string>
+    <string name="assistant_ask_hint">Ask a follow-up question…</string>
+    <string name="assistant_ask_send">Send</string>
+    <string name="assistant_notification_channel">Assistant check-ins</string>
+    <string name="assistant_slot_morning">Morning check-in</string>
+    <string name="assistant_slot_midday">Midday check-in</string>
+    <string name="assistant_slot_evening">Late-afternoon check-in</string>
+    <string name="assistant_slot_night">Night check-in</string>
+    <string name="assistant_error_no_key">Add your Claude API key in the assistant settings first.</string>
+    <string name="assistant_error_bad_key">Claude did not accept the API key. Check it and save it again.</string>
+    <string name="assistant_error_rate_limited">Claude is busy or your usage limit was reached. Try again in a few minutes.</string>
+    <string name="assistant_error_offline">No connection to Claude. Check the internet and try again.</string>
+    <string name="assistant_error_declined">Claude declined to answer that. Try asking in a different way.</string>
+    <string name="assistant_error_server">Claude could not answer just now. Try again in a moment.</string>
 </resources>

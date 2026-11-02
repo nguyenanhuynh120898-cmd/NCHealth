@@ -28,18 +28,21 @@ class TranslationCatalogTest {
         assertThat(problems).isEmpty()
     }
 
-    /** An `AppLanguage` constant with no catalog behind it is a picker entry that does nothing. */
+    /**
+     * NCHealth ships English and Vietnamese only. The other `AppLanguage` constants stay so a
+     * stored choice from an older install still parses; the picker lists only shipped catalogs.
+     */
     @Test
-    fun `every AppLanguage constant has a translation directory`() {
-        val shipped = shippedLanguageTags()
+    fun `NCHealth ships English and Vietnamese catalogs`() {
+        assertThat(shippedLanguageTags()).contains("en")
         val present = TranslationResources.localeDirectories()
             .map { it.name }
             .map { it.removePrefix("values-") }
             .toSet() + "en"
 
-        assertWithMessage("an AppLanguage constant with no values-XX/ is a picker entry that does nothing")
+        assertWithMessage("NCHealth's languages")
             .that(present)
-            .containsAtLeastElementsIn(shipped)
+            .containsAtLeast("en", "vi")
     }
 
     /**

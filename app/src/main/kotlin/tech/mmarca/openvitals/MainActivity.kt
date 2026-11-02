@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var unitFormatter: UnitFormatter
     @Inject lateinit var dateTimeFormatterProvider: DateTimeFormatterProvider
     @Inject lateinit var companionDevicePairing: CompanionDevicePairing
+    @Inject lateinit var assistantScheduler: tech.mmarca.openvitals.features.assistant.AssistantScheduler
 
     private var nextRouteImportRequestId = 0L
     private var routeImportRequest by mutableStateOf<ExternalRouteImportRequest?>(null)
@@ -68,6 +69,8 @@ class MainActivity : AppCompatActivity() {
         // The companion association dialog needs an Activity launcher. Nothing attached one
         // after the native rewrite, so no new watch was ever associated.
         companionDevicePairing.attachToActivity(this)
+        // Keeps the assistant's next check-in queued; a no-op while it is off or already queued.
+        assistantScheduler.ensureScheduled()
         // A recreated Activity (rotation, language change, process restore) still holds the
         // launch intent, and its back stack comes back on its own. Applying the intent again
         // pushed a second copy of a widget's screen, and re-ran a file import over the user's
@@ -262,6 +265,7 @@ internal fun isSupportedOpenVitalsRoute(route: String): Boolean {
     if (route == Screen.ActivityEntry.createRoute()) return true
     if (route == Screen.HydrationEntry.route) return true
     if (route == Screen.FoodEntry.route) return true
+    if (route == Screen.Assistant.route) return true
     // The cycle widget asks what to log today; a dated route would go stale after midnight.
     // Widgets drawn before the chooser existed still carry the day-log route.
     if (route == Screen.CycleEntryChooser.route || route == Screen.CycleEntry.route) return true
