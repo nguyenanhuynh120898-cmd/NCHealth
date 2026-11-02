@@ -1,5 +1,10 @@
 package tech.mmarca.openvitals.features.dashboard
 
+import tech.mmarca.openvitals.domain.model.DashboardMetric
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.ui.text.font.FontWeight
+import tech.mmarca.openvitals.navigation.timeOfDayGreeting
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,9 +45,13 @@ internal fun dashboardVisibleWidgetIds(
     isEditingDashboard: Boolean,
     placedWidgetIds: Set<DashboardWidgetId> = emptySet(),
     sortEmptyTilesLast: Boolean = true,
+    /** Metrics with records in the recent window; null until the first probe answers. */
+    presentMetrics: Set<DashboardMetric>? = null,
 ): List<DashboardWidgetId> {
     val ordered = dashboardWidgets
         .filter { it in specIds }
+        // Only what the wearable records through Google Health; the rest wait in the add tray.
+        .filter { it.isRecordedBy(presentMetrics, display) }
         // While editing, an unsupported metric the user never placed goes to the tray.
         .filterNot { isEditingDashboard && it in display.unsupportedIds && it !in placedWidgetIds }
     if (isEditingDashboard || !sortEmptyTilesLast) return ordered
@@ -56,6 +65,21 @@ internal fun dashboardVisibleWidgetIds(
     // An empty tile goes to the back; a setup offer does not. See [isDemoted].
     val (empty, withData) = rest.partition { id -> display.isDemoted(id) == true }
     return ordered.filter { it in fixed } + withData + empty
+}
+
+/**
+ * Whether the tile has anything to show from the user's sources. Medical records are
+ * not something a wearable writes, and the watch tile needs a paired device.
+ */
+internal fun DashboardWidgetId.isRecordedBy(
+    presentMetrics: Set<DashboardMetric>?,
+    display: DashboardDisplayState,
+): Boolean = when (this) {
+    DashboardWidgetId.MEDICAL_RECORDS -> false
+    DashboardWidgetId.WATCH -> display.widgets[this]?.watch != null
+    DashboardWidgetId.BODY_ENERGY ->
+        presentMetrics == null || DashboardMetric.AVG_HEART_RATE in presentMetrics
+    else -> presentMetrics == null || toDashboardMetricOrNull()?.let { it in presentMetrics } ?: true
 }
 
 /** The edit-mode add tray: everything the grid does not show, in layout order. */
@@ -90,6 +114,7 @@ internal fun DashboardContent(
     dashboardWidgets: List<DashboardWidgetId>,
     isEditingDashboard: Boolean,
     sortEmptyTilesLast: Boolean = true,
+    presentMetrics: Set<DashboardMetric>? = null,
     onPreviousDay: () -> Unit,
     onNextDay: () -> Unit,
     onOpenCalendar: () -> Unit,
@@ -144,6 +169,7 @@ internal fun DashboardContent(
         display,
         isEditingDashboard,
         sortEmptyTilesLast,
+        presentMetrics,
     ) {
         dashboardVisibleWidgetIds(
             dashboardWidgets = dashboardWidgets,
@@ -152,6 +178,7 @@ internal fun DashboardContent(
             isEditingDashboard = isEditingDashboard,
             placedWidgetIds = placedWidgetIds,
             sortEmptyTilesLast = sortEmptyTilesLast,
+            presentMetrics = presentMetrics,
         )
     }
     val hiddenSpecs = remember(isEditingDashboard, specs, visibleIds) {
@@ -207,6 +234,20 @@ internal fun DashboardContent(
                             horizontal = DashboardScreenPadding,
                             vertical = 4.dp,
                         ),
+                    )
+                }
+
+                // The greeting sits under the day, set back so the date stays the headline.
+                item(key = "greeting") {
+                    Text(
+                        text = timeOfDayGreeting(),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .animateItem()
+                            .padding(horizontal = DashboardScreenPadding)
+                            .padding(top = 2.dp, bottom = 10.dp),
                     )
                 }
 

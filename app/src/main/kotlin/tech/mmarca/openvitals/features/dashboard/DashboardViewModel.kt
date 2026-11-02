@@ -26,6 +26,7 @@ import tech.mmarca.openvitals.domain.preferences.SleepWindow
 import tech.mmarca.openvitals.domain.model.BleConnectionStatus
 import tech.mmarca.openvitals.domain.model.BleRecordingMetrics
 import tech.mmarca.openvitals.domain.model.DashboardData
+import tech.mmarca.openvitals.data.repository.dashboard.DashboardMetricPresenceRepository
 import tech.mmarca.openvitals.domain.model.DashboardMetric
 import tech.mmarca.openvitals.domain.model.DashboardQuery
 import tech.mmarca.openvitals.domain.model.dashboardMetricLoadGroups
@@ -161,7 +162,12 @@ class DashboardViewModel @Inject constructor(
     private val chainSyncService: BodyEnergyChainSyncService? = null,
     private val medicalRecords: MedicalRecordsRepository? = null,
     private val foregroundGate: AppForegroundGate? = null,
+    private val metricPresence: DashboardMetricPresenceRepository? = null,
 ) : ViewModel() {
+
+    /** The metrics the user's sources record; tiles for the rest stay off the summary. Null until known. */
+    val presentMetrics: StateFlow<Set<DashboardMetric>?> =
+        metricPresence?.presentMetrics ?: MutableStateFlow(null)
 
     val minimumOnboardingPermissions get() = repository.minimumOnboardingPermissions
 
@@ -205,6 +211,7 @@ class DashboardViewModel @Inject constructor(
         observeBodyEnergyRebuild()
         observeRateLimit()
         load(_uiState.value.selectedDate)
+        metricPresence?.let { presence -> viewModelScope.launch { presence.refreshIfStale() } }
     }
 
     /** The banner counts down from the deadline; when it passes, the degraded tiles are asked for again. */

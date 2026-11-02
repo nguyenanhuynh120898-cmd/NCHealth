@@ -53,6 +53,7 @@ fun DashboardScreen(
     // Seeded from the flow's current value: a placeholder frame on return would
     // reset the carousel page and scroll position.
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val presentMetrics by viewModel.presentMetrics.collectAsStateWithLifecycle()
     val isLoading = state.isLoading
     val error = state.error
     val display = state.display
@@ -146,6 +147,7 @@ fun DashboardScreen(
                     dashboardWidgets = state.dashboardWidgets,
                     isEditingDashboard = state.isEditingDashboard,
                     sortEmptyTilesLast = state.sortEmptyTilesLast,
+                    presentMetrics = presentMetrics,
                     onPreviousDay = viewModel::previousDay,
                     onNextDay = viewModel::nextDay,
                     onOpenCalendar = { showDatePicker = true },
