@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var dateTimeFormatterProvider: DateTimeFormatterProvider
     @Inject lateinit var companionDevicePairing: CompanionDevicePairing
     @Inject lateinit var assistantScheduler: tech.mmarca.openvitals.features.assistant.AssistantScheduler
+    @Inject lateinit var colorThemeSettings: tech.mmarca.openvitals.features.settings.ColorThemeSettings
 
     private var nextRouteImportRequestId = 0L
     private var routeImportRequest by mutableStateOf<ExternalRouteImportRequest?>(null)
@@ -100,9 +101,11 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
+            val colorTheme by colorThemeSettings.theme.collectAsStateWithLifecycle()
             OpenVitalsTheme(
                 themeMode = appThemeMode,
                 dynamicColor = dynamicColor,
+                colorTheme = colorTheme,
             ) {
                 val resolvedStartDestination = startDestination ?: run {
                     if (
@@ -132,6 +135,8 @@ class MainActivity : AppCompatActivity() {
 
                 CompositionLocalProvider(
                     LocalChartAggregationMode provides chartAggregationMode,
+                    tech.mmarca.openvitals.ui.theme.LocalColorThemeController provides
+                        tech.mmarca.openvitals.ui.theme.ColorThemeController(colorTheme, colorThemeSettings::select),
                     // Where each screen declares what it wants in the app bar.
                     LocalAppBarState provides rememberedAppBarState,
                 ) {

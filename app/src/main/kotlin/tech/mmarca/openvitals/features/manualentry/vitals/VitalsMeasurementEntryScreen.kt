@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.manualentry.vitals
 
 import tech.mmarca.openvitals.core.presentation.TemperatureUnits
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
 
 import tech.mmarca.openvitals.features.manualentry.*
@@ -418,7 +419,7 @@ private fun BloodGlucoseFields(
                     shape = SegmentedButtonDefaults.itemShape(index = index, count = units.size),
                     icon = {},
                 ) {
-                    Text(VitalsMeasurementType.BLOOD_GLUCOSE.inputUnitLabel(unit), maxLines = 1)
+                    AutoResizeText(VitalsMeasurementType.BLOOD_GLUCOSE.inputUnitLabel(unit), maxLines = 1)
                 }
             }
         }

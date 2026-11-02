@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.medical
 
 import androidx.annotation.StringRes
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -122,7 +123,7 @@ private fun QuantityField(draft: ManualRecordDraft, measure: ObservationMeasure,
                         shape = SegmentedButtonDefaults.itemShape(index = index, count = measure.units.size),
                         icon = {},
                     ) {
-                        Text(unit.symbol, maxLines = 1)
+                        AutoResizeText(unit.symbol, maxLines = 1)
                     }
                 }
             }

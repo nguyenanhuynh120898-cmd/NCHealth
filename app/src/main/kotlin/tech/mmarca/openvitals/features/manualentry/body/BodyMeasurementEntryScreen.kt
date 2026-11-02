@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.manualentry.body
 
 import androidx.annotation.StringRes
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -269,7 +270,7 @@ private fun BodyWaterField(
                     shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                     icon = {},
                 ) {
-                    Text(label)
+                    AutoResizeText(label)
                 }
             }
         }

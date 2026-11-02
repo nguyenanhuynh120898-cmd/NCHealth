@@ -599,7 +599,8 @@ fun SharedMetricTile(
                     text = value.value,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
-                    maxLines = 1,
+                    // A number stays on one line; a word-value ("No data") may take two.
+                    maxLines = if (value.value.any(Char::isDigit)) 1 else 2,
                 )
                 if (value.unit.isNotBlank()) {
                     Spacer(Modifier.width(4.dp))

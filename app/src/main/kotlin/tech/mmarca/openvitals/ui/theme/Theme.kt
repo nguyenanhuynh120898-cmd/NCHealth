@@ -96,6 +96,7 @@ private val AppShapes = Shapes(
 fun OpenVitalsTheme(
     themeMode: AppThemeMode = AppThemeMode.SYSTEM,
     dynamicColor: Boolean = false,
+    colorTheme: AppColorTheme = AppColorTheme.TEAL,
     content: @Composable () -> Unit,
 ) {
     val systemInDarkTheme = isSystemInDarkTheme()
@@ -110,7 +111,7 @@ fun OpenVitalsTheme(
             val baseColorScheme = if (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 dynamicDarkColorScheme(LocalContext.current)
             } else {
-                DarkColorScheme
+                DarkColorScheme.withColorTheme(colorTheme, dark = true)
             }
             baseColorScheme.toAmoledColorScheme()
         }
@@ -118,14 +119,17 @@ fun OpenVitalsTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> DarkColorScheme.withColorTheme(colorTheme, dark = true)
+        else -> LightColorScheme.withColorTheme(colorTheme, dark = false)
     }
 
     // Resolved once, so every screen reads the same answer.
     val reducedMotion = !animatorsEnabled()
 
-    CompositionLocalProvider(LocalReducedMotion provides reducedMotion) {
+    CompositionLocalProvider(
+        LocalReducedMotion provides reducedMotion,
+        LocalAppColorTheme provides colorTheme,
+    ) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = AppTypography,

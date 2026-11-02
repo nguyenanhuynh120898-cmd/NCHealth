@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -145,7 +146,7 @@ private fun BodyProfileSexField(
                 onClick = { onSelect(option) },
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
             ) {
-                Text(stringResource(option.labelRes))
+                AutoResizeText(stringResource(option.labelRes))
             }
         }
     }

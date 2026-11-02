@@ -66,6 +66,10 @@ private fun LazyListScope.displaySettingsCards(
     }
     item { SettingsCardSpacer() }
     item {
+        ColorThemeCard(modifier = Modifier.padding(horizontal = LayoutMetrics.screenGutter))
+    }
+    item { SettingsCardSpacer() }
+    item {
         ChartAggregationCard(
             selected = state.chartAggregationMode,
             onSelect = viewModel::setChartAggregationMode,

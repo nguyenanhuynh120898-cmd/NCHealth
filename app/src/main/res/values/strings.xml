@@ -2257,7 +2257,7 @@
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_theme_amoled">AMOLED</string>
     <string name="settings_dynamic_color_title">Dynamic color (Material You)</string>
-    <string name="settings_dynamic_color_body">Tint OpenVitals from your Android wallpaper. Off uses the OpenVitals blue and teal brand palette.</string>
+    <string name="settings_dynamic_color_body">Tint NCHealth from your Android wallpaper. Off uses the colour theme you chose above.</string>
     <string name="settings_chart_aggregation_title">Aggregate charts</string>
     <string name="settings_chart_aggregation_body">Show an average line with a min/max band per time bucket instead of the raw data.</string>
     <string name="settings_chart_aggregation_off">Off (raw data)</string>
@@ -4061,9 +4061,9 @@
     <string name="assistant_api_key_replace">New Claude API key (one is saved)</string>
     <string name="assistant_api_key_save">Save key</string>
     <string name="assistant_api_key_remove">Remove key</string>
-    <string name="assistant_model_label">Model</string>
-    <string name="assistant_model_sonnet">Sonnet 5.5 · deeper</string>
-    <string name="assistant_model_haiku">Haiku 5.5 · cheaper</string>
+    <string name="assistant_model_label">Model · Sonnet goes deeper, Haiku costs less</string>
+    <string name="assistant_model_sonnet">Sonnet 5.5</string>
+    <string name="assistant_model_haiku">Haiku 5.5</string>
     <string name="assistant_schedule_toggle">Check-ins at 8:00, 14:00, 17:30, 22:00</string>
     <string name="assistant_notify_toggle">Notify me</string>
     <string name="assistant_schedule_note">Android may run a check-in a few minutes late to save battery. It needs an internet connection.</string>
@@ -4081,4 +4081,22 @@
     <string name="assistant_error_offline">No connection to Claude. Check the internet and try again.</string>
     <string name="assistant_error_declined">Claude declined to answer that. Try asking in a different way.</string>
     <string name="assistant_error_server">Claude could not answer just now. Try again in a moment.</string>
+    <string name="hero_readiness_title">Readiness</string>
+    <string name="hero_zone_high">Ready for a hard session</string>
+    <string name="hero_zone_mid">Keep training moderate today</string>
+    <string name="hero_zone_low">Put rest and recovery first</string>
+    <string name="hero_basis">From %1$s, against your own baseline</string>
+    <string name="hero_input_sleep">sleep</string>
+    <string name="hero_input_hrv">HRV</string>
+    <string name="hero_input_rhr">resting heart rate</string>
+    <string name="hero_input_energy">body energy</string>
+    <string name="hero_no_data">Wear your device to sleep to get a readiness score.</string>
+    <string name="hero_hours">%1$s h</string>
+    <string name="settings_color_theme_title">Colour theme</string>
+    <string name="settings_color_theme_body">The app\'s main colour and the glow behind the glass cards. Metric colours stay the same.</string>
+    <string name="color_theme_teal">Jade</string>
+    <string name="color_theme_ocean">Ocean</string>
+    <string name="color_theme_sunset">Sunset</string>
+    <string name="color_theme_lavender">Lavender</string>
+    <string name="color_theme_forest">Forest</string>
 </resources>

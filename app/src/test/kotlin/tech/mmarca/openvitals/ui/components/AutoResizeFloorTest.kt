@@ -9,15 +9,15 @@ import org.junit.Test
 class AutoResizeFloorTest {
 
     @Test
-    fun `the floor keeps three quarters of the size`() {
-        assertEquals(24.sp, autoResizeFloor(32.sp))
-        assertEquals(12.sp, autoResizeFloor(16.sp))
+    fun `the floor keeps three fifths of the size`() {
+        assertEquals(19.2.sp, autoResizeFloor(32.sp))
+        assertEquals(10.sp, autoResizeFloor(16.sp))
     }
 
     @Test
     fun `small text does not shrink below the smallest size`() {
-        // Above the 11 sp style: the auto-size clamps the floor to the size, so no shrinking.
-        assertEquals(12.sp, autoResizeFloor(11.sp))
+        // Under the 10 sp floor nothing shrinks further.
+        assertEquals(10.sp, autoResizeFloor(11.sp))
     }
 
     @Test

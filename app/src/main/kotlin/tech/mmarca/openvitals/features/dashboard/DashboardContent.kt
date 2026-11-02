@@ -251,6 +251,17 @@ internal fun DashboardContent(
                     )
                 }
 
+                item(key = "hero") {
+                    DashboardHeroCard(
+                        data = data,
+                        display = display,
+                        modifier = Modifier
+                            .animateItem()
+                            .padding(horizontal = DashboardScreenPadding)
+                            .padding(bottom = 12.dp),
+                    )
+                }
+
                 item(key = "widgets") {
                     // Reveal animations play once per day on display.
                     key(data.date) {

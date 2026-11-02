@@ -60,11 +60,13 @@ fun PeriodNavigator(
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
+                // One line, shrinking for a long week range or a large system font.
+                AutoResizeText(
                     text = subtitle ?: localizedPeriodSubtitle(selectedRange, period),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Start,
+                    maxLines = 1,
                 )
             }
         }

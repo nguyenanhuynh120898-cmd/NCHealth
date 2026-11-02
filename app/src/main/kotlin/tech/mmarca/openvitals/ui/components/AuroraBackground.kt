@@ -14,22 +14,25 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
+import tech.mmarca.openvitals.ui.theme.LocalAppColorTheme
 import tech.mmarca.openvitals.ui.theme.loopingMotionAllowed
 import kotlin.math.cos
 import kotlin.math.sin
 
 /**
  * The ground the glass cards float on: the theme's background with three soft glows in the
- * brand's mint, teal and coral, drifting very slowly. Reduced motion holds them still.
+ * colour theme's three tones, drifting very slowly. Reduced motion holds them still.
  */
 @Composable
 fun AuroraBackground(modifier: Modifier = Modifier) {
     val scheme = MaterialTheme.colorScheme
     val dark = scheme.background.luminance() < 0.5f
     val glowAlpha = if (dark) 0.20f else 0.30f
-    val mint = Color(0xFF7FCDB3).copy(alpha = glowAlpha)
-    val teal = scheme.primary.copy(alpha = glowAlpha * 0.8f)
-    val coral = Color(0xFFF47462).copy(alpha = glowAlpha * 0.55f)
+    // The three glows follow the chosen colour theme.
+    val glows = LocalAppColorTheme.current.glows
+    val mint = glows[0].copy(alpha = glowAlpha)
+    val teal = glows[1].copy(alpha = glowAlpha * 0.8f)
+    val coral = glows[2].copy(alpha = glowAlpha * 0.55f)
     val phase = if (loopingMotionAllowed()) {
         rememberInfiniteTransition(label = "Aurora").animateFloat(
             initialValue = 0f,

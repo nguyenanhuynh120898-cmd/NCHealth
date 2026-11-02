@@ -371,7 +371,7 @@ internal fun <T> SplitSelector(
                         index = index,
                         count = options.size,
                     ),
-                    label = { Text(label(option)) },
+                    label = { AutoResizeText(label(option)) },
                 )
             }
         }

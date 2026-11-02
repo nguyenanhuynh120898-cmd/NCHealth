@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.workoutplans
 
 import androidx.compose.foundation.layout.Arrangement
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -275,7 +276,7 @@ private fun WorkoutPlanStepRow(
                             enabled = enabled,
                             shape = SegmentedButtonDefaults.itemShape(index = index, count = GoalChoice.entries.size),
                         ) {
-                            Text(stringResource(choice.labelRes))
+                            AutoResizeText(stringResource(choice.labelRes))
                         }
                     }
                 }
@@ -375,7 +376,7 @@ private fun DurationUnitButtons(
                 enabled = enabled,
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = WorkoutPlanDurationUnit.entries.size),
             ) {
-                Text(
+                AutoResizeText(
                     stringResource(
                         when (choice) {
                             WorkoutPlanDurationUnit.SECONDS -> R.string.workout_plan_goal_seconds_short

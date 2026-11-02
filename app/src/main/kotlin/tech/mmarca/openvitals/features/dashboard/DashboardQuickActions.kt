@@ -18,9 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import tech.mmarca.openvitals.R
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import tech.mmarca.openvitals.ui.components.OpenVitalsButton
 import tech.mmarca.openvitals.ui.components.OpenVitalsIconButton
 import tech.mmarca.openvitals.ui.components.OpenVitalsTonalButton
@@ -51,11 +51,11 @@ internal fun DashboardQuickActions(
                 modifier = Modifier.size(DashboardQuickActionIconSize),
             )
             Spacer(Modifier.width(6.dp))
-            Text(
+            // Shrinks to fit a large system font instead of ending in "…".
+            AutoResizeText(
                 text = stringResource(R.string.dashboard_action_log),
                 maxLines = 1,
                 softWrap = false,
-                overflow = TextOverflow.Ellipsis,
             )
         }
         OpenVitalsButton(
@@ -71,11 +71,11 @@ internal fun DashboardQuickActions(
                 modifier = Modifier.size(DashboardQuickActionIconSize),
             )
             Spacer(Modifier.width(6.dp))
-            Text(
+            // Shrinks to fit a large system font instead of ending in "…".
+            AutoResizeText(
                 text = stringResource(R.string.dashboard_action_start_workout),
                 maxLines = 1,
                 softWrap = false,
-                overflow = TextOverflow.Ellipsis,
             )
         }
         OpenVitalsIconButton(

@@ -342,14 +342,16 @@ object DashboardPresentationMapper {
             value = data.bodyWaterMassKg?.let { unitFormatter.bodyMass(it, decimals = 2) },
             isLoading = isLoading,
         )
-        DashboardWidgetId.AVG_HEART_RATE -> metricWidget(
+        // No reading is "no data", not "0 bpm".
+        DashboardWidgetId.AVG_HEART_RATE -> optionalMetricWidget(
             id = widgetId,
-            value = unitFormatter.heartRate(data.avgHeartRateBpm),
+            value = data.avgHeartRateBpm.takeIf { it > 0 }?.let(unitFormatter::heartRate),
             isLoading = isLoading,
         )
-        DashboardWidgetId.RESTING_HEART_RATE -> metricWidget(
+        // No reading is "no data", not "0 bpm".
+        DashboardWidgetId.RESTING_HEART_RATE -> optionalMetricWidget(
             id = widgetId,
-            value = unitFormatter.heartRate(data.restingHeartRateBpm),
+            value = data.restingHeartRateBpm.takeIf { it > 0 }?.let(unitFormatter::heartRate),
             isLoading = isLoading,
         )
         DashboardWidgetId.HRV -> optionalMetricWidget(

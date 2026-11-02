@@ -59,10 +59,10 @@ fun AutoResizeText(
 }
 
 /** The fraction of the style's size that shrinking keeps. */
-internal const val MinShrinkFraction = 0.75f
+internal const val MinShrinkFraction = 0.6f
 
 /** No shrunk text goes under this. */
-internal val SmallestFontSize = 12.sp
+internal val SmallestFontSize = 10.sp
 
 /** The floor for a text of [maxFontSize]. A floor above the size means no shrinking. */
 internal fun autoResizeFloor(maxFontSize: TextUnit): TextUnit {

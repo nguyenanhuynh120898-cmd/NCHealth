@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.settings
 
 import tech.mmarca.openvitals.ui.components.OpenVitalsCard
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 
 import android.content.Intent
 import android.net.Uri
@@ -550,7 +551,7 @@ internal fun ThemeModeCard(
                             count = AppThemeMode.entries.size,
                         ),
                         label = {
-                            Text(
+                            AutoResizeText(
                                 when (mode) {
                                     AppThemeMode.SYSTEM -> stringResource(R.string.settings_theme_system)
                                     AppThemeMode.LIGHT -> stringResource(R.string.settings_theme_light)
@@ -703,7 +704,7 @@ internal fun HomeWidgetRefreshCard(
                             count = HomeWidgetRefreshInterval.entries.size,
                         ),
                         label = {
-                            Text(
+                            AutoResizeText(
                                 text = stringResource(
                                     when (interval) {
                                         HomeWidgetRefreshInterval.EVERY_15_MINUTES ->
@@ -759,7 +760,7 @@ internal fun ActivityWeekModeCard(
                             count = ActivityWeekMode.entries.size,
                         ),
                         label = {
-                            Text(
+                            AutoResizeText(
                                 when (mode) {
                                     ActivityWeekMode.MONDAY_TO_SUNDAY -> {
                                         stringResource(R.string.settings_activity_week_monday_to_sunday)
@@ -1184,7 +1185,7 @@ private fun OfflineMapRenderFormatSelector(
                         count = OfflineMapPackFormat.entries.size,
                     ),
                     label = {
-                        Text(
+                        AutoResizeText(
                             stringResource(
                                 R.string.settings_offline_maps_render_format_option,
                                 stringResource(format.settingsLabelRes),
@@ -1316,7 +1317,7 @@ private fun ActivityRecordingSegmentedChoice(
                         index = index,
                         count = options.size,
                     ),
-                    label = { Text(label(value)) },
+                    label = { AutoResizeText(label(value)) },
                 )
             }
         }
@@ -1351,7 +1352,7 @@ private fun ActivityRecordingRouteGapChoice(
                         count = options.size,
                     ),
                     label = {
-                        Text(
+                        AutoResizeText(
                             if (value == null) {
                                 stringResource(R.string.settings_activity_recording_off)
                             } else {
@@ -1443,7 +1444,7 @@ private fun ActivityRecordingNullableChoice(
                         count = allOptions.size,
                     ),
                     label = {
-                        Text(if (value == null) offLabel else label(value))
+                        AutoResizeText(if (value == null) offLabel else label(value))
                     },
                 )
             }
@@ -1616,7 +1617,7 @@ internal fun ActivitySplitDistanceCard(
                             index = index,
                             count = presets.size,
                         ),
-                        label = { Text(splitDistanceLabel(unitFormatter, presetMeters)) },
+                        label = { AutoResizeText(splitDistanceLabel(unitFormatter, presetMeters)) },
                     )
                 }
             }
@@ -1659,7 +1660,7 @@ internal fun UnitSystemCard(
                             count = UnitSystemPreference.entries.size,
                         ),
                         label = {
-                            Text(
+                            AutoResizeText(
                                 when (preference) {
                                     UnitSystemPreference.SYSTEM -> stringResource(R.string.settings_unit_system)
                                     UnitSystemPreference.METRIC -> stringResource(R.string.settings_unit_metric)

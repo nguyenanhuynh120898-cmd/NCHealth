@@ -1,6 +1,7 @@
 package tech.mmarca.openvitals.features.manualentry.activity
 
 import androidx.compose.foundation.layout.Arrangement
+import tech.mmarca.openvitals.ui.components.AutoResizeText
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -241,7 +242,7 @@ private fun StepRow(
                             enabled = enabled,
                             shape = SegmentedButtonDefaults.itemShape(index = buttonIndex, count = 2),
                         ) {
-                            Text(stringResource(labelRes))
+                            AutoResizeText(stringResource(labelRes))
                         }
                     }
             }

@@ -1,6 +1,8 @@
 package tech.mmarca.openvitals.features.assistant
 
 import androidx.compose.animation.AnimatedVisibility
+import tech.mmarca.openvitals.ui.components.AutoResizeText
+import tech.mmarca.openvitals.ui.theme.Spacing
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -75,8 +77,8 @@ fun AssistantScreen(
     Column(modifier = modifier.fillMaxSize().imePadding()) {
         LazyColumn(
             modifier = Modifier.weight(1f).fillMaxWidth(),
-            contentPadding = PaddingValues(horizontal = LayoutMetrics.screenGutter, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(horizontal = LayoutMetrics.screenGutter, vertical = Spacing.sm),
+            verticalArrangement = Arrangement.spacedBy(Spacing.md),
         ) {
             item(key = "header") {
                 AssistantHeader(
@@ -116,7 +118,7 @@ fun AssistantScreen(
                         text = stringResource(R.string.assistant_history_title),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 8.dp),
+                        modifier = Modifier.padding(top = Spacing.sm),
                     )
                 }
                 items(state.reports.drop(1), key = { "report-${it.createdAt}" }) { report ->
@@ -145,7 +147,7 @@ private fun AssistantHeader(
     onEvaluate: () -> Unit,
     onToggleSettings: () -> Unit,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(Spacing.sm)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 painter = painterResource(R.drawable.ic_assistant_spark),
@@ -153,7 +155,7 @@ private fun AssistantHeader(
                 tint = Color.Unspecified,
                 modifier = Modifier.size(28.dp),
             )
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(Spacing.sm))
             Text(
                 text = stringResource(R.string.assistant_subtitle),
                 style = MaterialTheme.typography.bodyMedium,
@@ -176,7 +178,7 @@ private fun AssistantHeader(
 private fun AssistantSettingsCard(config: AssistantConfig, viewModel: AssistantViewModel) {
     var key by rememberSaveable { mutableStateOf("") }
     OpenVitalsCard(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Column(modifier = Modifier.padding(Spacing.lg), verticalArrangement = Arrangement.spacedBy(Spacing.md)) {
             Text(stringResource(R.string.assistant_settings_title), style = MaterialTheme.typography.titleMedium)
             Text(
                 text = stringResource(R.string.assistant_privacy_note),
@@ -198,7 +200,7 @@ private fun AssistantSettingsCard(config: AssistantConfig, viewModel: AssistantV
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 modifier = Modifier.fillMaxWidth(),
             )
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(Spacing.sm)) {
                 FilledTonalButton(
                     onClick = {
                         viewModel.saveApiKey(key)
@@ -222,7 +224,7 @@ private fun AssistantSettingsCard(config: AssistantConfig, viewModel: AssistantV
                         onClick = { viewModel.setModel(model) },
                         shape = SegmentedButtonDefaults.itemShape(index, AssistantModel.entries.size),
                     ) {
-                        Text(stringResource(if (model == AssistantModel.SONNET) R.string.assistant_model_sonnet else R.string.assistant_model_haiku))
+                        AutoResizeText(stringResource(if (model == AssistantModel.SONNET) R.string.assistant_model_sonnet else R.string.assistant_model_haiku))
                     }
                 }
             }
@@ -250,7 +252,7 @@ private fun ReportCard(report: AssistantReport, emphasized: Boolean, modifier: M
     val formatter = remember { DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT) }
     val time = remember(report.createdAt) { report.createdAt.atZone(ZoneId.systemDefault()).format(formatter) }
     OpenVitalsCard(modifier = modifier.fillMaxWidth().animateContentSize()) {
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(modifier = Modifier.padding(Spacing.lg), verticalArrangement = Arrangement.spacedBy(Spacing.sm)) {
             Text(
                 text = listOfNotNull(report.slot?.let { stringResource(it.titleRes()) }, time).joinToString(" · "),
                 style = MaterialTheme.typography.labelMedium,
@@ -287,7 +289,7 @@ private fun ChatBubble(turn: AssistantTurn, modifier: Modifier = Modifier) {
 @Composable
 private fun LoadingCard() {
     OpenVitalsCard(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(modifier = Modifier.padding(Spacing.lg), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             ShimmerLine(width = 140.dp)
             ShimmerLine(width = 260.dp)
             ShimmerLine(width = 220.dp)
@@ -311,7 +313,7 @@ private fun FailureCard(failure: AssistantFailure) {
             text = stringResource(message),
             color = MaterialTheme.colorScheme.onErrorContainer,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Spacing.lg),
         )
     }
 }
@@ -322,7 +324,7 @@ private fun AskBar(question: String, onQuestionChange: (String) -> Unit, enabled
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = LayoutMetrics.screenGutter, vertical = 8.dp),
+            .padding(horizontal = LayoutMetrics.screenGutter, vertical = Spacing.sm),
     ) {
         OutlinedTextField(
             value = question,
@@ -332,7 +334,7 @@ private fun AskBar(question: String, onQuestionChange: (String) -> Unit, enabled
             maxLines = 4,
             modifier = Modifier.weight(1f),
         )
-        Spacer(Modifier.width(8.dp))
+        Spacer(Modifier.width(Spacing.sm))
         IconButton(onClick = onSend, enabled = enabled && question.isNotBlank()) {
             if (enabled) {
                 Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = stringResource(R.string.assistant_ask_send))
